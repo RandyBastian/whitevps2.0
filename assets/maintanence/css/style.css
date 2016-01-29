@@ -1,0 +1,367 @@
+/* ==============================================
+
+Template: Balk
+Version: 1.0
+Author:	Ukieweb
+
+ - General setting
+ - Balk
+ - Watch
+ - Footer
+ - Animationload
+
+================================================ */
+
+
+/* ------------------
+    General setting
+--------------------*/
+*{
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+}
+html{
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #f6f7f9;
+    font-weight: 600;
+}
+body {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
+}
+h1 {
+    font-size: 93px;
+    line-height: 96px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    font-weight: 900;
+}
+h2 {
+    font-size: 52px;
+    line-height: 72px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 900;
+}
+h3 {
+    font-size: 29px;
+    line-height: 48px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+h4 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+p, ul, ol, pre, table, blockquote {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+hr {
+    border: 1px solid;
+    margin: -1px 0;
+}
+ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+b, strong, em, small, code {
+    line-height: 1;
+}
+sup, sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+sub {
+    top: 0.4em;
+}
+
+p{
+    font-weight: 300;
+    color: #373b3e;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+.error{
+    border-color: red !important;
+}
+.title{
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #000000;
+    line-height: 28px;
+    margin: 25px 10px 55px 10px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #373b3e;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #373b3e;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #373b3e;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #373b3e;
+}
+
+
+/* ------------------
+    Balk
+--------------------*/
+.place_balk_workers {
+    width: 437px;
+    height: 213px;
+    position: relative;
+}
+
+.place_balk_workers .balk_workers{
+    width: 437px;
+    height: 200px;
+    position: relative;
+    background-image: url("../images/maskot-ppsdmss.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: transparent;
+    z-index: 3;
+}
+
+.place_balk_workers .balk {
+    width: 60px;
+    height: 23px;
+    background-image: url("../images/balk.svg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: transparent;
+    background-size: 100%;
+    position: absolute;
+    top: 92px;
+    left: 194px;
+}
+
+.place_balk_workers .saw{
+    width: 325px;
+    height: 63px;
+    background-image: url("../images/saw.svg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: transparent;
+    background-size: 100%;
+    position: absolute;
+    left: 53px;
+    top: 68px;
+    z-index: 2;
+    -moz-animation: 1.0s ease 0s normal none infinite saw;
+    -moz-transform-origin: 85% 65%;
+    -webkit-animation:saw 1.0s infinite ease-in-out;
+    -webkit-transform-origin: 85% 65%;
+    -o-animation: 1.0s ease 0s normal none infinite saw;
+    -o-animation:saw 1.0s infinite ease-in-out;
+    -o-transform-origin: 85% 65%;
+    -ms-animation: 1.0s ease 0s normal none infinite saw;
+    -ms-animation:saw 1.0s infinite ease-in-out;
+    -ms-transform-origin: 85% 65%;
+    animation: 1.0s ease 0s normal none infinite saw;
+    animation:saw 1.0s infinite ease-in-out;
+    transform-origin: 85% 65%;
+}
+
+@-moz-keyframes saw {
+    0%{left:53px}
+    50%{left:72px}
+    100%{left:53px}
+}
+@-webkit-keyframes saw {
+    0%{left:53px}
+    50%{left:72px}
+    100%{left:53px}
+}
+@-o-keyframes saw {
+    0%{left:53px}
+    50%{left:72px}
+    100%{left:53px}
+}
+@-ms-keyframes saw {
+    0%{left:53px}
+    50%{left:72px}
+    100%{left:53px}
+}
+@keyframes saw {
+    0%{left:53px}
+    50%{left:72px}
+    100%{left:53px}
+}
+
+@-moz-keyframes saw_mob {
+    0%{left:47px}
+    50%{left:33px}
+    100%{left:47px}
+}
+@-webkit-keyframes saw_mob {
+    0%{left:47px}
+    50%{left:33px}
+    100%{left:47px}
+}
+@-o-keyframes saw_mob {
+    0%{left:47px}
+    50%{left:33px}
+    100%{left:47px}
+}
+@-ms-keyframes saw_mob {
+    0%{left:47px}
+    50%{left:33px}
+    100%{left:47px}
+}
+@keyframes saw_mob {
+    0%{left:47px}
+    50%{left:33px}
+    100%{left:47px}
+}
+
+
+/* ------------------
+    Watch
+--------------------*/
+#watch{
+    color: #f6f7f9;
+    text-align: center;
+}
+
+#watch .dash {
+    display: inline-block;
+    padding: 20px 30px;
+    line-height: 72px;
+    text-align: center;
+    margin: 0 -3px;
+}
+
+#watch .dash:first-child{
+    border-radius: 8px 0px 0px 8px;
+    background-color: #f10f24;
+}
+#watch .dash:last-child{
+    border-radius: 0px 8px 8px 0px;
+    background-color: #f10f24;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+#watch .dash:nth-child(2){
+    background-color: #f10f24;
+}
+#watch .dash:nth-child(3){
+    background-color: #f10f24;
+}
+
+#watch .dash .digit {
+    display: block;
+    width: 24px;
+    font-size: 44px;
+    line-height: 44px;
+    height: 38px;
+    float: left;
+}
+
+#watch .dash .digit .top, #watch .dash .digit .bottom{
+    font-weight: 300;
+}
+
+#watch .dash span.dash_title {
+    font-size: 14px;
+    line-height: 16px;
+    padding-top: 6px;
+    font-weight: 300;
+    display: block;
+    text-align: center;
+    clear: both;
+}
+
+
+/* ------------------
+    Footer
+--------------------*/
+#footer{
+    z-index: 9999;
+    position: relative;
+}
+
+.contact_socials{
+    padding: 0;
+    margin: 0;
+}
+
+.contact_socials li{
+    display: inline-block;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #000000;
+    margin: 20px 0;
+}
+
+.footer_socials {
+    margin: 25px 0 10px;
+}
+
+.ukie_social{
+    font-size: 16px;
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    display: block;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: #0089e9;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.ukie_social:hover, .ukie_social:active, .ukie_social:focus{
+    color: #ffffff;
+    background-color: #00b6f9;
+}
+
+
+/* ------------------
+    Animationload
+--------------------*/
+.animationload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    z-index: 999999;
+}
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    width: 200px;
+    height: 200px;
+    background-image: url("../img/ajax-loader.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+}

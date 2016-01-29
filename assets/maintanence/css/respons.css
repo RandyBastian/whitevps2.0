@@ -1,0 +1,67 @@
+/* Start media ( max = 468px ) */
+@media (max-width: 468px) {
+
+    .title {
+        margin-bottom: 35px;
+    }
+
+    .place_balk_workers {
+        width: 290px;
+        height: 150px;
+        margin: 40px auto -10px;
+    }
+    .place_balk_workers .balk_workers {
+        width: 290px;
+        height: 150px;
+    }
+    .place_balk_workers .balk {
+        width: 41px;
+        height: 15px;
+        top: 70px;
+        left: 128px;
+    }
+    .place_balk_workers .saw {
+        width: 215px;
+        height: 36px;
+        left: 37px;
+        top: 59px;
+        -moz-animation: 1.0s ease 0s normal none infinite saw_mob;
+        -moz-transform-origin: 85% 65%;
+        -webkit-animation: saw_mob 1.0s infinite ease-in-out;
+        -webkit-transform-origin: 85% 65%;
+        -o-animation: 1.0s ease 0s normal none infinite saw_mob;
+        -o-animation: saw_mob 1.0s infinite ease-in-out;
+        -o-transform-origin: 85% 65%;
+        -ms-animation: 1.0s ease 0s normal none infinite saw_mob;
+        -ms-animation: saw_mob 1.0s infinite ease-in-out;
+        -ms-transform-origin: 85% 65%;
+        animation: 1.0s ease 0s normal none infinite saw_mob;
+        animation: saw_mob 1.0s infinite ease-in-out;
+        transform-origin: 85% 65%;
+    }
+
+    /* -------- Watch -------- */
+    #watch .dash span.dash_title {
+        text-align: left;
+    }
+
+    #watch .dash {
+        width: 70px;
+        padding: 0px 8px 0px;
+        height: 79px;
+        line-height: 62px;
+        margin: 0px -2px;
+    }
+
+    #watch .dash:last-child {
+        padding: 0px 0px 0px 8px;
+    }
+
+    #watch .dash .digit {
+        font-size: 36px;
+        line-height: 56px;
+        height: 44px;
+        width: 20px;
+    }
+
+}
