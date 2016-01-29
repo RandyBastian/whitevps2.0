@@ -38,7 +38,7 @@ class Download extends CI_Controller {
 			$ca 			= $s->certificate;
 		}
 
-		$root_path  = $
+		$root_path  = getcwd();
 		$filename 	= "$name-$type-$port.ovpn";
 		$source  	= "client\r\n"
 					. "dev tun\r\n"
@@ -55,15 +55,13 @@ class Download extends CI_Controller {
 					. "$ca\r\n"
 					. "</ca>";
 
-
 		$file_location		= "assets/config/".$filename;
 		$open_file 			= fopen("$file_location","w");
 		fwrite($open_file, $source);
 		fclose($open_file);
+		
 		$data = file_get_contents($file_location);
 		force_download($filename,$data);
-
-		$root_path = getcwd();
 		unlink("$root_path/$file_location");
 	}
 }

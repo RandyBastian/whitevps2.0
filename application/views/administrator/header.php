@@ -61,21 +61,13 @@
                     <a href="<?php echo site_url('administrator');?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('administrator/account');?>"><i class="fa fa-users fa-fw"></i> Accounts <span class="fa arrow"></span></a>
-                     <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<?php echo site_url('administrator/account_create');?>">Create Account</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('administrator/account');?>">Accounts List</a>
-                        </li>
-                    </ul>
+                    <a href="<?php echo site_url('administrator/account');?>"><i class="fa fa-users fa-fw"></i> Accounts List</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('administrator/announcement');?>"><i class="fa fa-users fa-fw"></i> Announcement <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-book fa-fw"></i> Announcement <span class="fa arrow"></span></a>
                      <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo site_url('administrator/anncouncement_create');?>">Create Announcement</a>
+                            <a href="<?php echo site_url('administrator/announcement_create');?>">Create Announcement</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('administrator/announcement');?>">Announcement List</a>
@@ -94,7 +86,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('administrator/transaction');?>"><i class="fa fa-user-md fa-fw"></i> Transaction</a>
+                    <a href="<?php echo site_url('administrator/transaction');?>"><i class="fa fa-line-chart fa-fw"></i> Transaction</a>
                 </li>
                 <li>
                     <a href="<?php echo site_url('administrator/user');?>"><i class="fa fa-user-md fa-fw"></i> Users <span class="fa arrow"></span></a>
