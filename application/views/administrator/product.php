@@ -2,43 +2,40 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="<?php echo site_url('administrator/user_create');?>" class="btn btn-block btn-social btn-dropbox"><i class="fa fa-dropbox"></i> Create New</a>
+             <a href="<?php echo site_url('administrator/product-create');?>" class="btn btn-block btn-social btn-dropbox"><i class="fa fa-dropbox"></i> Create New</a>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                    <?php echo form_open("administrator/user_multi_action",array("class" => "form-horizontal","id" => "userform")); ?>
+                <?php echo form_open("administrator/product_multi_action",array("class" => "form-horizontal","id" => "userform")); ?>
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
                                 <th><label><input type="checkbox" class="checkAll"/></label></th>
-                                <th style="text-align:center">Email</th>
-                                <th style="text-align:center">First Name</th>
-                                <th style="text-align:center">Last Name</th>
-                                <th style="text-align:center">Credit</th>
+                                <th style="text-align:center">Name</th>
+                                <th style="text-align:center">Price IDR</th>
+                                <th style="text-align:center">Price USD</th>
                                 <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th><label><input type="checkbox" class="checkAll"/></label></th>
-                                <th style="text-align:center">Email</th>
-                                <th style="text-align:center">First Name</th>
-                                <th style="text-align:center">Last Name</th>
-                                <th style="text-align:center">Credit</th>
+                                <th style="text-align:center">Name</th>
+                                <th style="text-align:center">Price IDR</th>
+                                <th style="text-align:center">Price USD</th>
                                 <th style="text-align:center">Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                        <?php foreach($user as $data_user){ ?>
+                        <?php foreach($product as $data){ ?>
                         	<tr>
-                                <td><input type="checkbox" id="msg[]" name="msg[]" value="<?php echo "$data_user->id"; ?>"></td>
-                        		<td style="text-align:center"><?php echo $data_user->email;?></td>
-                        		<td style="text-align:center"><?php echo $data_user->first_name;?></td>
-                        		<td style="text-align:center"><?php echo $data_user->last_name;?></td>
-                        		<td style="text-align:center"><?php echo $data_user->credit_premium;?></td>
+                                <td><input type="checkbox" id="msg[]" name="msg[]" value="<?php echo "$data->id"; ?>"></td>
+                        		<td style="text-align:center"><?php echo $data->name;?></td>
+                        		<td style="text-align:center"><?php echo $data->price_idr;?></td>
+                                <td style="text-align:center"><?php echo $data->price_usd;?></td>
                         		<td style="text-align:center">
-                                    <a target="_blank" href='<?php echo site_url("administrator/user-edit/$data_user->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"> Edit</i></button></a>
+                                    <a target="_blank" href='<?php echo site_url("administrator/product-edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"> Edit</i></button></a>
                         		</td>
                         	</tr>
                         <?php } ?>
@@ -49,10 +46,7 @@
                             <label for="multi_action" class="col-lg-2 control-label">Multi Action :</label>
                             <div class="col-lg-4">
                                 <select class="form-control" name="multi_action" id="multi_action">
-                                    <option value="1">Delete Users</option>
-                                    <option value="2">Activated Users</option>
-                                    <option value="3">Lock Users</option>
-                                    <option value="4">Not Activated Users</option>
+                                    <option value="1">Delete Selected Product</option>
                                 </select>
                             </div>
                         </div>
@@ -66,9 +60,6 @@
                         </div>
                     </div>
                     </form>
-                    <div class="row">
-                        <button class="btn btn-warning btn-block" id="refresh">Refresh Users Data</button>
-                    </div>
                     <div class="row">
                         <div class="col-lg-6 col-lg-offset-2" id="hasil"></div>
                     </div>

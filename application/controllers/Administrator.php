@@ -408,23 +408,154 @@ class Administrator extends CI_Controller {
 		$data["title"] = "Transaction List";
 		$this->db->order_by("transaction_date","ASC");
 		$data["transaction"] = $this->db->get("transaction")->result();
+		$this->load->view("administrator/header",$data);
+		$this->load->view("administrator/transaction",$data);
+		$this->load->view("administrator/footer");
+	}
+
+	// ------------------------- Produk ---------------------------//
+	public function product()
+	{
+		$data["title"] = "Products";
+		$data["product"] = $this->db->get("product")->result();
+		$this->load->view("administrator/header",$data);
+		$this->load->view("administrator/product",$data);
+		$this->load->view("administrator/footer",$data);
+	}
+
+	public function product_create()
+	{
+		$data["title"] = "Create New Product";
+		$this->load->view("administrator/header",$data);
+		$this->load->view("administrator/product_create",$data);
+		$this->load->view("administrator/footer",$data);
+	}
+
+	public function product_create_submit()
+	{
+		/*
+		if(empty($this->session->userdata["administrator"]))
+		{
+			exit("-1");
+		}
+		*/
+		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
+
+		$this->form_validation->set_rules("name","Name","trim|required|xss_clean");
+		$this->form_validation->set_rules("price_idr","Price IDR","trim|required|xss_clean");
+		$this->form_validation->set_rules("price_usd","Price USD","trim|required|xss_clean");
+		if($this->form_validation->run() == FALSE)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+			exit();
+		}
+	
+		// Entry Port Config to Server
+		$name 		= $this->input->post("name");
+		$price_idr 	= $this->input->post("price_idr");
+		$price_usd 	= $this->input->post("price_usd");
+		$data = array(
+			"name" 		=> $name,
+			"price_idr"	=> $price_idr,
+			"price_usd"	=> $price_usd
+			);
+		$result = $this->db->insert("product",$data);
+		if($result)
+			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Success...</div>";
+		else
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed..Please Try Again..</div>";
+	}
+
+	public function product_edit($id = null)
+	{
+		if(!$id)
+		{
+			redirect("administrator/product");
+		}
+		$product = $this->db->get_where("product",array("id" => $id))->result();
+		$data["title"] = "Edit Product";
+		if(empty($product))
+		{
+			redirect("administrator/product");
+		}
+
+		foreach($product as $p)
+		{
+			$data["id"]			= $id;
+			$data["name"] 		= $p->name;
+			$data["price_idr"]	= $p->price_idr;
+			$data["price_usd"]	= $p->price_usd;
+		}
+
+		$this->load->view("administrator/header",$data);
+		$this->load->view("administrator/product_edit",$data);
+		$this->load->view("administrator/footer");
+	}
+
+	public function product_edit_submit($id = null)
+	{
+		/*
+		if(empty($this->session->userdata["administrator"]))
+		{
+			exit("-1");
+		}
+		*/
+		if(!$id)
+		{
+			redirect("administrator/product");
+		}
+		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
+
+		$this->form_validation->set_rules("name","Name","trim|required|xss_clean");
+		$this->form_validation->set_rules("price_idr","Price IDR","trim|required|xss_clean");
+		$this->form_validation->set_rules("price_usd","Price USD","trim|required|xss_clean");
+		if($this->form_validation->run() == FALSE)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+			exit();
+		}
+	
+		// Entry Port Config to Server
+		$name 		= $this->input->post("name");
+		$price_idr 	= $this->input->post("price_idr");
+		$price_usd 	= $this->input->post("price_usd");
+		$data = array(
+			"name" 		=> $name,
+			"price_idr"	=> $price_idr,
+			"price_usd"	=> $price_usd
+			);
+		$this->db->where("id",$id);
+		$result = $this->db->update("product",$data);
+		if($result)
+			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Success...</div>";
+		else
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed..Please Try Again..</div>";
+	}
+
+	public function product_multi_action()
+	{
+		/*
+		if(empty($this->session->userdata["administrator"]))
+		{
+			exit("-1");
+		}
+		*/
+		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
+		$config 	= $this->input->post("msg");
+		$sum = count($config);
+		for($i = 0; $i < $sum; $i++)
+		{
+			$result = $this->db->delete("product",array("id" => $config[$i]));
+		}
+		echo "Selected Products Have Been Deleted.";
 	}
 
 	/*======================== USER ============================== */
 	public function user()
 	{
 		$data['title'] = "Users";
-		$user = $this->db->get("user")->result();
-		foreach($user as $choose_user)
-		{
-			$now = date("Y-m-d");
-			if($choose_user->expired_user < $now)
-			{
-				$this->db->where("id",$choose_user->id);
-				$this->db->update("user",array("flag" => 0));
-			}
-		}
-
+		
+		//$data["user"] = $this->db->get_where("user",array("role"=>"MEMBER"))->result();
 		$data['user'] = $this->db->get("user")->result();
 		$this->load->view("administrator/header",$data);
 		$this->load->view('administrator/user',$data);
@@ -439,25 +570,87 @@ class Administrator extends CI_Controller {
 		$this->load->view("administrator/footer");
 	}
 
+	public function user_create_submit()
+	{
+		/*
+		if(empty($this->session->userdata["administrator"]))
+		{
+			exit("-1");
+		}
+		*/
+		//Check Input From Ajax or Not
+		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
+		$this->form_validation->set_rules("email","Email","trim|required|max_length[40]|xss_clean");
+		$this->form_validation->set_rules("password","Password","trim|required|min_length[5]|max_length[40]|xss_clean");
+		$this->form_validation->set_rules("credit_premium","Credit Premium","required|greater_than[-1]");
+		$this->form_validation->set_rules("telp","No. Telepon","max_length[20]|xss_clean");
+		if($this->form_validation->run() == FALSE)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+		}
+		else
+		{
+			$email 			= $this->input->post("email");
+			$password 		= $this->input->post("password");
+			$first			= $this->input->post("first_name");
+			$last			= $this->input->post("last_name");
+			$address		= $this->input->post("address");
+			$credit_premium = $this->input->post("credit_premium");
+			$facebook 		= $this->input->post("facebook");
+			$telp 			= $this->input->post("telp");
+
+			$data = array(
+				"email"			=> $email,
+				"password"		=> $password,
+				"first_name"	=> $first,
+				"last_name" 	=> $last,
+				"credit_premium" => $credit_premium,
+				"address" 		=> $address,
+				"join_date"		=> date("Y-m-d H:i"),
+				"role"			=> "MEMBER",
+				"credit_free"	=> "1",
+				"no_hp"			=> $telp,
+				"facebook"		=> $facebook
+				);
+
+			$data_user = $this->db->get("user")->result();
+			foreach($data_user as $user)
+			{
+				if($user->email == $email)
+				{
+					exit("<div class='alert alert-danger alert-dismisabble'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>ERROR !!. Email Exist !!!.</div>");
+				}
+			}
+
+			$this->db->insert("user",$data);
+			echo "
+				<div class='alert alert-success alert-dismisabble'>
+					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+					<div class='row'>
+						<p>Account Has Been Created</p>
+					</div>
+				</div>";
+		}
+	}
+
 	public function user_edit($id = null)
 	{
 		if(!$id)
 			redirect("administrator/user");
 		$user = $this->db->get_where("user",array("id"=>$id))->result();
-		foreach($user as $choose_user)
+		foreach($user as $c)
 		{
-			$data["id"] = $id;
-			$data["username"] = $choose_user->name;
-			$data["password"] = $choose_user->password;
-			$data["credit"] = $choose_user->credit;
-			$data["role"] = $choose_user->role;
-			$data["flag"] = $choose_user->flag;
-			$data["facebook"] = $choose_user->facebook_account;
-			$data["account"] = $choose_user->account_created;
-			$data["hp"] = $choose_user->no_telepon;
-			$data["expired"] = $choose_user->expired_user;
+			$data["id"] 			= $id;
+			$data["email"] 			= $c->email;
+			$data["password"]		= $c->password;
+			$data["first_name"]		= $c->first_name;
+			$data["last_name"]		= $c->last_name;
+			$data["credit_premium"] = $c->credit_premium;
+			$data["address"]		= $c->address;
+			$data["no_hp"]			= $c->no_hp;
+			$data["facebook"]		= $c->facebook;
 
-			$data['title'] = "Edit User $choose_user->name";
+			$data['title'] = "Edit $c->email";
 			$this->load->view("administrator/header",$data);
 			$this->load->view("administrator/user_edit",$data);
 			$this->load->view("administrator/footer");
@@ -466,10 +659,12 @@ class Administrator extends CI_Controller {
 
 	public function user_edit_submit($id = null)
 	{
+		/*
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
+		*/
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		if(!$id)
 			exit('Invalid User !!!!...');
@@ -481,179 +676,34 @@ class Administrator extends CI_Controller {
 		if($this->form_validation->run() == FALSE)
 		{
 			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+			exit();
 		}
-		else
-		{
-			$username = $this->input->post("username");
-			$password = $this->input->post("password");
-			$credit = $this->input->post("credit");
-			$role = $this->input->post("role_user");
-			$facebook = $this->input->post("facebook");
-			$hp = $this->input->post("telp");
-			$expired = $this->input->post("expired");
-			$flag = $this->input->post("status");
+		
+		$password 		= $this->input->post("password");
+		$first			= $this->input->post("first_name");
+		$last			= $this->input->post("last_name");
+		$address		= $this->input->post("address");
+		$credit_premium = $this->input->post("credit_premium");
+		$facebook 		= $this->input->post("facebook");
+		$telp 			= $this->input->post("telp");
 
-			$data = array(
-				"name" => $username,
-				"password" => $password,
-				"credit" => $credit,
-				"role" => $role,
-				"expired_user" => $expired,
-				"flag" => $flag,					//Flag Value : 1 = activated, 0 = lock, 2 = not activated
-				"facebook_account" => $facebook,
-				"no_telepon" => $hp
-				);
-			$data_user = $this->db->get("user")->result();
-			$this->db->where("id",$id);
-			$this->db->update("user",$data);
-			echo "
-				<div class='alert alert-success alert-dismisabble'>
-					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-					<p>user $username has been updated....</p>
-				</div>";
-		}
-	}
+		$data = array(
+			"password"		=> $password,
+			"first_name"	=> $first,
+			"last_name" 	=> $last,
+			"credit_premium" => $credit_premium,
+			"address" 		=> $address,
+			"no_hp"			=> $telp,
+			"facebook"		=> $facebook
+			);
 
-	public function user_view($id = null)
-	{
-		if($id == null)
-		{
-			redirect("administrator/user");
-		}
-		$user = $this->db->get_where("user",array("id" => $id))->result();
-		foreach($user as $choose_user)
-		{
-			$data["username"] = $choose_user->name;
-			$data["password"] = $choose_user->password;
-			$data["credit"] = $choose_user->credit;
-			$data["role"] = $choose_user->role;
-			$data["flag"] = $choose_user->flag;
-			$data["facebook"] = $choose_user->facebook_account;
-			$data["account"] = $choose_user->account_created;
-			$data["hp"] = $choose_user->no_telepon;
-			$data["expired"] = $choose_user->expired_user;
-
-			$data['title'] = "View User $choose_user->name";
-
-			$now = date("Y-m-d");
-			if($choose_user->expired_user < $now)
-			{
-				$this->db->where("id",$choose_user->id);
-				$this->db->update("user",array("flag" => 0));
-				$data["flag"] = 0;
-			}
-		}
-		$this->load->view("administrator/header",$data);
-		$this->load->view("administrator/user_view",$data);
-		$this->load->view("administrator/footer");
-	}
-
-	public function user_create_submit()
-	{
-		if(empty($this->session->userdata["administrator"]))
-		{
-			exit("-1");
-		}
-		//Check Input From Ajax or Not
-		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-		$this->form_validation->set_rules("username","Username","required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
-		$this->form_validation->set_rules("password","Password","required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
-		$this->form_validation->set_rules("credit","Credit","required|greater_than[-1]");
-		$this->form_validation->set_rules("hp","No. Telepon","max_length[20]|xss_clean");
-		if($this->form_validation->run() == FALSE)
-		{
-			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
-		}
-		else
-		{
-			$username = $this->input->post("username");
-			$password = $this->input->post("password");
-			$credit = $this->input->post("credit");
-			$role = $this->input->post("role_user");
-			$facebook = $this->input->post("facebook");
-			$hp = $this->input->post("telp");
-			$expired = date("Y-m-d",strtotime("+90 day"));
-
-			$data = array(
-				"name" => $username,
-				"password" => $password,
-				"credit" => $credit,
-				"role" => $role,
-				"expired_user" => $expired,
-				"flag" => 1,					//Flag Value : 1 = activated, 0 = lock, 2 = not activated
-				"account_created" => 0,
-				"facebook_account" => $facebook,
-				"no_telepon" => $hp
-				);
-			$data_user = $this->db->get("user")->result();
-			foreach($data_user as $name_user)
-			{
-				if($name_user->name == $username)
-				{
-					exit("<div class='alert alert-danger alert-dismisabble'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>ERROR !!. Please try other Username.</div>");
-				}
-			}
-
-			$server = $this->db->get("server")->result();
-			if($role == 2)
-			{
-				foreach($server as $list)
-				{
-					$param = array(
-						"hostname" => $host,
-						"port" => $port,
-						"username" => $user_login,
-						"password" => $pass_login
-					);
-					$hasil = $this->ssh->connect($param);
-					if(!$hasil){
-						echo "<div>Cannot create user in $host.</div>";
-						continue;
-					}
-					$callback = $this->ssh->execute("echo $username:$password > /home/$username");
-					$callback1 = $this->ssh->execute("useradd -M -s /bin/false $username");
-					$callback2 = $this->ssh->execute("cat /home/$username | chpasswd");
-				}
-			}
-
-			$this->db->insert("user",$data);
-			echo "
-				<div class='alert alert-success alert-dismisabble'>
-					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-					<div class='row'>
-						<div class='col-lg-3'>Username</div>
-						<div class='col-lg-4'>: $username</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Password</div>
-						<div class='col-lg-4'>: $password</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Credit</div>
-						<div class='col-lg-4'>: $credit</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Role User</div>
-						<div class='col-lg-4'>: $role</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Expired</div>
-						<div class='col-lg-4'>: $expired</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Status</div>
-						<div class='col-lg-2'>: Activated</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>Facebook</div>
-						<div class='col-lg-4'>: $facebook</div>
-					</div>
-					<div class='row'>
-						<div class='col-lg-3'>No. Telepon</div>
-						<div class='col-lg-4'>: $hp</div>
-					</div>
-				</div>";
-		}
+		$this->db->where("id",$id);
+		$this->db->update("user",$data);
+		echo "
+			<div class='alert alert-success alert-dismisabble'>
+				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+				<p>user $username has been updated....</p>
+			</div>";
 	}
 
 	public function user_multi_action()

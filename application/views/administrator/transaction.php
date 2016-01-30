@@ -10,11 +10,12 @@
                         <thead>
                             <tr>
                                 <th><label><input type="checkbox" class="checkAll"/></label></th>
-                                <th style="text-align:center">Title</th>
-                                <th style="text-align:center">Tag</th>
+                                <th style="text-align:center">Invoice</th>
+                                <th style="text-align:center">Name</th>
+                                <th style="text-align:center">Price</th>
                                 <th style="text-align:center">Date</th>
-                                <th style="text-align:center">Source</th>
-                                <th style="text-align:center">Action</th>
+                                <th style="text-align:center">Price Type</th>
+                                <th style="text-align:center">Status</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -28,7 +29,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                        <?php foreach($announcement as $data){ ?>
+                        <?php foreach($transaction as $data){ ?>
                         	<tr>
                                 <td><input type="checkbox" id="msg[]" name="msg[]" value="<?php echo "$data->id"; ?>"></td>
                         		<td style="text-align:center"><?php echo $data->title;?></td>

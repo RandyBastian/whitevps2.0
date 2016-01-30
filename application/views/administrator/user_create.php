@@ -2,31 +2,39 @@
 	<div class="col-lg-12">
 		<?php echo form_open("administrator/user_create_submit", array("class" => "form-horizontal", "id" => "userform")); ?>
 			<div class="form-group">
-				<label for="username" class="col-lg-2 control-label">Username :</label>
+				<label for="email" class="col-lg-2 control-label">Email :</label>
 				<div class="col-lg-6">
-					<input type="text" id="username" name="username" class="form-control" placeholder="Ex : whitevps">
+					<input type="text" id="email" name="email" class="form-control" placeholder="Ex : budi@white-vps.com">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="password" class="col-lg-2 control-label">Password :</label>
 				<div class="col-lg-6">
-					<input type="text" id="password" name="password" class="form-control" placeholder="Ex : whitevps">
+					<input type="text" id="password" name="password" class="form-control" placeholder="Password here...">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="credit" class="col-lg-2 control-label">Credit :</label>
+				<label for="first_name" class="col-lg-2 control-label">First Name :</label>
 				<div class="col-lg-6">
-					<input type="text" id="credit" name="credit" class="form-control" value="0">
+					<input type="text" id="first_name" name="first_name" class="form-control" placeholder="Bastian">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="role_user" class="col-lg-2 control-label">Role User :</label>
+				<label for="last_name" class="col-lg-2 control-label">Last Name :</label>
 				<div class="col-lg-6">
-					<select class="form-control" name="role_user" id="role_user">
-						<option value="3">Member</option>
-						<option value="2">Admin</option>
-						<option value="1">Administrator</option>
-					</select>
+					<input type="text" id="last_name" name="last_name" class="form-control" placeholder="Bastian">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="address" class="col-lg-2 control-label">Address :</label>
+				<div class="col-lg-6">
+					<input type="text" id="address" name="address" class="form-control" placeholder="Jl. Angkasa Pura ...">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="credit_premium_premium" class="col-lg-2 control-label">Credit Premium :</label>
+				<div class="col-lg-6">
+					<input type="text" id="credit_premium" name="credit_premium" class="form-control" value="0">
 				</div>
 			</div>
 			<div class="form-group">

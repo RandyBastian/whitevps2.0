@@ -75,6 +75,17 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#"><i class="fa fa-tasks fa-fw"></i> Products <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo site_url('administrator/product_create');?>">Create Produk</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('administrator/product');?>">Products List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="<?php echo site_url('administrator/server');?>"><i class="fa fa-tasks fa-fw"></i> Servers <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
