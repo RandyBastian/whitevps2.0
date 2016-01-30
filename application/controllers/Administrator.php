@@ -5,12 +5,10 @@ class Administrator extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		/*
 		if(empty($this->session->userdata["administrator"]))
 		{
 			redirect("login");
 		}
-		*/
 	}
 	public function index()
 	{
@@ -54,12 +52,12 @@ class Administrator extends CI_Controller {
 
 	public function server_create_submit()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$this->form_validation->set_rules("name","Name","trim|required|alpha_numeric|xss_clean");
 		$this->form_validation->set_rules("host","Host","trim|required|xss_clean");
@@ -128,12 +126,12 @@ class Administrator extends CI_Controller {
 
 	public function server_edit_submit($id = null)
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if(!$id)
 		{
 			redirect("administrator/server");
@@ -182,12 +180,12 @@ class Administrator extends CI_Controller {
 
 	public function server_multi_action()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$action = $this->input->post("multi_action");
 		$server 	= $this->input->post("msg");
@@ -228,12 +226,12 @@ class Administrator extends CI_Controller {
 
 	public function announcement_create_submit()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
 
 		$this->form_validation->set_rules("title","Title","trim|required|xss_clean");
@@ -318,12 +316,12 @@ class Administrator extends CI_Controller {
 
 	public function announcement_multi_action()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$config 	= $this->input->post("msg");
 		$sum = count($config);
@@ -352,12 +350,12 @@ class Administrator extends CI_Controller {
 
 	public function manage_config_submit($id = null)
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
 		if(!$id)
 			exit('Invalid Server !!!!.');
@@ -386,12 +384,12 @@ class Administrator extends CI_Controller {
 
 	public function config_multi_action()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$config 	= $this->input->post("msg");
 		$sum = count($config);
@@ -433,12 +431,12 @@ class Administrator extends CI_Controller {
 
 	public function product_create_submit()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
 
 		$this->form_validation->set_rules("name","Name","trim|required|xss_clean");
@@ -494,12 +492,12 @@ class Administrator extends CI_Controller {
 
 	public function product_edit_submit($id = null)
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if(!$id)
 		{
 			redirect("administrator/product");
@@ -534,12 +532,12 @@ class Administrator extends CI_Controller {
 
 	public function product_multi_action()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$config 	= $this->input->post("msg");
 		$sum = count($config);
@@ -572,12 +570,12 @@ class Administrator extends CI_Controller {
 
 	public function user_create_submit()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		//Check Input From Ajax or Not
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$this->form_validation->set_rules("email","Email","trim|required|max_length[40]|xss_clean");
@@ -659,12 +657,12 @@ class Administrator extends CI_Controller {
 
 	public function user_edit_submit($id = null)
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		if(!$id)
 			exit('Invalid User !!!!...');
@@ -707,12 +705,12 @@ class Administrator extends CI_Controller {
 
 	public function user_multi_action()
 	{
-		/*
+		
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
-		*/
+		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$action = $this->input->post("multi_action");
 		$user 	= $this->input->post("msg");

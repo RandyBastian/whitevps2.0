@@ -19,7 +19,7 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url();?>/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,14 +42,15 @@
                         <?php echo form_open("login/signin",array("id" => "login_form"));?>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="username" id="username" name="username" type="text" autofocus>
+                                    <input class="form-control" placeholder="email" id="email" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" id="password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password here" id="password" name="password" type="password">
                                 </div>
-                                <div class="" id="loading" style="display:none;">
-                                    <img src="<?php echo base_url();?>assets/loading_2.gif" style="width:400px; height:200px">
-                                </div>
+                                <center>
+                                    <?php echo $this->recaptcha->render(); ?>
+                                    <br>
+                                </center>
                                 <div class="form-group">
                                     <input type="submit" name="submit" class="btn btn-success btn-block" id="submit" value="Login">
                                 </div>
@@ -58,6 +59,27 @@
                         <a href="<?php echo site_url('register');?>">Need Account ?. Register Here.</a>
                     </div>
                 </div>
+                <?php
+                if(!empty($pesan) || !empty(validation_errors()))
+                {
+                ?>
+                    <div class="alert alert-danger">
+                        <center>
+                            <?php
+                            if(!empty($pesan))
+                            {
+                                echo $pesan;
+                            }
+                            if(!empty(validation_errors()))
+                            {
+                                echo validation_errors();
+                            }
+                            ?>
+                        </center>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>

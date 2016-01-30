@@ -3,40 +3,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('recaptcha');
+	}
+
 	public function index()
 	{
+		if(!empty($this->session->userdata["administrator"]))
+		{
+			redirect("administrator");
+		}
 		if(!empty($this->session->userdata["member"]))
 		{
 			redirect("member");
 		}
-		else
-			$this->load->view("login");
+		$this->load->view("login");
 	}
 
 	public function signin()
 	{
-		$this->form_validation->set_rules("email","Email","required|xss_clean");
-		$this->form_validation->set_rules("password","Password","required|xss_clean");
+		$this->form_validation->set_rules("email","Email","trim|required|valid_email|xss_clean");
+		$this->form_validation->set_rules("password","Password","trim|required|xss_clean");
+		/*
+		$captcha_answer = $this->input->post('g-recaptcha-response');
+		$response = $this->recaptcha->verifyResponse($captcha_answer);
+		if(!$response["success"])
+		{
+			$data["pesan"] = "Invalid re-Captcha !!!";
+			$this->load->view("login",$data);
+		}
+		*/
 		if($this->form_validation->run() == FALSE)
 		{
-			redirect("login");
+			$this->load->view("login");
 		}
-		
-		$email = $this->input->post("email");
-		$password = $this->input->post("password");
-		$member = $this->db->get_where("user",array("role" => "MEMBER"))->result();
-		foreach($member as $cek)
+		else
 		{
-			if($cek->email == $email && $cek->password == $password)
+			$email 		= $this->input->post("email");
+			$password 	= $this->input->post("password");
+			$user 		= $this->db->get_where("user",array("email" => $email,"password" => $password))->result();
+			if($user)
 			{
-				$this->session->set_userdata("password",$password);
-				$this->session->set_userdata("member",$email);
-				$this->session->set_userdata("id_member",$cek->id);
-				redirect("member");
-				
+				foreach($user as $u)
+				{
+					$enkrip = hash("sha512", "$email-$u->id");
+					if($u->role == "MEMBER")
+					{
+						$this->session->set_userdata("member",$enkrip);
+						$this->session->set_userdata("id_member",$u->id);
+						redirect("member");
+					}
+					else
+					{
+						$this->session->set_userdata("administrator",$enkrip);
+						$this->session->set_userdata("id_administrator",$u->id);
+						redirect("u");
+					}
+				}
+			}
+			else
+			{
+				$data["pesan"] = "Invalid Email or Password !!.";
+				$this->load->view("login",$data);
 			}
 		}
-		redirect("login");
+	}
+
+	public function admin()
+	{
+		if(!empty($this->session->userdata["administrator"]))
+		{
+			redirect("administrator");
+		}
+		$this->load->view("login");
 	}
 
 	public function signout()

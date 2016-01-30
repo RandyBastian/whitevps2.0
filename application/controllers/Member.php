@@ -4,16 +4,14 @@ class Member extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-	}
-
-	public function index()
-	{
-
 		if(empty($this->session->userdata["member"]))
 		{
 			redirect("login");
 		}
-		$text = $this->session->userdata["member"];
+	}
+
+	public function index()
+	{
 		$data["title"] 	= "Member Dashboard";		
 
 		$data["server"] = $this->db->count_all("server");
@@ -23,8 +21,7 @@ class Member extends CI_Controller {
 		$member_data = $this->db->get_where("user",array("id" => $id))->result();
 		foreach($member_data as $row)
 		{
-			$data["account_created"] = $row->account_created;
-			$data["credit"] = $row->credit;
+			$data["credit"] = $row->credit_premium;
 		}
 		$account_member = $this->db->get_where("account", array("id_user" => $id))->result();
 		$data["expired_account"] = 0;
@@ -32,7 +29,7 @@ class Member extends CI_Controller {
 		foreach($account_member as $row)
 		{
 			$now = date("Y-m-d");
-			if($now > $row->expired_date)
+			if($now >= $row->expired_date)
 			{
 				$data["expired_account"]++;
 			}
@@ -43,7 +40,7 @@ class Member extends CI_Controller {
 		}
 
 		$this->load->view("member/header",$data);
-		$this->load->view("member/index");
+		$this->load->view("member/index",$data);
 		$this->load->view("member/footer");
 	}
 

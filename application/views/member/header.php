@@ -72,6 +72,9 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="<?php echo site_url('member/download');?>"><i class="fa fa-tasks fa-fw"></i> Download Area</a>
+                </li>
+                <li>
                     <a href="<?php echo site_url('member/server');?>"><i class="fa fa-tasks fa-fw"></i> Server Information</a>
                 </li>
             </ul>
