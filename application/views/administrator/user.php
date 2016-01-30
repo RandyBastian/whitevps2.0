@@ -67,9 +67,6 @@
                     </div>
                     </form>
                     <div class="row">
-                        <button class="btn btn-warning btn-block" id="refresh">Refresh Users Data</button>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6 col-lg-offset-2" id="hasil"></div>
                     </div>
                 </div>

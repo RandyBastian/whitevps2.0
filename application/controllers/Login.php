@@ -5,10 +5,6 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if(!empty($this->session->userdata["administrator"]))
-		{
-			redirect("administrator");
-		}
 		if(!empty($this->session->userdata["member"]))
 		{
 			redirect("member");
@@ -19,38 +15,28 @@ class Login extends CI_Controller {
 
 	public function signin()
 	{
-		$this->form_validation->set_rules("username","Username","required|xss_clean");
+		$this->form_validation->set_rules("email","Email","required|xss_clean");
 		$this->form_validation->set_rules("password","Password","required|xss_clean");
 		if($this->form_validation->run() == FALSE)
 		{
 			redirect("login");
 		}
-		else
+		
+		$email = $this->input->post("email");
+		$password = $this->input->post("password");
+		$member = $this->db->get_where("user",array("role" => "MEMBER"))->result();
+		foreach($member as $cek)
 		{
-			$username = $this->input->post("username");
-			$password = $this->input->post("password");
-			$member = $this->db->get("user")->result();
-			foreach($member as $cek)
+			if($cek->email == $email && $cek->password == $password)
 			{
-				if($cek->name == $username && $cek->password == $password)
-				{
-					$this->session->set_userdata("password",$password);
-					if($cek->role == 1)
-					{
-						$this->session->set_userdata("administrator",$username);
-						$this->session->set_userdata("id_administrator",$cek->id);
-						redirect("administrator");
-					}
-					else
-					{
-						$this->session->set_userdata("member",$username);
-						$this->session->set_userdata("id_member",$cek->id);
-						redirect("member");
-					}
-				}
+				$this->session->set_userdata("password",$password);
+				$this->session->set_userdata("member",$email);
+				$this->session->set_userdata("id_member",$cek->id);
+				redirect("member");
+				
 			}
-			redirect("login");
 		}
+		redirect("login");
 	}
 
 	public function signout()

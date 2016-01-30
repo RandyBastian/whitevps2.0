@@ -669,10 +669,9 @@ class Administrator extends CI_Controller {
 		if(!$id)
 			exit('Invalid User !!!!...');
 
-		$this->form_validation->set_rules("username","Username","required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
-		$this->form_validation->set_rules("password","Password","required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
-		$this->form_validation->set_rules("credit","Credit","required|greater_than[-1]");
-		$this->form_validation->set_rules("hp","No. Telepon","max_length[20]|xss_clean");
+		$this->form_validation->set_rules("password","Password","trim|required|min_length[5]|max_length[40]|xss_clean");
+		$this->form_validation->set_rules("credit_premium","Credit Premium","required|greater_than[-1]");
+		$this->form_validation->set_rules("telp","No. Telepon","max_length[20]|xss_clean");
 		if($this->form_validation->run() == FALSE)
 		{
 			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
@@ -702,74 +701,30 @@ class Administrator extends CI_Controller {
 		echo "
 			<div class='alert alert-success alert-dismisabble'>
 				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-				<p>user $username has been updated....</p>
+				<p>user User has been Updated....</p>
 			</div>";
 	}
 
 	public function user_multi_action()
 	{
+		/*
 		if(empty($this->session->userdata["administrator"]))
 		{
 			exit("-1");
 		}
+		*/
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
 		$action = $this->input->post("multi_action");
 		$user 	= $this->input->post("msg");
 		$sum = count($user);
 		for($i = 0; $i < $sum; $i++)
 		{
-			$user_data = $this->db->get_where("user",array("id" => $user[$i]))->result();
-			foreach($user_data as $choose_user)
-			{
-				$name = $choose_user->name;
-				$flag = $choose_user->flag;			//Flag Value : 1 = activated, 0 = lock, 2 = not activated
-				$expired = $choose_user->expired_user;	
-				$credit = $choose_user->credit;
-			}
-			switch ($action) {
-				// Case 1 : Delete Users
-				case '1':
-					$result = $this->db->delete("user",array("id" => $user[$i]));
-					if($result)
-						echo "<div class='alert alert-success'>User $name Deleted...</div>";
-					else
-						echo "<div class='alert alert-warning'>User $name is not Deleted !!</div>";
-					break;
-				// Case 2 : Active User (Flag 1)
-				case '2':
-					$now = date("Y-m-d");
-					if($expired < $now)
-						$expired = $now;
-					$expired_date = date("Y-m-d", strtotime($expired. "+90 day"));
-					$this->db->where("id",$user[$i]);
-					$result = $this->db->update("user",array("expired_user" => $expired, "flag" => 1));
-					if($result)
-						echo "<div class='alert alert-success'>User $name Activated...</div>";
-					else
-						echo "<div class='alert alert-warning'>User $name is not Changed !!</div>";
-					break;
-				// Case 3 : Lock User (Flag 0)
-				case '3':
-					$this->db->where("id",$user[$i]);
-					$result = $this->db->update("user",array("flag" => 0));
-					if($result)
-						echo "<div class='alert alert-success'>User $name has been Locked...</div>";
-					else
-						echo "<div class='alert alert-warning'>User $name is not Changed !!</div>";
-					break;
-				// Case 4 : Not Activated User (Flag 2)
-				case '4':
-					$this->db->where("id",$user[$i]);
-					$result = $this->db->update("user",array("flag" => 2));
-					if($result)
-						echo "<div class='alert alert-success'>User $name Not Active...</div>";
-					else
-						echo "<div class='alert alert-warning'>User $name is not Changed !!</div>";
-					break;
-				default:
-						echo "<div class='alert alert-success'>Check Your Submit Form...</div>";
-					break;
-			}
+			$result = $this->db->delete("user",array("id" => $user[$i]));
+			if($result)
+				echo "<div class='alert alert-success'>User Deleted...</div>";
+			else
+				echo "<div class='alert alert-warning'>User Can not Be Deleted !!</div>";
+			break;
 		}
 	}
 }
