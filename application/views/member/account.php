@@ -6,6 +6,7 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <p style="color:red">*Top Up 1 month = Add 1 month Expired Account.</p>
                 <div class="dataTable_wrapper">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -33,43 +34,19 @@
                         		<td style="text-align:center"><?php echo $data->username;?></td>
                         		<td style="text-align:center"><?php echo $data->created_date;?></td>
                         		<td style="text-align:center">
-                        		<?php 
+                        		<?php
                         			echo $data->expired_date;
                         			if($data->expired_date < date("Y-m-d")){
                         				echo "<p style='color:red'>(Expired)</p>";
                         			}
                         		?></td>
-                        		<td style="text-align:center"><?php
-                        		foreach($server as $list)
-                        		{
-                        			if($list->id == $data->id_server)
-                        				echo $list->name;
-                        		}
-                        		?></td>
                         		<td style="text-align:center">
-                                    <a target="_blank" href='<?php echo site_url("member/account_edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"></i> Edit</button></a> | <a target="_blank" href='<?php echo site_url("member/top_up/$data->id");?>'><button type="button" class="btn btn-danger" onclick="return confirm('Add 1 Month Expired Account : <?php echo "$data->username";?> ?')"><i class="fa fa-plus-circle"></i> Top Up 1 Month</button></a>
+                                    <a target="_blank" href='<?php echo site_url("member/account_edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"></i> Change Password</button></a> | <a target="_blank" href='<?php echo site_url("member/top_up/$data->id");?>'><button type="button" class="btn btn-danger" onclick="return confirm('Add 1 Month Expired Account : <?php echo "$data->username";?> ?')"><i class="fa fa-plus-circle"></i> Top Up 1 Month</button></a>
                         		</td>
                         	</tr>
                         <?php } ?>
                         </tbody>
                     </table>
-                    <div class="row">
-                    	<div class="form-group">
-                            <label for="server" class="col-lg-2 control-label">Select Server :</label>
-                            <div class="col-lg-4">
-                                <select class="form-control" name="server" id="server">
-                                    <?php
-                                    	$no = 1;
-                                    	foreach($server as $choose_server)
-                                    	{
-                                    		echo "<option value='$choose_server->id'>$no. $choose_server->name</option>";
-                                    		$no++;
-                                    	}
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-lg-6 col-lg-offset-2" id="hasil"></div>
                     </div>

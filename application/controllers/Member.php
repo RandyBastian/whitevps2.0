@@ -207,7 +207,7 @@ class Member extends CI_Controller {
 	{
 		$id = $this->session->userdata["id_member"];		
 		$this->db->where("id_user",$id);
-		$this->db->order_by("expired_date",'asc');
+		$this->db->order_by("expired_date",'ASC');
 		$data["account"] = $this->db->get("account")->result();
 
 		// View Credit
@@ -226,9 +226,14 @@ class Member extends CI_Controller {
 
 	public function account_create()
 	{
-		$data['title'] = "Create Account";
-		$this->db->order_by("name",'asc');
-		$data['server'] = $this->db->get("server")->result();
+		$data['title'] = "Create New Account";
+		$id = $this->session->userdata["id_member"];
+		$user = $this->db->get_where("user",array("id" => $id,"role" => "MEMBER"))->result();
+		foreach($user as $u)
+		{
+			$data['trial_account'] = $u->credit_free;
+		}
+		
 		$this->load->view("member/header",$data);
 		$this->load->view('member/account_create',$data);
 		$this->load->view("member/footer");
@@ -241,116 +246,120 @@ class Member extends CI_Controller {
 			exit("-1");
 		}
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-		$this->form_validation->set_rules("username","Username","required|alpha_numeric|min_length[5]|xss_clean");
-		$this->form_validation->set_rules("password","Password","required|alpha_numeric|min_length[5]|xss_clean");
+		$this->form_validation->set_rules("username","Username","trim|required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
+		$this->form_validation->set_rules("password","Password","trim|required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
 		if($this->form_validation->run() == FALSE)
 		{
 			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+			exit();
+		}
+	
+		// Ambil data dari server
+		$id 			= $this->session->userdata["id_member"];
+		$cek_credit 	= $this->db->get_where("user",array("id" => $id,"role" => "MEMBER"))->result();
+		$type_account 	= $this->input->post("type");
+		$username 		= $this->input->post("username");
+		$password 		= $this->input->post("password");
+		$created_date 	= date("Y-m-d H:i:s");
+		// Check Tipe Account yang dibuat
+		foreach($cek_credit as $row)
+		{
+			if($type_account == "FREE")
+			{
+				if($row->credit_free < 1 )
+				{
+					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed !!. check your Free credit !!</div>";
+					exit();
+				}
+				$expired_date 	= date("Y-m-d 00:05:00",strtotime("+3 day"));
+				$credit 		= $row->credit_free - 1;
+			}
+			else
+			{
+				if($row->credit_premium < 1)
+				{
+					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed !!. Check your Premium Credit !!</div>";
+					exit();
+				}
+				$expired_date 	= date("Y-m-d 00:05:00",strtotime("+31 day"));
+				$credit 		= $row->credit_premium - 1;
+			}
+		}
+		// Check Exist Username
+		$account = $this->db->get("account")->result();
+		foreach($account as $list)
+		{
+			if($list->username == $username)
+			{
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Username  Exist. Try another Username !!!</div>";
+				exit();
+			}
+		}
+		// Insert ke Account Table
+		$data = array (
+			"id_user" 		=> $id,
+			"username" 		=> $username,
+			"password" 		=> $password,
+			"created_date" 	=> $created_date,
+			"expired_date" 	=> $expired_date,
+			);
+		$this->db->insert("account",$data);
+		// Ambil ID_Account dari username
+		$account = $this->db->get_where("account",array("username" => $username))->result();
+		foreach($account as $a)
+		{
+			$id_account = $a->id;
+		}
+		
+		// Insert ke Account Daemon
+		$server = $this->db->get("server")->result();
+		foreach($server as $s)
+		{
+			$data = array (
+			"id_account"	=> $id_account,
+			"username" 		=> $username,
+			"password" 		=> $password,
+			"created_date" 	=> $created_date,
+			"expired_date" 	=> $expired_date,
+			"id_server"		=> $s->id,
+			"modified"		=> "YES"
+			);
+			$this->db->insert("account_daeomon",$data);
+		}
+		// Update Credit in User
+		if($type_account == 'FREE')
+		{
+			$this->db->where("id",$id);
+			$this->db->update("user",array("credit_free" => $credit));
+			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account $username Has Been Created.<br>Please wait 10 - 15 minutes until Account ready to Use.<br>Free Credit Now : $credit .</div>";
 		}
 		else
 		{
-			// Check Credit user
-			$id = $this->session->userdata["id_member"];
-			$cek_credit = $this->db->get_where("user",array("id" => $id))->result();
-			foreach($cek_credit as $row)
-			{
-				if($row->credit < 1)
-				{
-					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed !!. Check your credit.</div>";
-					exit();
-				}
-				$user_credit = $row->credit;
-			}
-
-			$username 		= $this->input->post("username");
-			$password 		= $this->input->post("password");
-			$id_server		= $this->input->post("server");
-			$created_date 	= date("Y-m-d");
-			$expired_date 	= date("Y-m-d",strtotime("+31 day"));
-			$id_user	 	= $this->session->userdata("id_member");
-
-			if($id_server == "-1")
-				exit("INVALID SERVER...");
-			// Cek username exist in database
-			$account = $this->db->get("account")->result();
-			foreach($account as $list)
-			{
-
-				if($list->username == $username)
-				{
-					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Username Exist. Try other username !!!</div>";
-					exit();
-				}
-			}
-
-			$list_server = $this->db->get_where("server",array("id" => $id_server))->result();
-			foreach($list_server as $list)
-			{
-				$user_login 		= $list->username;
-				$pass_login 		= $list->password;
-				$host 				= $list->host;
-				$account_created 	= $list->account_created;
-				$port 				= $list->port;
-				$server_cost		= $list->cost;
-			}
-			$param = array(
-				"hostname" => $host,
-				"port" => $port,
-				"username" => $user_login,
-				"password" => $pass_login
-			);
-			$hasil = $this->ssh->connect($param);
-			if(!$hasil) exit("Cannot connect selected server!!!");
-			$callback = $this->ssh->execute("echo $username:$password > /home/$username");
-			$callback1 = $this->ssh->execute("useradd -M -s /bin/false -e $expired_date $username");
-			$callback2 = $this->ssh->execute("cat /home/$username | chpasswd");
-			if($callback && $callback1 && $callback2)
-			{
-				$data = array (
-					"id_user" => $id_user,
-					"username" => $username,
-					"password" => $password,
-					"created_date" => $created_date,
-					"expired_date" => $expired_date,
-					"id_server" => $id_server,
-					);
-				$this->db->insert("account",$data);
-				//Update account created di server
-				$this->db->where("id",$id_server);
-				$this->db->update("server",array("account_created" => $account_created + 1));
-				// Update Credit in User
-				$new_user_credit = $user_credit  - $server_cost;
-				$this->db->where("id",$id);
-				$this->db->update("user",array("credit" => $new_user_credit));
-				echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account $username has created.<br>Your Credit Now : $new_user_credit .</div>";
-			}
+			$this->db->where("id",$id);
+			$this->db->update("user",array("credit_premium" => $credit));
+			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account $username Has Been Created.<br>Please wait 10 - 15 minutes until Account ready to Use.<br>Premium Credit Now : $credit .</div>";
 		}
 	}
 
 	public function account_edit($id = null)
 	{
-		if(empty($this->session->userdata["member"]))
-		{
-			redirect("login");
-		}
 		$id_user = $this->session->userdata["id_member"];
 		$account = $this->db->get_where("account", array("id" => $id))->result();
+		if(empty($account))
+		{
+			redirect("member/account");
+		}
 		foreach($account as $row)
 		{
-			$data["id"] = $id;
-			$data["username"] = $row->username;
-			$data["password"] = $row->password;
-			$data["expired_date"] = $row->expired_date;
-			$data["id_server"] = $row->id_server;
-			$data["title"] = "Edit Account $row->username";
+			$data["id"] 			= $id;
+			$data["username"] 		= $row->username;
+			$data["title"] 			= "Change Password $row->username";
 			if($row->id_user != $id_user)
 			{
-				echo "This is not Your Account... :)";
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account Does Not Exist !!</div>";
 				exit();
 			}
 		}
-		$data["server"]	= $this->db->get("server")->result();
-
 		$this->load->view("member/header",$data);
 		$this->load->view('member/account_edit',$data);
 		$this->load->view("member/footer");
@@ -363,273 +372,88 @@ class Member extends CI_Controller {
 			exit("-1");
 		}
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-		// Account
-		$username_form		= $this->input->post("username");
-		$password_form		= $this->input->post("password");
-		$id_server_form		= $this->input->post("server");
-
+		$this->form_validation->set_rules("current_password","Current Password","trim|required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
+		$this->form_validation->set_rules("new_password","New Password","trim|required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
+		$this->form_validation->set_rules("new_password_confirm","New Password Confirm","trim|required|alpha_numeric|min_length[5]|max_length[20]|xss_clean");
+		if($this->form_validation->run() == FALSE)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
+			exit();
+		}
+		// Ambil Password Account form
+		$current_password		= $this->input->post("current_password");
+		$new_password 			= $this->input->post("new_password");
+		$new_password_confirm  	= $this->input->post("new_password_confirm");
+	
 		$id_user = $this->session->userdata["id_member"];
 		$account = $this->db->get_where("account", array("id" => $id))->result();
+		if(empty($account))
+		{
+			redirect("member/account");
+		}
 		foreach($account as $row)
 		{
-			$username 		= $row->username;
-			$password 		= $row->password;
-			$expired 		= $row->expired_date;
-			$id_server 		= $row->id_server;
 			if($row->id_user != $id_user)
 			{
-				echo "This is not Your Account... :)";
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account Does Not Exist !!</div>";
+				exit();
+			}
+			if($row->password != $current_password)
+			{
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Invalid Password !!</div>";
+				exit();
+			}
+			if($current_password == $new_password)
+			{
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>New Password Cannot be same as Current Password !!</div>";
+				exit();
+			}
+			if($new_password != $new_password_confirm)
+			{
+				echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Invalid New Password Confirm !!. Please check your New Password !!</div>";
 				exit();
 			}
 		}
-		
-		//Server Source
-		$list_server = $this->db->get_where("server",array("id" => $id_server))->result();
-		foreach($list_server as $list)
-		{
-			$host				= $list->host;
-			$user_login			= $list->username;
-			$pass_login			= $list->password;
-			$port_source		= $list->port;
-			$account_created 	= $list->account_created;
-			$account_expired 	= $list->expired_account;
-			$date_now			= $list->date_now;
-			$max_day			= $list->max_day;
-			$available			= $list->available_account;
-		}
-
-		$param = array(
-			"hostname" => $host,
-			"port" => $port_source,
-			"username" => $user_login,
-			"password" => $pass_login
-		);
-
-		$hasil = $this->ssh->connect($param);
-		if(!$hasil)
-		{	
-			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Source Server cannot connect !!!</div>";
-		}
-		else
-			$callback1 = $this->ssh->execute("userdel $username");
-		
-		// If same server
-		if($id_server == $id_server_form)
-		{
-			$callback2 = $this->ssh->execute("echo $username:$password_form > /home/edit_account");
-			$callback3 = $this->ssh->execute("useradd -M -s /bin/false -e $expired $username");
-			$callback4 = $this->ssh->execute("cat /home/edit_account | chpasswd");
-			
-			$data = array (
-				"password" => $password_form
-				);
-			$this->db->where("id",$id);
-			$this->db->update("account",$data);
-			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account $username has updated !!!</div>";
-			exit();
-		}
-		
-		//Server Destination
-		$list_server = $this->db->get_where("server",array("id" => $id_server_form))->result();
-		foreach($list_server as $list)
-		{
-			$host				= $list->host;
-			$user_login			= $list->username;
-			$pass_login			= $list->password;
-			$port				= $list->port;
-			$account_created 	= $list->account_created;
-			$account_expired 	= $list->expired_account;
-			$date_now			= $list->date_now;
-			$max_day			= $list->max_day;
-			$available			= $list->available_account;
-		}
-
-		if(!$host)
-		{
-			exit("Invalid server");
-		}
-
-		$param = array(
-			"hostname" => $host,
-			"port" => $port,
-			"username" => $user_login,
-			"password" => $pass_login
-		);
-
-		$hasil = $this->ssh->connect($param);
-		if(!$hasil)
-		{
-			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Destination Server cannot connect !!!</div>";
-			exit();
-		}
-		$callback2 = $this->ssh->execute("echo $username:$password_form > /home/edit_account");
-		$callback3 = $this->ssh->execute("useradd -M -s /bin/false -e $expired $username");
-		$callback4 = $this->ssh->execute("cat /home/edit_account | chpasswd");
-		if($callback2 && $callback3 && $callback4)
-		{
-			$data = array (
-				"password" => $password_form,
-				"id_server" => $id_server_form
-				);
-			$this->db->where("id",$id);
-			$this->db->update("account",$data);
-			echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Account has moved !!!</div>";
-		}
-		else
-			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Destination Server cannot connect !!!</div>";
-	}
-
-	public function account_multi_action()
-	{
-		if(empty($this->session->userdata["member"]))
-		{
-			exit("-1");
-		}
-		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-
-		// Server Destination untuk Pindah (Case 2)
-		$server_dest = $this->db->get_where("server",array("id" => $this->input->post("server")))->result();
-		foreach($server_dest as $list)
-		{	
-			$user_login_dest 		= $list->username;
-			$pass_login_dest 		= $list->password;
-			$host_dest 				= $list->host;
-			$port_dest 				= $list->port;
-		}
-		//-------------------------//
-		$action 	= $this->input->post("multi_action");
-		$account 	= $this->input->post("msg");
-		$sum 		= count($account);
-		for($i = 0; $i < $sum; $i++)
-		{
-			$list_account = $this->db->get_where("account",array("id" => $account[$i]))->result();
-			if(!$list_account)
-			{
-				echo "Account is not exist...";
-				continue;
-			}
-			// Check Account in Database
-			foreach($list_account as $choose)
-			{
-				$username 			= $choose->username;
-				$password 			= $choose->password;
-				$expired_account 	= $choose->expired_date;
-				$id_server 			= $choose->id_server;
-				if($choose->id_user != $this->session->userdata["id_member"])
-				{
-					echo "$username is not your Account.";
-					continue;
-				}
-			}
-			// Server Source
-			$list_server = $this->db->get_where("server",array("id" => $id_server))->result();
-			foreach($list_server as $list)
-			{
-				$user_login_source 		= $list->username;
-				$pass_login_source 		= $list->password;
-				$host_source 			= $list->host;
-				$port_source 			= $list->port;
-				$name_source			= $list->name;
-			}
-			if(!$host_source)
-			{
-				echo "Invalid Server";
-				continue;
-			}
-			$param = array(
-				"hostname" => $host_source,
-				"port" => $port_source,
-				"username" => $user_login_source,
-				"password" => $pass_login_source
+		// Update password di tabel account
+		$data = array (
+			"password" => $new_password
 			);
-			$hasil = $this->ssh->connect($param);
-			if($hasil)
-			{
-				$callback = $this->ssh->execute("userdel $username");
-			}
-
-			switch ($action) {
-				// Case 1 : Delete Account
-				case '1':
-					$result = $this->db->delete("account",array("id" => $account[$i]));
-					if($result)
-						echo "<div class='alert alert-success'>Account $username has Deleted...</div>";
-					else
-						echo "<div class='alert alert-warning'>Account $username is not Deleted !!</div>";
-					break;
-				// Case 2 : Move Account
-				case '2':
-					
-					$param = array(
-						"hostname" => $host_dest,
-						"port" => $port_dest,
-						"username" => $user_login_dest,
-						"password" => $pass_login_dest
-					);
-
-					$hasil = $this->ssh->connect($param);
-					if(!$hasil)
-					{
-						echo "<div class='alert alert-danger'>Account $username is NOT moved !!</div>";
-						exit();
-					}
-					$callback2 = $this->ssh->execute("echo $username:$password > /home/$username");
-					$callback3 = $this->ssh->execute("useradd -M -s /bin/false -e $expired_account $username");
-					$callback4 = $this->ssh->execute("cat /home/$username | chpasswd");
-					if($callback2 && $callback3 && $callback4)
-					{
-						$this->db->where("id",$account[$i]);
-						$this->db->update("account",array("id_server" => $this->input->post("server")));
-					}
-					echo "<div class='alert alert-success'>Account $username is moved...</div>";
-					break;
-
-				default:
-						echo "<div class='alert alert-success'>Check Your Submit Form...</div>";
-					break;
-			}
-		}
+		$this->db->where("id",$id);
+		$this->db->update("account",$data);
+		
+		// Update password di tabel account daemon
+		$this->db->where("id_account",$id);
+		$this->db->update("account_daeomon",array("password" => $new_password, "modified" => "YES"));
+		// Echo hasil
+		echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Password Changed !!!</div>";
+	
 	}
 
-	
 	public function top_up($id = null)
 	{
-		$data['title'] = "Reseller Area";
-		if(empty($this->session->userdata["member"]))
-		{
-			redirect("login");
-		}
-		$get_akun = $this->db->get_where("account",array("id" => $id))->result();
 		$id_member = $this->session->userdata("id_member");
 		$user_data = $this->db->get_where("user",array("id" => $id_member))->result();
+		$get_akun = $this->db->get_where("account",array("id" => $id))->result();
 		foreach($user_data as $coloum)
 		{
-			if($coloum->credit < 1)
+			if($coloum->credit_premium < 1)
 			{
 				echo "Check Your Credit Please... :) ";
 				exit();
 			}
+			$credit = $coloum->credit_premium;
 		}
 
 		foreach($get_akun as $row)
 		{
 			if($row->id_user != $id_member)
-				exit("This is not Your Account");
+				exit("Account does not Exist !!");
 			
 			$expired_date 	= $row->expired_date;
 			$username 		= $row->username;
-			$password 		= $row->password;
-
 		}
-		$cek_server = $this->db->get_where("server", array("id" => $row->id_server))->result();
-		foreach($cek_server as $rows)
-		{
-			$host = $rows->host;
-			$pass = $rows->password;
-			$user = $rows->username;
-			$port = $rows->port;			
-		}
-		$now = date("Y-m-d");
+		
+		$now = date("Y-m-d H:i:s");
 		if($expired_date == $now)
 		{
 			//echo "$expired_date == $now ";
@@ -646,32 +470,17 @@ class Member extends CI_Controller {
 			$next_expired = $expired_date;
 		}
 		
-		$add_expired_date = date("Y-m-d", strtotime($next_expired. "+31 day"));
-		//echo "$add_expired_date ";
-		$param = array(
-			"hostname" => "$host",
-			"port" => $port,
-			"username" => $username,
-			"password" => $password
-		);
-		$hasil = $this->ssh->connect($param);
-		if(!$hasil) exit("Cannot Conenct Server. Please check your connection or contact admin..");
-		$callback = $this->ssh->execute("userdel $username");
-		$callback1 = $this->ssh->execute("useradd -M -s /bin/false -e $add_expired_date $username");
-		$callback2 = $this->ssh->execute("echo $username:$password > /home/$username");
-		$callback3 = $this->ssh->execute("cat /home/$username | chpasswd");
-		if($callback && $callback1 && $callback2 && $callback3)
-		{
-			$this->db->where("id",$id);
-			$this->db->update("account",array("expired_date" => $add_expired_date));
-			$user_data = $this->db->get_where("user",array("id" => $id_member))->result();
-			foreach($user_data as $coloum)
-			{
-				$credit_ku = $coloum->credit - 1;
-				$this->db->where("id",$coloum->id);
-				$this->db->update("user",array("credit" => $credit_ku));
-			}
-			echo "Success, Expired account $username : $add_expired_date";
-		}
+		$add_expired_date = date("Y-m-d 00:05:00", strtotime($next_expired. "+31 day"));
+		// Change Expired Date Account table
+		$this->db->where("id",$id);
+		$this->db->update("account",array("expired_date" => $add_expired_date));
+		// Change Expired Date Account Daeomon Table
+		$this->db->where("id_account",$id);
+		$this->db->update("account_daeomon",array("expired_date" => $add_expired_date,"modified" => "YES"));
+		// Update Credit
+		$credit = $credit - 1;
+		$this->db->where("id",$id_member);
+		$this->db->update("user",array("credit_premium" => $credit));
+		echo "Success, Expired account $username : $add_expired_date";
 	}
 }
