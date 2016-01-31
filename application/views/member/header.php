@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?php echo "$title";?>">
-    <meta name="author" content="Randy Bastian">
+    <meta name="author" content="WHITE-VPS Admin">
     <title><?php echo "$title";?> | WHITE-VPS.COM</title>
 
     <!-- Bootstrap Core CSS -->
@@ -61,13 +61,24 @@
                     <a href="<?php echo site_url('member');?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('member/account');?>"><i class="fa fa-users fa-fw"></i> Account Management <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> My Profile <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo site_url('member/profile');?>">Update Profile</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('member/change-password');?>">Change Password</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> Account Management <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="<?php echo site_url('member/account_create');?>">Create Account</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('member/account');?>">Accounts Data</a>
+                            <a href="<?php echo site_url('member/account');?>">Accounts List</a>
                         </li>
                     </ul>
                 </li>
@@ -76,6 +87,9 @@
                 </li>
                 <li>
                     <a href="<?php echo site_url('member/server');?>"><i class="fa fa-tasks fa-fw"></i> Server Information</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('member/transaction');?>"><i class="fa fa-tasks fa-fw"></i> Transaction</a>
                 </li>
             </ul>
         </div>
