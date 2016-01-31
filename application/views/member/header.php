@@ -89,7 +89,7 @@
                     <a href="<?php echo site_url('member/server');?>"><i class="fa fa-tasks fa-fw"></i> Server Information</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('member/transaction');?>"><i class="fa fa-tasks fa-fw"></i> Transaction</a>
+                    <a href="<?php echo site_url('member/transaction');?>"><i class="fa fa-tasks fa-fw"></i> Transaction History</a>
                 </li>
             </ul>
         </div>

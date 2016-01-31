@@ -161,31 +161,63 @@ class Member extends CI_Controller {
 	public function download()
 	{
 		$data["title"] = "Download Area";
-		
+
+		$this->db->order_by("name","ASC");
+		$data["server"] 		= $this->db->get("server")->result();
+
+		$this->db->order_by("id_server","ASC");
+		$this->db->order_by("port","ASC");
+		$data["configuration"]	= $this->db->get("configuration")->result();
+		$this->load->view("member/header",$data);
+		$this->load->view("member/download",$data);
+		$this->load->view("member/footer");
 	}
+
+	//--------------------Server INformation ---------------------------- //
+	public function server()
+	{
+		$data['title'] = "Server Information";
+		$this->db->order_by("name","asc");
+		$data["server"] = $this->db->get("server")->result();
+
+		$this->db->order_by("id_server","ASC");
+		$data["configuration"] = $this->db->get("configuration")->result();
+		$this->load->view("member/header",$data);
+		$this->load->view('member/server',$data);
+		$this->load->view("member/footer");
+	}
+
+	// --------------------- Transaction --------------------------------//
+	public function transaction()
+	{
+		$data["title"] = "My Transaction";
+		$id = $this->session->userdata["id_member"];
+		$this->db->order_by("transaction_date","DSC");
+		$data["transaction"] = $this->db->get_where("transaction",array("id_user" => $id))->result();
+
+		$this->load->view("member/header",$data);
+		$this->load->view("member/transaction",$data);
+		$this->load->view("member/footer");
+	}
+
 
 	// ------------------ Account -------------------------- //
 
 	public function account()
 	{
 		$id = $this->session->userdata["id_member"];		
-
 		$this->db->where("id_user",$id);
 		$this->db->order_by("expired_date",'asc');
 		$data["account"] = $this->db->get("account")->result();
-
-		//var_dump($data["account"]);
-		$this->db->order_by("name",'asc');
-		$data["server"] = $this->db->get("server")->result();
 
 		// View Credit
 		$cek_user = $this->db->get_where("user",array("id" => $id))->result();
 		foreach($cek_user as $row)
 		{
-			$credit = $row->credit;
+			$credit = $row->credit_premium;
 		}
 
-		$data['title'] = "Accounts | Credit : $credit";
+		$data['title'] = "My OpenVPN Accounts | Credit : $credit";
 
 		$this->load->view("member/header",$data);
 		$this->load->view('member/account',$data);
@@ -559,22 +591,7 @@ class Member extends CI_Controller {
 		}
 	}
 
-	//-----//Server INformation
-	public function server()
-	{
-		if(empty($this->session->userdata["member"]))
-		{
-			redirect("login");
-		}
-		$data['title'] = "Server";
-		$this->db->order_by("location","asc");
-		$data["server"] = $this->db->get("server")->result();
-		$data["account"] = $this->db->get("account")->result();
-		$this->load->view("member/header",$data);
-		$this->load->view('member/server',$data);
-		$this->load->view("member/footer");
-	}
-
+	
 	public function top_up($id = null)
 	{
 		$data['title'] = "Reseller Area";

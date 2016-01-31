@@ -10,50 +10,73 @@
                         <thead>
                             <tr>
                                 <th style="text-align:center">No.</th>
-                                <th style="text-align:center">Server Name</th>
+                                <th style="text-align:center">Name</th>
                                 <th style="text-align:center">Host</th>
-                                <th style="text-align:center">Location</th>
-                                <th style="text-align:center">Premium Account</th>
+                                <th style="text-align:center">Port Service TCP</th>
+                                <th style="text-align:center">Port Service UDP</th>
+                                <th style="text-align:center">Status</th>
+                                <th style="text-align:center">Last Update</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>    
                                 <th style="text-align:center">No.</th>
-                                <th style="text-align:center">Server Name</th>
+                                <th style="text-align:center">Name</th>
                                 <th style="text-align:center">Host</th>
-                                <th style="text-align:center">Location</th>
-                                <th style="text-align:center">Premium Account</th>
+                                 <th style="text-align:center">Port Service TCP</th>
+                                <th style="text-align:center">Port Service UDP</th>
+                                <th style="text-align:center">Status</th>
+                                <th style="text-align:center">Last Update</th>
                             </tr>
                         </tfoot>
                         <tbody>
                         <?php 
                         $no = 1;
                         foreach($server as $data){ ?>
-                        	<tr>
+                            <tr>
                                 <td style="text-align:center"><?php echo $no;?></td>
-                        		<td style="text-align:center"><?php echo $data->name;?></td>
-                        		<td style="text-align:center"><?php echo $data->host;?></td>
-                        		<td style="text-align:center"><?php
-                                    if($data->location == 1)
-                                        echo "ASIA";
-                                    elseif($data->location == 2)
-                                        echo "EUROPE";
-                                    elseif($data->location == 3)
-                                        echo "US";
+                                <td style="text-align:center"><?php echo $data->name;?></td>
+                                <td style="text-align:center"><?php echo $data->host;?></td>
+                                <td style="text-align:center">
+                                <?php
+                                    foreach($configuration as $c)
+                                    {
+                                        if($c->type == "TCP" && $c->id_server == $data->id)
+                                        {
+                                            ?>
+                                            <i class="fa fa-jsfiddle"><?php echo $c->port;?> </i>
+                                            <?php
+                                        }
+                                    }
                                 ?></td>
                                 <td style="text-align:center">
-                                	<?php 
-                                    $sum_account = 0;
-                                    foreach($account as $row)
+                                <?php
+                                    foreach($configuration as $c)
                                     {
-                                        if($data->id == $row->id_server)
-                                            $sum_account++;
-                                		
+                                        if($c->type == "UDP" && $c->id_server == $data->id)
+                                        {
+                                            ?>
+                                            <i class="fa fa-jsfiddle"><?php echo $c->port;?> </i>
+                                            <?php
+                                        }
                                     }
-                                    echo $sum_account;
+                                ?></td>
+                                <th style="text-align:center"><?php 
+                                if($data->status == "UP")
+                                {
                                     ?>
-                                </td>
-                        	</tr>
+                                    <button class="btn btn-success"><i class="fa fa-check"> Up</i></button>
+                                    <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                    <button class="btn btn-danger"><i class="fa fa-exclamation-triangle"> Down</i></button>
+                                    <?php
+                                }
+                                ?></th>
+                                <th style="text-align:center"><?php echo $data->update_status;?></th>
+                            </tr>
                         <?php 
                         $no++;
                         } ?>

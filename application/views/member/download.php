@@ -10,19 +10,17 @@
                         <thead>
                             <tr>
                                 <th style="text-align:center">No.</th>
-                                <th style="text-align:center">Server Name</th>
+                                <th style="text-align:center">Name</th>
                                 <th style="text-align:center">Host</th>
-                                <th style="text-align:center">Location</th>
-                                <th style="text-align:center">Premium Account</th>
+                                <th style="text-align:center">Download Configuration</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>    
                                 <th style="text-align:center">No.</th>
-                                <th style="text-align:center">Server Name</th>
+                                <th style="text-align:center">Name</th>
                                 <th style="text-align:center">Host</th>
-                                <th style="text-align:center">Location</th>
-                                <th style="text-align:center">Premium Account</th>
+                                <th style="text-align:center">Download Configuration</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -33,26 +31,31 @@
                                 <td style="text-align:center"><?php echo $no;?></td>
                         		<td style="text-align:center"><?php echo $data->name;?></td>
                         		<td style="text-align:center"><?php echo $data->host;?></td>
-                        		<td style="text-align:center"><?php
-                                    if($data->location == 1)
-                                        echo "ASIA";
-                                    elseif($data->location == 2)
-                                        echo "EUROPE";
-                                    elseif($data->location == 3)
-                                        echo "US";
-                                ?></td>
-                                <td style="text-align:center">
-                                	<?php 
-                                    $sum_account = 0;
-                                    foreach($account as $row)
+                        		<td>
+                                <?php
+                                    foreach($configuration as $c)
                                     {
-                                        if($data->id == $row->id_server)
-                                            $sum_account++;
-                                		
+                                        if($c->type == "TCP" && $c->id_server == $data->id)
+                                        {
+                                            ?>
+                                            <a href="<?php echo site_url("download/file/$c->id");?>">
+                                            <button class="btn btn-primary btn-xs"><i class="fa fa-cloud-download"> TCP <?php echo $c->port;?></i></button>
+                                            </a>
+                                            <?php
+                                        }
                                     }
-                                    echo $sum_account;
-                                    ?>
-                                </td>
+                                    foreach($configuration as $c)
+                                    {
+                                        if($c->type == "UDP" && $c->id_server == $data->id)
+                                        {
+                                            ?>
+                                            <a href="<?php echo site_url("download/file/$c->id");?>">
+                                            <button class="btn btn-info btn-xs"><i class="fa fa-cloud-download"> UDP <?php echo $c->port;?></i></button>
+                                            </a>
+                                            <?php
+                                        }
+                                    }
+                                ?></td>
                         	</tr>
                         <?php 
                         $no++;
