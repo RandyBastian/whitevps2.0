@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Notification extends CI_Controller {
-    public function __construct()
+    function __construct()
 	{
 		parent::__construct();
         $params = array('server_key' => 'VT-server-fPGukD0_jr5eyrMycAleC4xS', 'production' => false);
@@ -9,7 +9,7 @@ class Notification extends CI_Controller {
 		$this->veritrans->config($params);
 	}
 
-    public function notif()
+    public function index()
 	{
 		$json_result = file_get_contents('php://input');
 		$result = json_decode($json_result);
@@ -18,7 +18,8 @@ class Notification extends CI_Controller {
 			$notif = $this->veritrans->status($result->order_id);
 		}
 
-		error_log(print_r($result,TRUE));
+		$log = error_log(print_r($result,TRUE));
+		$this->db->insert("log",array("user_agent" => $log));
 
 		//notification handler sample
 
