@@ -17,22 +17,26 @@ class Notification extends CI_Controller {
 		if($result){
 			$notif = $this->veritrans->status($result->order_id);
 		}
+		else
+		{
+		    exit("Error...");
+		}
 
 		$log = error_log(print_r($result,TRUE));
-		$this->db->insert("log",array("user_agent" => $log));
+		
 
 		//notification handler sample
 
 		$transaction 		= $notif->transaction_status;
 		$type 				= $notif->payment_type;
 		$order_id 			= $notif->order_id;
-		$fraud 				= $notif->fraud_status;
 		$this_time			= date("Y-m-d H:i:s");
 		$data				= "";
 		
 		if ($transaction == 'capture') {
 		  	// For credit card transaction, we need to check whether transaction is challenge by FDS or not
 			if ($type == 'credit_card'){
+			        $fraud = $notif->fraud_status;
 			    	if($fraud == 'challenge'){
 			      		//echo "Transaction order_id: " . $order_id ." is challenged by FDS";
 			      		$data = array(
@@ -87,7 +91,6 @@ class Notification extends CI_Controller {
 		
 		$this->db->where("invoice",$order_id);
 		$this->db->update("transaction",$data);
-		exit();
 		if($data["status"]	== "PAID")
 		{
 			// Ambil Nama dan ID user transaksi
@@ -96,6 +99,10 @@ class Notification extends CI_Controller {
 			{
 				$id_user		= $t->id_user;
 				$name			= $t->name;
+				if($t->status == "PAID")
+				{
+				    exit("This transaction Has Been PAID");
+				}
 			}
 			// Ambil value untuk ditambahkan ke credit
 			$product = $this->db->get_where("product",array("name" => $name))->result();
