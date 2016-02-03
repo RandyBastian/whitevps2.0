@@ -26,16 +26,16 @@ class Login extends CI_Controller {
 	{
 		$this->form_validation->set_rules("email","Email","trim|required|valid_email|xss_clean");
 		$this->form_validation->set_rules("password","Password","trim|required|xss_clean");
-		/*
+		
 		$captcha_answer = $this->input->post('g-recaptcha-response');
 		$response = $this->recaptcha->verifyResponse($captcha_answer);
 		if(!$response["success"])
 		{
 			$data["pesan"] = "Invalid re-Captcha !!!";
 			$this->load->view("login",$data);
+		
 		}
-		*/
-		if($this->form_validation->run() == FALSE)
+		elseif($this->form_validation->run() == FALSE)
 		{
 			$this->load->view("login");
 		}
