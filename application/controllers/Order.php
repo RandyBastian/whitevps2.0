@@ -91,9 +91,7 @@ class Order extends CI_Controller {
 			"price_type"		=>  "IDR",
 			"payment_method"	=>  ""	
 		);
-		var_dump($data);
-		exit();
-		$this->db->insert("transcation",$data);
+		$this->db->insert("transaction",$data);
 		
 		// Transaction data
 		$transaction_details = array(
@@ -153,55 +151,12 @@ class Order extends CI_Controller {
 		}
 	}
 	
-	public function notification()
-	{
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result);
-
-		if($result){
-			$notif = $this->veritrans->status($result->order_id);
-		}
-
-		error_log(print_r($result,TRUE));
-
-		//notification handler sample
-
-		$transaction 		= $notif->transaction_status;
-		$type 				= $notif->payment_type;
-		$order_id 			= $notif->order_id;
-		$fraud 				= $notif->fraud_status;
-
-		if ($transaction == 'capture') {
-		  	// For credit card transaction, we need to check whether transaction is challenge by FDS or not
-			if ($type == 'credit_card'){
-			    	if($fraud == 'challenge'){
-			      		echo "Transaction order_id: " . $order_id ." is challenged by FDS";
-			      	} 
-			      	else {
-			      		// TODO set payment status in merchant's database to 'Success'
-			      		echo "Transaction order_id: " . $order_id ." successfully captured using " . $type;
-			      	}
-			}
-		}
-		else if ($transaction == 'settlement'){
-		  // TODO set payment status in merchant's database to 'Settlement'
-		  echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
-		  } 
-		else if($transaction == 'pending'){
-		  // TODO set payment status in merchant's database to 'Pending'
-		  echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
-		  } 
-		else if ($transaction == 'deny') {
-		  // TODO set payment status in merchant's database to 'Denied'
-		  echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
-		}
-	}
-	
 	public function finish()
 	{
 		$data["title"] = "Transaction Finish";
 		$this->load->view("member/header",$data);
-		echo "Transaction Finish. Please check your Payment Method for Detail.";
+		$data["pesan"] = "Transaction Finish. Please check your Payment Method for Detail.";
+		$this->load->view("member/pesan",$data);
 		$this->load->view("member/footer");
 	}
 	
@@ -209,7 +164,8 @@ class Order extends CI_Controller {
 	{
 		$data["title"] = "Transaction Error";
 		$this->load->view("member/header",$data);
-		echo "Error. Please check your Transaction for Detail.";
+		$data["pesan"] = "Error. Please check your Transaction for Detail.";
+		$this->load->view("member/pesan",$data);
 		$this->load->view("member/footer");
 	}
 }

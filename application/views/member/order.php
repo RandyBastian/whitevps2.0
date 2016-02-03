@@ -11,25 +11,25 @@ foreach($order as $o)
 	<div class="col-lg-4" style="border-style:dotted">
 		<?php echo form_open("order/process/$id", array("class" => "form-horizontal")); ?>
 			<div class="form-group">
-				<label for="product" class="col-lg-4 control-label">Product :</label>
+				<label for="product" class="col-lg-5 control-label">Product :</label>
 				<div class="col-lg-6">
 				<label class="control-label"><?php echo $name; ?></label>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="description" class="col-lg-4 control-label">Description :</label>
+				<label for="description" class="col-lg-5 control-label">Description :</label>
 				<div class="col-lg-6">
 				<label class="control-label"><?php echo $description; ?></label>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="price_idr" class="col-lg-4 control-label">Price IDR :</label>
+				<label for="price_idr" class="col-lg-5 control-label">Price IDR :</label>
 				<div class="col-lg-6">
 				<label class="control-label">Rp. <?php echo $price_idr; ?> ,00</label>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="product" class="col-lg-4 control-label">Price USD :</label>
+				<label for="product" class="col-lg-5 control-label">Price USD :</label>
 				<div class="col-lg-6">
 				<label class="control-label">$ <?php echo $price_usd; ?></label>
 				</div>
