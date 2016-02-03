@@ -6,6 +6,7 @@ foreach($order as $o)
     $name       = $o->name;
     $price_idr  = $o->price_idr;
     $price_usd  = $o->price_usd;
+    $description = $o->description;
 ?>
 	<div class="col-lg-4" style="border-style:dotted">
 		<?php echo form_open("order/process/$id", array("class" => "form-horizontal")); ?>
@@ -13,6 +14,12 @@ foreach($order as $o)
 				<label for="product" class="col-lg-4 control-label">Product :</label>
 				<div class="col-lg-6">
 				<label class="control-label"><?php echo $name; ?></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-lg-4 control-label">Description :</label>
+				<div class="col-lg-6">
+				<label class="control-label"><?php echo $description; ?></label>
 				</div>
 			</div>
 			<div class="form-group">
