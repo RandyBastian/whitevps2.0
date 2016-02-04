@@ -11,38 +11,37 @@
                             <tr>
                                 <th><label><input type="checkbox" class="checkAll"/></label></th>
                                 <th style="text-align:center">Invoice</th>
-                                <th style="text-align:center">Name</th>
+                                <th style="text-align:center">Product</th>
                                 <th style="text-align:center">Price</th>
-                                <th style="text-align:center">Date</th>
-                                <th style="text-align:center">Price Type</th>
+                                <th style="text-align:center">Transaction Date</th>
+                                <th style="text-align:center">Payment Date</th>
+                                <th style="text-align:center">Payment Method</th>
                                 <th style="text-align:center">Status</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th><label><input type="checkbox" class="checkAll"/></label></th>
-                                <th style="text-align:center">Title</th>
-                                <th style="text-align:center">Tag</th>
-                                <th style="text-align:center">Date</th>
-                                <th style="text-align:center">Source</th>
-                                <th style="text-align:center">Action</th>
+                                <th style="text-align:center">Invoice</th>
+                                <th style="text-align:center">Product</th>
+                                <th style="text-align:center">Price</th>
+                                <th style="text-align:center">Transaction Date</th>
+                                <th style="text-align:center">Payment Date</th>
+                                <th style="text-align:center">Payment Method</th>
+                                <th style="text-align:center">Status</th>
                             </tr>
                         </tfoot>
                         <tbody>
                         <?php foreach($transaction as $data){ ?>
                         	<tr>
                                 <td><input type="checkbox" id="msg[]" name="msg[]" value="<?php echo "$data->id"; ?>"></td>
-                        		<td style="text-align:center"><?php echo $data->title;?></td>
-                        		<td style="text-align:center"><?php echo $data->tag;?></td>
-                                <td style="text-align:center"><?php echo $data->date;?></td>
-                                <td style="text-align:center">
-                                <?php
-                                    $body = substr($data->source, 0, 30);
-                                    echo $body."...";
-                                ?></td>
-                        		<td style="text-align:center">
-                                    <a target="_blank" href='<?php echo site_url("administrator/announcement-edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"> Edit</i></button></a>
-                        		</td>
+                        		<td style="text-align:center"><?php echo $data->invoice;?></td>
+                        		<td style="text-align:center"><?php echo $data->name;?></td>
+                                <td style="text-align:right">Rp. <?php echo $data->price;?>,00</td>
+                                <td style="text-align:center"><?php echo $data->transaction_date; ?></td>
+                                <td style="text-align:center"><?php echo $data->payment_date; ?></td>
+                                <td style="text-align:center"><?php echo $data->payment_method; ?></td>
+                        		<td style="text-align:center"><?php echo $data->status;?></td>
                         	</tr>
                         <?php } ?>
                         </tbody>

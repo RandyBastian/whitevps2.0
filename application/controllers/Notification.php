@@ -43,7 +43,8 @@ class Notification extends CI_Controller {
 							"payment_date"		=>  "",
 							"status"			=>  "CANCEL",
 							"keterangan"		=>  "Transaction $order_id is challenged by FDS",
-							"payment_method"	=>  ""	
+							"payment_method"	=>  "",
+							"flag"              =>  "1"
 						);
 			      	}
 			      	else {
@@ -53,7 +54,8 @@ class Notification extends CI_Controller {
 							"payment_date"		=>  $this_time,
 							"status"			=>  "PAID",
 							"keterangan"		=>  "Transaction Success",
-							"payment_method"	=>  $type
+							"payment_method"	=>  $type,
+							"flag"              =>  "1"
 						);
 			      	}
 			}
@@ -65,7 +67,8 @@ class Notification extends CI_Controller {
 				"payment_date"		=>  $this_time,
 				"status"			=>  "PAID",
 				"keterangan"		=>  "Transaction Success",
-				"payment_method"	=>  $type	
+				"payment_method"	=>  $type,
+				"flag"              =>  "1"	
 				);
 		} 
 		else if($transaction == 'pending'){
@@ -75,9 +78,10 @@ class Notification extends CI_Controller {
 				"payment_date"		=>  "",
 				"status"			=>  "PENDING",
 				"keterangan"		=>  "Transaction Pending",
-				"payment_method"	=>  $type	
+				"payment_method"	=>  $type,
+				"flag"              =>  "1"	
 				);
-		} 
+		}
 		else if ($transaction == 'deny') {
 		  // TODO set payment status in merchant's database to 'Denied'
 		  //echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
@@ -85,7 +89,8 @@ class Notification extends CI_Controller {
 				"payment_date"		=>  "",
 				"status"			=>  "CANCEL",
 				"keterangan"		=>  "Transaction Is Denied",
-				"payment_method"	=>  $type	
+				"payment_method"	=>  $type,
+				"flag"              =>  "1"	
 				);
 		}
 		

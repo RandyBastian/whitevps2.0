@@ -193,7 +193,7 @@ class Member extends CI_Controller {
 		$data["title"] = "My Transaction";
 		$id = $this->session->userdata["id_member"];
 		$this->db->order_by("transaction_date","DSC");
-		$data["transaction"] = $this->db->get_where("transaction",array("id_user" => $id))->result();
+		$data["transaction"] = $this->db->get_where("transaction",array("id_user" => $id,"flag" => "1"))->result();
 
 		$this->load->view("member/header",$data);
 		$this->load->view("member/transaction",$data);

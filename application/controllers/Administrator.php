@@ -404,13 +404,13 @@ class Administrator extends CI_Controller {
 	public function transaction()
 	{
 		$data["title"] = "Transaction List";
-		$this->db->order_by("transaction_date","ASC");
-		$data["transaction"] = $this->db->get("transaction")->result();
+		$this->db->order_by("transaction_date","DSC");
+		$data["transaction"] = $this->db->get_where("transaction",array("flag" => "1"))->result();
 		$this->load->view("administrator/header",$data);
 		$this->load->view("administrator/transaction",$data);
 		$this->load->view("administrator/footer");
 	}
-
+	
 	// ------------------------- Produk ---------------------------//
 	public function product()
 	{

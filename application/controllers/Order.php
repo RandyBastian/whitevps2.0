@@ -77,7 +77,7 @@ class Order extends CI_Controller {
 		}
 		
 		$this_time		= date("Y-m-d H:i:s");
-		$invoice 		= "INVOICE-". hash('crc32',"$enkrip-$this_time");
+		$invoice 		= "INVOICE-". strtoupper(hash('crc32',"$enkrip-$this_time"));
 		// Entry to Database Transaction
 		$data = array(
 			"name"				=> 	$product_name,
@@ -89,7 +89,8 @@ class Order extends CI_Controller {
 			"id_user"			=>  $id_user,
 			"keterangan"		=>  "",
 			"price_type"		=>  "IDR",
-			"payment_method"	=>  ""	
+			"payment_method"	=>  "",
+			"flag"				=>	"0"
 		);
 		$this->db->insert("transaction",$data);
 		
