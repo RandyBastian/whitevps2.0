@@ -12,8 +12,7 @@ class Member extends CI_Controller {
 
 	public function index()
 	{
-		$data["title"] 	= "Member Dashboard";		
-
+		$data["title"] 	= "Member Dashboard";
 		$data["server"] = $this->db->count_all("server");
 		$data["port"]  	= $this->db->count_all("configuration");
 
@@ -38,7 +37,7 @@ class Member extends CI_Controller {
 				$data["active_account"]++;
 			}
 		}
-
+		
 		$this->load->view("member/header",$data);
 		$this->load->view("member/index",$data);
 		$this->load->view("member/footer");
