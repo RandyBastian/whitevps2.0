@@ -1,88 +1,283 @@
-</div><div class="space"></div><div class="block-bottom">
-            <!-- Colored devider -->
-            <div class="devider-color"></div>
+<div class="clearfix"></div>
 
-            <!-- Footer section -->
-            <footer class="footer footer--simple">
-                <div class="container">
-                    <div class="copy">
-                        White-VPS, 2015. All rights reserved.
-                    </div>
+<div class="footer">
+
+    <div class="container">
         
+        <div class="one_fourth">
+        
+            <h3>Support/Help</h3>
+            
+            <ul class="list">
+            <li><a href="#"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Knowledge Base</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Downloads</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> My Account</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Submit Ticket</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Sign Up</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Affiliates</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Video Tutorials</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i> Hosting Industry News</a></li>
+            </ul>
+            
+        </div><!-- end section -->
+        
+        <div class="one_fourth">
+        
+            <h3>Recent Announcements</h3>
+            
+            <ul class="recent_blogs">     
+                <li>
+                <img src="<?php echo base_url();?>assets/frontend/images/post-simg1.jpg" alt="" />
+                <p><a href="#">Lorem Ipsum dummy</a>
+                <i>November 01, 2013<br />
+                No Comments</i></p>
+                </li>
+                <li>
+                <img src="<?php echo base_url();?>assets/frontend/images/post-simg2.jpg" alt="" />
+                <p><a href="#">There are variations</a>
+                <i>November 01, 2013<br />
+                No Comments</i></p>
+                </li>
+                <li class="last">
+                <img src="<?php echo base_url();?>assets/frontend/images/post-simg3.jpg" alt="" />
+                <p><a href="#">Slightly to believable</a>
+                <i>November 01, 2013<br />
+                No Comments</i></p>
+                </li>
+            </ul>
+            
+        </div><!-- end section -->        
+        
+        <div class="one_fourth last">
+        
+            <h3>Have any Questions</h3>
+            
+            <div class="any_questions">
+                <img src="<?php echo base_url();?>assets/frontend/images/site-img06.jpg" alt="" />
+                <p>If you have any questions, feel free to contact us:</p>
+                <div class="clearfix mar_top1"></div>
+                <h3>admin@white-vps.com</h3>
+            </div>
+        </div><!-- end section -->
+          
+    </div>
+    
+    <div class="footer_sectwo">
+    
+        <div class="container">
+            
+            <div class="payments_list">
+            
+                <h4>Payments We&nbsp;Accept</h4>
+                
+                <ul>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos3.png" alt="" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos4.png" alt="" /></li>
+                </ul>
+            
+            </div><!-- end payments accept -->
+        
+        </div>
+    
+    </div>
 
-                </div><!-- end container -->
-            </footer>
-            <!-- end footer section -->
-        </div></div><!-- /#page -->
+</div>
+<div class="copyright_info">
+    <div class="container"> 
+        <div class="one_half">
+            <b>Copyright © 2015-2016 white-vps.com. All rights reserved.  <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></b>
+        </div>
+    </div>
+    
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Footer
+======================================= -->
+<a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
 
 
-    <!-- Load JS here for greater good =============================-->
-    <!-- jQuery 1.10.1--> 
-        <script src="<?php echo base_url();?>/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap 3--> 
-        <script src="<?php echo base_url();?>/assets/js/bootstrap.min.js"></script>
-        <!-- Header (space animation) -->
-        <script src="<?php echo base_url();?>/assets/frontend/external/animated-header/js/TweenLite.min.js"></script>
-        <script src="<?php echo base_url();?>/assets/frontend/external/animated-header/js/EasePack.min.js"></script>
-        <script src="<?php echo base_url();?>/assets/frontend/external/animated-header/js/rAF.js"></script>
-        <script src="<?php echo base_url();?>/assets/frontend/external/animated-header/js/header-animate.js"></script>	
-        <!-- Waypoints -->
-        <script src="<?php echo base_url();?>/assets/frontend/external/waypoint/waypoints.min.js"></script>	
-		<!-- Modernizr -->
-		<script src="<?php echo base_url();?>/assets/frontend/external/modernizr/modernizr.custom.js"></script>
-		<!-- Mobile menu -->
-		<script src="<?php echo base_url();?>/assets/frontend/external/z-nav/jquery.mobile.menu.js"></script>
-        <!-- Magnific popup - responsive popup plugin -->
-         <script src="<?php echo base_url();?>/assets/frontend/external/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <!-- Count comimg soon -->
-        <script src="<?php echo base_url();?>/assets/frontend/external/count/count.down.js"></script>
-        <!-- Form -->
-        <script src="<?php echo base_url();?>/assets/frontend/js/form.js"></script>
-		<!-- Custom -->
-        <script src="<?php echo base_url();?>/assets/frontend/js/custom.js"></script>
-<!--
-        <script>
-        $(document).ready(function(){
-            $('#search-domain').on('submit', function(form){
-                $("#submit").css("display","none");
-                $("#loading").css("display","block");
-                $.post($('#search-domain').attr('action'), $('#search-domain').serialize(), function(data){
-                    $('#result').html(data);
-                    $("#submit").css("display","block");
-                    $("#loading").css("display","none");
-                });
-                return false;
-            });
+<!-- style switcher -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/style-switcher/styleswitcher.js"></script>
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/orange.css" title="orange" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/lightgreen.css" title="lightgreen" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/blue.css" title="blue" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/green.css" title="green" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/red.css" title="red" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/cyan.css" title="cyan" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/purple.css" title="purple" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/pink.css" title="pink" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/brown.css" title="brown" />
+
+
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-default.css" title="pattern-default" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-one.css" title="pattern-one" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-two.css" title="pattern-two" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-three.css" title="pattern-three" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-four.css" title="pattern-four" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-five.css" title="pattern-five" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-six.css" title="pattern-six" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-seven.css" title="pattern-seven" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-eight.css" title="pattern-eight" />
+<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-nine.css" title="pattern-nine" />
+
+</div>
+
+    
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery from the google apis -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/universal/jquery.js"></script>
+
+<!-- style switcher -->
+<script src="<?php echo base_url();?>assets/frontend/js/style-switcher/jquery-1.js"></script>
+<script src="<?php echo base_url();?>assets/frontend/js/style-switcher/styleselector.js"></script>
+
+<!-- main menu -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/selectnav.js"></script>
+
+<!-- jquery jcarousel -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/jcarousel/jquery.jcarousel.min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/scripts.js"></script>
+
+<!-- tabs script -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/tabs/tabs.js"></script>
+
+<!-- scroll up -->
+<script type="text/javascript">
+    $(document).ready(function(){
+ 
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
         });
-    </script>
--->
-    <script>
-            $(document).ready(function() {
-                navAnim(".waypoint");   
-                mobile_menu('.z-nav__list');
-                cart(".cart");
-                sequenceExp('.sequence');
-                galleryPopup(".gallery-wrapper");
-                count(".comming");
+ 
+        $('.scrollup').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 500);
+            return false;
+        });
+ 
+    });
+</script>
 
-                //counters
+<!-- jquery jcarousel -->
+<script type="text/javascript">
 
-                countDownHour("Oct 1, 2014", "Oct 12, 2014", "discount-1");
-                countDownHour("Oct 1, 2014", "Oct 11, 2014", "discount-2");
-                countDownHour("Oct 1, 2014", "Oct 13, 2014", "discount-3");
+    jQuery(document).ready(function() {
+            jQuery('#mycarousel').jcarousel();
+    });
+    
+    jQuery(document).ready(function() {
+            jQuery('#mycarouseltwo').jcarousel();
+    });
+    
+    jQuery(document).ready(function() {
+            jQuery('#mycarouselthree').jcarousel();
+    });
+    
+    jQuery(document).ready(function() {
+            jQuery('#mycarouselfour').jcarousel();
+    });
+    
+</script>
 
-                countDownHour("Oct 1, 2014", "Oct 11, 2014", "timer-1");
-                countDownHour("Oct 1, 2014", "Oct 10, 2014", "timer-2");
-                countDownHour("Oct 1, 2014", "Oct 13, 2014", "timer-3");
-                countDownHour("Oct 1, 2014", "Oct 14, 2014", "timer-4");  
+<!-- accordion -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/accordion/custom.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript">
+
+    var tpj=jQuery;
+    tpj.noConflict();
+
+    tpj(document).ready(function() {
+
+    if (tpj.fn.cssOriginal!=undefined)
+        tpj.fn.css = tpj.fn.cssOriginal;
+
+        var api = tpj('.fullwidthbanner').revolution(
+            {
+                delay:9000,
+                startwidth:1170,
+                startheight:500,
+
+                onHoverStop:"on",                       // Stop Banner Timet at Hover on Slide on/off
+
+                thumbWidth:100,                         // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                thumbHeight:50,
+                thumbAmount:3,
+
+                hideThumbs:200,
+                navigationType:"none",              // bullet, thumb, none
+                navigationArrows:"solo",                // nexttobullets, solo (old name verticalcentered), none
+
+                navigationStyle:"round",                // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+
+
+                navigationHAlign:"center",              // Vertical Align top,center,bottom
+                navigationVAlign:"bottom",                  // Horizontal Align left,center,right
+                navigationHOffset:30,
+                navigationVOffset:-40,
+
+                soloArrowLeftHalign:"left",
+                soloArrowLeftValign:"center",
+                soloArrowLeftHOffset:0,
+                soloArrowLeftVOffset:0,
+
+                soloArrowRightHalign:"right",
+                soloArrowRightValign:"center",
+                soloArrowRightHOffset:0,
+                soloArrowRightVOffset:0,
+
+                touchenabled:"on",                      // Enable Swipe Function : on/off
+
+
+                stopAtSlide:-1,                         // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                stopAfterLoops:-1,                      // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+
+                hideCaptionAtLimit:0,                   // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                hideAllCaptionAtLilmit:0,               // Hide all The Captions if Width of Browser is less then this value
+                hideSliderAtLimit:0,                    // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+
+
+                fullWidth:"on",
+
+                shadow:0                                //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
+
             });
-        </script>
-        <!-- Histats.com  START (hidden counter)-->
-        <script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
-        <a href="http://www.histats.com" target="_blank" title="web site hit counter" ><script  type="text/javascript" >
-        try {Histats.start(1,3053472,4,0,0,0,"");
-        Histats.track_hits();} catch(err){};
-        </script></a>
-        <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3053472&101" alt="web site hit counter" border="0"></a></noscript>
-        <!-- Histats.com  END  -->
-</body></html>
+
+});
+
+
+
+</script>
+
+<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/sticky-menu/core.js"></script>
+
+<!-- testimonials -->
+<script type="text/javascript">//<![CDATA[ 
+$(window).load(function(){
+$(".controlls li a").click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('class');
+    $('#slider div:visible').fadeOut(500, function() {
+        $('div#' + id).fadeIn();
+    })
+});
+});//]]>  
+
+</script>
+
+
+</body>
+</html>
