@@ -20,41 +20,14 @@
             <li><a href="#"><i class="fa fa-angle-right"></i> Hosting Industry News</a></li>
             </ul>
             
-        </div><!-- end section -->
+        </div><!-- end section -->     
         
         <div class="one_fourth">
-        
-            <h3>Recent Announcements</h3>
-            
-            <ul class="recent_blogs">     
-                <li>
-                <img src="<?php echo base_url();?>assets/frontend/images/post-simg1.jpg" alt="" />
-                <p><a href="#">Lorem Ipsum dummy</a>
-                <i>November 01, 2013<br />
-                No Comments</i></p>
-                </li>
-                <li>
-                <img src="<?php echo base_url();?>assets/frontend/images/post-simg2.jpg" alt="" />
-                <p><a href="#">There are variations</a>
-                <i>November 01, 2013<br />
-                No Comments</i></p>
-                </li>
-                <li class="last">
-                <img src="<?php echo base_url();?>assets/frontend/images/post-simg3.jpg" alt="" />
-                <p><a href="#">Slightly to believable</a>
-                <i>November 01, 2013<br />
-                No Comments</i></p>
-                </li>
-            </ul>
-            
-        </div><!-- end section -->        
-        
-        <div class="one_fourth last">
         
             <h3>Have any Questions</h3>
             
             <div class="any_questions">
-                <img src="<?php echo base_url();?>assets/frontend/images/site-img06.jpg" alt="" />
+                <img src="<?php echo base_url();?>assets/frontend/images/site-img06.jpg" alt="Call Us" />
                 <p>If you have any questions, feel free to contact us:</p>
                 <div class="clearfix mar_top1"></div>
                 <h3>admin@white-vps.com</h3>
@@ -67,18 +40,40 @@
     
         <div class="container">
             
-            <div class="payments_list">
+            <div class="free_scripts">
             
-                <h4>Payments We&nbsp;Accept</h4>
+                <h4>Payments</h4>
                 
                 <ul>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos3.png" alt="" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos4.png" alt="" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos3.png" alt="Visa Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos4.png" alt="MasterCard Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/alto.png" alt="Bank Alto Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/atm_bersama.jpg" alt="Atm Bersama Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/mandiri.png" alt="Bank Mandiri Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/bca.png" alt="Bank BCA Payment" /></li>
+                    <li><img src="<?php echo base_url();?>assets/frontend/images/indomaret.png" alt="Indomaret Payment" /></li>
                 </ul>
             
             </div><!-- end payments accept -->
         
         </div>
+
+        <div class="free_scripts">
+                
+            <h4>Our Server</h4>
+            
+            <ul>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/indonesia.png" alt="Indonesia OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/singapure.png" alt="Singapure OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/canada.png" alt="Canada OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/germany.png" alt="Germany OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/italia.png" alt="Italia OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/netherland.png" alt="Netherland OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/united_kingdom.png" alt="United Kingdom OpenVPN Server" /></li>
+                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/usa.png" alt="USA OpenVPN Server" /></li>
+            </ul>
+            
+        </div><!-- end free script installs -->
     
     </div>
 

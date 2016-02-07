@@ -6,7 +6,11 @@ class Verify extends CI_Controller {
     public function index()
 	{
 	    // Configure email library
-		
+		$config["protocol"]	= 'smtp';
+		$config['smtp_host']	= "ssl://smtp.emailarray.com";
+		$config["smtp_port"]	= 465;
+		$config["smtp_user"]	= "admin@white-vps.com";
+		$config["smtp_pass"]	= "Randy27Bast!";
 		
 		// Load email library and passing configured values to email library
 		$this->load->library('email', $config);

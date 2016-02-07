@@ -93,7 +93,7 @@
                 <li class="empty two"><a href="<?php echo site_url("register");?>">Register</a> |</li>
                 <li class="empty two"><a href="<?php echo site_url("contact");?>">Contact</a></li>
                 <li class="space"></li>
-                <li><a href="https://www.facebook.com/tempatjualvpnsshmurah" rel='no-follow'><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.facebook.com/openvpnpremiumwhitevps/" rel='no-follow'><i class="fa fa-facebook"></i></a></li>
                 <li></li>                 
             </ul>
             
@@ -112,15 +112,9 @@
            <nav id="access" class="access" role="navigation">
             <div id="menu" class="menu">
                 <ul id="tiny">
-                    <li><a href="<?php echo base_url();?>" class="active">Home</a></li>
-                    <li><a href="<?php echo site_url("announcement");?>">Announcements</a>
-                    </li>
-                    <li><a href="#">Order <i class="fa fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="<?php echo site_url("order");?>">OpenVPN Premium</a></li>
-                            <li><a href="<?php echo site_url("web");?>"> Make Own Website</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="<?php echo base_url();?>" class="<?php if($navigation == 'home') echo 'active';?>">Home</a></li>
+                    <li><a href="<?php echo site_url("announcement");?>" class="<?php if($navigation == 'announcement') echo 'active';?>">Announcements</a></li>
+                    <li><a href="<?php echo site_url("order");?>" class="<?php if($navigation == 'order') echo 'active';?>">Plans & Pricing</a></li>
                     <li><a href="<?php echo site_url("server");?>">Server Information</a></li>
                     <li><a href="<?php echo site_url("knowledge");?>">Knowledge</a></li>
                     <li><a href="<?php echo site_url("contact"); ?>">Contact</a></li>

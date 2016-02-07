@@ -7,36 +7,28 @@ class Order extends CI_Controller {
         $params = array('server_key' => 'VT-server-fPGukD0_jr5eyrMycAleC4xS', 'production' => false);
 		$this->load->library('veritrans');
 		$this->veritrans->config($params);
-		if(!empty($this->session->userdata["member"]))
-		{
-			
-		}
-		elseif(!empty($this->session->userdata["administrator"]))
-		{
-		    
-		}
-		else
-		{
-		    redirect("login");
-		}
 	}
 	
 	public function index()
 	{
 	    $data["title"] = "Order OpenVPN";
+	    $data["navigation"] = "order";
 	    $data["order"] = $this->db->get("product")->result();
-	    $this->load->view("member/header",$data);
-	    $this->load->view("member/order",$data);
-	    $this->load->view("member/footer");
+	    $this->load->view("header",$data);
+	    $this->load->view("order",$data);
+	    $this->load->view("footer");
 	}
 	
 	public function process($id = null)
 	{
+		if(empty($this->session->userdata["member"]))
+		{
+			redirect("login");
+		}
 		if(!$id)
 		{
 			redirect("order");
 		}
-		
 		$product = $this->db->get_where("product",array("id" => $id))->result();
 		if(empty($product))
 		{
@@ -155,18 +147,18 @@ class Order extends CI_Controller {
 	public function finish()
 	{
 		$data["title"] = "Transaction Finish";
-		$this->load->view("member/header",$data);
+		$this->load->view("header",$data);
 		$data["pesan"] = "Transaction Finish. Please check your Payment Method for Detail.";
-		$this->load->view("member/pesan",$data);
-		$this->load->view("member/footer");
+		$this->load->view("pesan",$data);
+		$this->load->view("footer");
 	}
 	
 	public function error()
 	{
 		$data["title"] = "Transaction Error";
-		$this->load->view("member/header",$data);
+		$this->load->view("header",$data);
 		$data["pesan"] = "Error. Please check your Transaction for Detail.";
-		$this->load->view("member/pesan",$data);
-		$this->load->view("member/footer");
+		$this->load->view("pesan",$data);
+		$this->load->view("footer");
 	}
 }
