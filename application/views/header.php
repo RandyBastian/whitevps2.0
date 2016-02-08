@@ -115,9 +115,9 @@
                     <li><a href="<?php echo base_url();?>" class="<?php if($navigation == 'home') echo 'active';?>">Home</a></li>
                     <li><a href="<?php echo site_url("announcement");?>" class="<?php if($navigation == 'announcement') echo 'active';?>">Announcements</a></li>
                     <li><a href="<?php echo site_url("order");?>" class="<?php if($navigation == 'order') echo 'active';?>">Plans & Pricing</a></li>
-                    <li><a href="<?php echo site_url("server");?>">Server Information</a></li>
-                    <li><a href="<?php echo site_url("knowledge");?>">Knowledge</a></li>
-                    <li><a href="<?php echo site_url("contact"); ?>">Contact</a></li>
+                    <li><a href="<?php echo site_url("server");?>" class="<?php if($navigation == 'server') echo 'active';?>">Server Information</a></li>
+                    <li><a href="<?php echo site_url("knowledge");?>" class="<?php if($navigation == 'knowledge') echo 'active';?>">Knowledge</a></li>
+                    <li><a href="<?php echo site_url("contact"); ?>" class="<?php if($navigation == 'contact') echo 'active';?>">Contact</a></li>
                 </ul>
             </div>
         </nav><!-- end nav menu -->

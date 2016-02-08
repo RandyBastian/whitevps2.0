@@ -11,7 +11,7 @@ class Order extends CI_Controller {
 	
 	public function index()
 	{
-	    $data["title"] = "Order OpenVPN";
+	    $data["title"] 		= "Order OpenVPN";
 	    $data["navigation"] = "order";
 	    $data["order"] = $this->db->get("product")->result();
 	    $this->load->view("header",$data);
@@ -147,6 +147,7 @@ class Order extends CI_Controller {
 	public function finish()
 	{
 		$data["title"] = "Transaction Finish";
+		$data["navigation"]	= "";
 		$this->load->view("header",$data);
 		$data["pesan"] = "Transaction Finish. Please check your Payment Method for Detail.";
 		$this->load->view("pesan",$data);
@@ -156,6 +157,7 @@ class Order extends CI_Controller {
 	public function error()
 	{
 		$data["title"] = "Transaction Error";
+		$data["navigation"]	= "";
 		$this->load->view("header",$data);
 		$data["pesan"] = "Error. Please check your Transaction for Detail.";
 		$this->load->view("pesan",$data);

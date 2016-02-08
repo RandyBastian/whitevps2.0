@@ -1,84 +1,64 @@
-<div class="block">
-            <div class="container">
-            <!-- Wide table with range of cols -->
-                <div class="table-responsive">
-                <table class="table table-bordered table--wide table-present">
-                    <colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><colgroup class="col-sm-width">
-                    </colgroup><thead>
-                        <tr>
-                            <th style="text-align:center">#</th>
-                            <th style="text-align:center">Server Name</th>
-                            <th style="text-align:center">Host</th>
-                            <th style="text-align:center">SSH Port</th>
-                            <th style="text-align:center">VPN TCP Port</th>
-                            <th style="text-align:center">VPN UDP Port</th>
-                            <th style="text-align:center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        foreach($server as $row)
-                        {
-                          ?>
-                            <tr>
-                              <td style="text-align:center"><?php echo $no; ?></td>
-                              <td style="text-align:center"><?php echo $row->name; ?></td>
-                              <td style="text-align:center"><?php echo $row->host; ?></td>
-                              <td style="text-align:center">
-                              <?php 
-                                foreach($port as $list)
-                                {
-                                  if($list->id_server == $row->id && $list->configuration_type == "SSH")
-                                  {
-                                    ?>
-                                    <i class="fa fa-check" data-selector="i.fa"> <?php echo $list->port;?></i>
-                                    <?php
-                                  }
-                                }
-                              ?></td>
-                               <td style="text-align:center">
-                              <?php 
-                                foreach($port as $list)
-                                {
-                                  if($list->id_server == $row->id && $list->configuration_type == "TCP")
-                                  {
-                                    ?>
-                                    <i class="fa fa-check" data-selector="i.fa"> <?php echo $list->port;?></i>
-                                    <?php
-                                  }
-                                }
-                              ?></td>
-                               <td style="text-align:center">
-                              <?php 
-                                foreach($port as $list)
-                                {
-                                  if($list->id_server == $row->id && $list->configuration_type == "UDP")
-                                  {
-                                    ?>
-                                    <i class="fa fa-check" data-selector="i.fa"> <?php echo $list->port;?></i>
-                                    <?php
-                                  }
-                                }
-                              ?></td>
-                              <td style="text-align:center">
-                              <a class="btn btn-primary btn-sm" href="#" data-selector="a.btn">Restart SSH</a>x
-                              <a class="btn btn-primary btn-sm" href="#" data-selector="a.btn">Restart VPN</a>
-                              </td>
-                            </tr>
-                          <?php
-                          $no++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
+<div class="page_title">
+  <div class="container">
+    <div class="title"><h1>Server Information</h1></div>
+        <div class="pagenation">&nbsp;<a href="<?php echo site_url();?>">Home</a> <i>/</i> <a href="<?php echo site_url("server"); ?>">Server Information</a></div>
+  </div>
+</div><!-- end page title --> 
+
+<div class="clearfix"></div>
+<!-- Contant
+======================================= -->
+<div class="one_full">
+  <div class="table-style">
+    <table class="table-list">
+        <tr>
+            <th>No.</th>
+            <th>Server</th>
+            <th>TCP Port</th>
+            <th>UDP Port</th>
+            <th>Status</th>
+        </tr>
+      <?php
+      $no = 1;
+      foreach($server as $s)
+      {
+      ?>
+        <tr>
+            <td><?php echo $no; ?></td>
+            <td><?php echo $s->name;?></td>
+            <td><?php
+            foreach($port as $p)
+            {
+              if($p->type == "TCP" && $p->id_server == $s->id)
+              {
+                echo $p->port." <i class='fa fa-check fa-lg'></i> ";
+              }
+            }
+            ?></td>
+            <td><?php
+            foreach($port as $p)
+            {
+              if($p->type == "UDP" && $p->id_server == $s->id)
+              {
+                echo $p->port." <i class='fa fa-check fa-lg'></i> ";
+              }
+            }
+            ?></td>
+            <td><?php
+            if($s->status == "UP")
+            {
+              echo "<i class='fa fa-check fa-lg' style='color:green'> $s->status</i>";
+            }
+            else
+            {
+              echo "<i class='fa fa-remove fa-lg' style='color:red'> $s->status</i>";
+            }
+            ?></td>
+        </tr>
+      <?php
+      $no++;
+      }
+      ?>
+    </table>
+  </div>  
+</div><!-- end tables -->

@@ -11,13 +11,13 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if(!empty($this->session->userdata["administrator"]))
-		{
-			redirect("administrator");
-		}
 		if(!empty($this->session->userdata["member"]))
 		{
 			redirect("member");
+		}
+		if(!empty($this->session->userdata["administrator"]))
+		{
+			redirect("administrator");
 		}
 		$this->load->view("login");
 	}

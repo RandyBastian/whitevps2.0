@@ -7,19 +7,14 @@
         <div class="one_fourth">
         
             <h3>Support/Help</h3>
-            
             <ul class="list">
-            <li><a href="#"><i class="fa fa-angle-right"></i> Contact Us</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Knowledge Base</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Downloads</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> My Account</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Submit Ticket</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Sign Up</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Affiliates</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Video Tutorials</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i> Hosting Industry News</a></li>
+                <li><a href="<?php echo site_url("contact"); ?>"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+                <li><a href="<?php echo site_url("knowledge");?>"><i class="fa fa-angle-right"></i> Knowledge Base</a></li>
+                <li><a href="<?php echo site_url("member/download");?>"><i class="fa fa-angle-right"></i> Downloads</a></li>
+                <li><a href="<?php echo site_url("login"); ?>"><i class="fa fa-angle-right"></i> My Account</a></li>
+                <li><a href="<?php echo site_url("register");?>"><i class="fa fa-angle-right"></i> Sign Up</a></li>
+                <li><a href="<?php echo site_url("login");?>"><i class="fa fa-angle-right"></i> Login</a></li>
             </ul>
-            
         </div><!-- end section -->     
         
         <div class="one_fourth">
@@ -59,7 +54,6 @@
         </div>
 
         <div class="free_scripts">
-                
             <h4>Our Server</h4>
             
             <ul>

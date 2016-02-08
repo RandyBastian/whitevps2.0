@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Contact extends CI_Controller {
+class Knowledge extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -8,10 +8,11 @@ class Contact extends CI_Controller {
 
 	public function index()
 	{
-		$data["title"] = "Contact Us";
-		$data["navigation"] = "contact";
+		$data["title"] 	= "Knowledge Base";
+		$data["navigation"] = "knowledge";
+		
 		$this->load->view("header",$data);
-		$this->load->view("contact",$data);
+		$this->load->view("knowledge",$data);
 		$this->load->view("footer");
 	}
 

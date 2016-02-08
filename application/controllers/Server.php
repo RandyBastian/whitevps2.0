@@ -9,7 +9,9 @@ class Server extends CI_Controller {
 	public function index()
 	{
 		$data["title"] 	= "Server Information";
-		$data["server"] = $this->db->get_where("server",array("flag" => 1))->result();
+		$data["navigation"] = "server";
+		$this->db->order_by("name","ASC");
+		$data["server"] = $this->db->get_where("server")->result();
 		$data["port"]	= $this->db->get("configuration")->result();
 
 		$this->load->view("header",$data);
