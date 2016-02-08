@@ -72,7 +72,7 @@ $autoload['libraries'] = array('database','session','form_validation','upload','
 |	$autoload['drivers'] = array('cache');
 */
 $autoload['drivers'] = array();
-
+date_default_timezone_set("Asia/Jakarta");
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files

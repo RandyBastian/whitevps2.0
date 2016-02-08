@@ -8,6 +8,7 @@ class Member extends CI_Controller {
 		{
 			redirect("login");
 		}
+		date_default_timezone_set("Asia/Jakarta");
 	}
 
 	public function index()
@@ -37,7 +38,7 @@ class Member extends CI_Controller {
 				$data["active_account"]++;
 			}
 		}
-		
+
 		$this->load->view("member/header",$data);
 		$this->load->view("member/index",$data);
 		$this->load->view("member/footer");
@@ -259,7 +260,7 @@ class Member extends CI_Controller {
 		$type_account 	= $this->input->post("type");
 		$username 		= $this->input->post("username");
 		$password 		= $this->input->post("password");
-		$created_date 	= date("Y-m-d H:i:s");
+		$created_date 	= date("Y-m-d");
 		// Check Tipe Account yang dibuat
 		foreach($cek_credit as $row)
 		{
@@ -270,7 +271,7 @@ class Member extends CI_Controller {
 					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed !!. check your Free credit !!</div>";
 					exit();
 				}
-				$expired_date 	= date("Y-m-d 00:05:00",strtotime("+3 day"));
+				$expired_date 	= date("Y-m-d",strtotime("+2 day"));
 				$credit 		= $row->credit_free - 1;
 			}
 			else
@@ -280,7 +281,7 @@ class Member extends CI_Controller {
 					echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Failed !!. Check your Premium Credit !!</div>";
 					exit();
 				}
-				$expired_date 	= date("Y-m-d 00:05:00",strtotime("+31 day"));
+				$expired_date 	= date("Y-m-d",strtotime("+30 day"));
 				$credit 		= $row->credit_premium - 1;
 			}
 		}
@@ -303,28 +304,6 @@ class Member extends CI_Controller {
 			"expired_date" 	=> $expired_date,
 			);
 		$this->db->insert("account",$data);
-		// Ambil ID_Account dari username
-		$account = $this->db->get_where("account",array("username" => $username))->result();
-		foreach($account as $a)
-		{
-			$id_account = $a->id;
-		}
-		
-		// Insert ke Account Daemon
-		$server = $this->db->get("server")->result();
-		foreach($server as $s)
-		{
-			$data = array (
-			"id_account"	=> $id_account,
-			"username" 		=> $username,
-			"password" 		=> $password,
-			"created_date" 	=> $created_date,
-			"expired_date" 	=> $expired_date,
-			"id_server"		=> $s->id,
-			"modified"		=> "YES"
-			);
-			$this->db->insert("account_daeomon",$data);
-		}
 		// Update Credit in User
 		if($type_account == 'FREE')
 		{
@@ -419,13 +398,8 @@ class Member extends CI_Controller {
 			);
 		$this->db->where("id",$id);
 		$this->db->update("account",$data);
-		
-		// Update password di tabel account daemon
-		$this->db->where("id_account",$id);
-		$this->db->update("account_daeomon",array("password" => $new_password, "modified" => "YES"));
 		// Echo hasil
 		echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Password Changed !!!</div>";
-	
 	}
 
 	public function top_up($id = null)
@@ -469,7 +443,7 @@ class Member extends CI_Controller {
 			$next_expired = $expired_date;
 		}
 		
-		$add_expired_date = date("Y-m-d 00:05:00", strtotime($next_expired. "+31 day"));
+		$add_expired_date = date("Y-m-d", strtotime($next_expired. "+30 day"));
 		// Change Expired Date Account table
 		$this->db->where("id",$id);
 		$this->db->update("account",array("expired_date" => $add_expired_date));
