@@ -17,6 +17,7 @@
                                 <th style="text-align:center">Payment Date</th>
                                 <th style="text-align:center">Payment Method</th>
                                 <th style="text-align:center">Status</th>
+                                <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -28,6 +29,7 @@
                                 <th style="text-align:center">Transaction Date</th>
                                 <th style="text-align:center">Payment Date</th>
                                 <th style="text-align:center">Payment Method</th>
+                                <th style="text-align:center">Status</th>
                                 <th style="text-align:center">Status</th>
                             </tr>
                         </tfoot>
@@ -42,6 +44,22 @@
                                 <td style="text-align:center"><?php echo $data->payment_date; ?></td>
                                 <td style="text-align:center"><?php echo $data->payment_method; ?></td>
                         		<td style="text-align:center"><?php echo $data->status;?></td>
+                                <td style="text-align:center">
+                                  <?php
+                                  if($data->status != "PAID")
+                                  {
+                                    ?>
+                                    <a href="<?php echo site_url("administrator/transaction_edit/$data->id"); ?>">
+                                    <button class="btn btn-info" onclick="return confirm('Approve <?php echo "$data->invoice";?> ?')">Approve</button>
+                                  </a>
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    echo "-";
+                                  }
+                                  ?>
+                                </td>
                         	</tr>
                         <?php } ?>
                         </tbody>

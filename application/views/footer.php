@@ -16,7 +16,7 @@
                 <li><a href="<?php echo site_url("login");?>"><i class="fa fa-angle-right"></i> Login</a></li>
             </ul>
         </div><!-- end section -->     
-        
+
         <div class="one_fourth">
         
             <h3>Have any Questions</h3>
@@ -90,27 +90,8 @@
 
 <!-- style switcher -->
 <script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/style-switcher/styleswitcher.js"></script>
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/orange.css" title="orange" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/lightgreen.css" title="lightgreen" />
 <link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/blue.css" title="blue" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/green.css" title="green" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/red.css" title="red" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/cyan.css" title="cyan" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/purple.css" title="purple" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/pink.css" title="pink" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/brown.css" title="brown" />
 
-
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-default.css" title="pattern-default" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-one.css" title="pattern-one" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-two.css" title="pattern-two" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-three.css" title="pattern-three" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-four.css" title="pattern-four" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-five.css" title="pattern-five" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-six.css" title="pattern-six" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-seven.css" title="pattern-seven" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-eight.css" title="pattern-eight" />
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/bg-patterns/pattern-nine.css" title="pattern-nine" />
 
 </div>
 

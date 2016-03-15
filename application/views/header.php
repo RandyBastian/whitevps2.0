@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="OpenVPN Premium & Unlimited">
+    <meta name="description" content="OpenVPN Premium & Unlimited, One Account for All Servers">
     <meta name="author" content="white-vps.com">
     <meta name="robots" content="index,follow">
     <meta name="copyright" content="White-VPS">
@@ -117,6 +117,7 @@
                     <li><a href="<?php echo site_url("order");?>" class="<?php if($navigation == 'order') echo 'active';?>">Plans & Pricing</a></li>
                     <li><a href="<?php echo site_url("server");?>" class="<?php if($navigation == 'server') echo 'active';?>">Server Information</a></li>
                     <li><a href="<?php echo site_url("knowledge");?>" class="<?php if($navigation == 'knowledge') echo 'active';?>">Knowledge</a></li>
+                    <li><a href="<?php echo site_url("payment");?>" class="<?php if($navigation == 'payment') echo 'active';?>">Payment</a></li>
                     <li><a href="<?php echo site_url("contact"); ?>" class="<?php if($navigation == 'contact') echo 'active';?>">Contact</a></li>
                 </ul>
             </div>

@@ -5,6 +5,7 @@ class Order extends CI_Controller {
 	{
 		parent::__construct();
         $params = array('server_key' => 'VT-server-fPGukD0_jr5eyrMycAleC4xS', 'production' => false);
+        //$params = array('server_key' => 'VT-server-yptg6GMi5ciOkOHrV2tFBj0j', 'production' => true);
 		$this->load->library('veritrans');
 		$this->veritrans->config($params);
 	}
@@ -67,6 +68,8 @@ class Order extends CI_Controller {
 				redirect("logout");
 			}
 		}
+
+		//----------------------------------//
 		
 		$this_time		= date("Y-m-d H:i:s");
 		$invoice 		= "INVOICE-". strtoupper(hash('crc32',"$enkrip-$this_time"));
@@ -82,10 +85,43 @@ class Order extends CI_Controller {
 			"keterangan"		=>  "",
 			"price_type"		=>  "IDR",
 			"payment_method"	=>  "",
-			"flag"				=>	"0"
+			"flag"				=>	"1"
 		);
 		$this->db->insert("transaction",$data);
-		
+		$data["invoice"]		= $invoice;
+		$data["price_idr"]		= $price_idr;
+		$data["title"] = "Finish Payment";
+		$data["navigation"] = "";
+		$this->load->view("header",$data);
+		$this->load->view("rincian",$data);
+		$this->load->view("payment");
+		$this->load->view("footer");
+		//Veritrans Module Here//
+	}
+	
+	public function finish()
+	{
+		$data["title"] = "Transaction Finish";
+		$data["navigation"]	= "";
+		$this->load->view("header",$data);
+		$data["pesan"] = "Transaction Finish. Please check your Payment Method for Detail.";
+		$this->load->view("pesan",$data);
+		$this->load->view("footer");
+	}
+	
+	public function error()
+	{
+		$data["title"] = "Transaction Error";
+		$data["navigation"]	= "";
+		$this->load->view("header",$data);
+		$data["pesan"] = "Error. Please check your Transaction for Detail.";
+		$this->load->view("pesan",$data);
+		$this->load->view("footer");
+	}
+}
+
+/*
+//---------------VeriTrans --------------------- //
 		// Transaction data
 		$transaction_details = array(
 			"order_id" 			=> $invoice,
@@ -142,25 +178,4 @@ class Order extends CI_Controller {
 		{
 			echo $e->getMessage();
 		}
-	}
-	
-	public function finish()
-	{
-		$data["title"] = "Transaction Finish";
-		$data["navigation"]	= "";
-		$this->load->view("header",$data);
-		$data["pesan"] = "Transaction Finish. Please check your Payment Method for Detail.";
-		$this->load->view("pesan",$data);
-		$this->load->view("footer");
-	}
-	
-	public function error()
-	{
-		$data["title"] = "Transaction Error";
-		$data["navigation"]	= "";
-		$this->load->view("header",$data);
-		$data["pesan"] = "Error. Please check your Transaction for Detail.";
-		$this->load->view("pesan",$data);
-		$this->load->view("footer");
-	}
-}
+*/

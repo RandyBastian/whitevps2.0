@@ -46,6 +46,7 @@ class Download extends CI_Controller {
 					. "remote $host $port\r\n"
 					. "route-method exe\r\n"
 					. "nobind\r\n"
+					. "resolv-retry infinite\r\n"
 					. "persist-key\r\n"
 					. "persist-tun\r\n"
 					. "auth-user-pass\r\n"

@@ -10,16 +10,16 @@
    <div class="one_half">
    <br>
         <?php
-        if(!empty(validation_error()))
+        if(!empty(validation_errors()))
         {
             ?>
             <div class="error">
                 <div class="message-box-wrap">
-               <button class="close-but" id="colosebut4">close</button><?php echo validation_error();?></div>
+               <button class="close-but" id="colosebut4">close</button><?php echo validation_errors();?></div>
             </div>  
             <?php
         }
-
+        
         if(!empty($pesan))
         {
             ?>
@@ -30,8 +30,7 @@
             <?php
         }
         ?>
-            
-        <form action="<?php echo site_url("register/submit");?>" method="post">
+        <form action="<?php echo site_url("register/process");?>" method="post">
     
             <fieldset>
             <label for="first_name" class="blocklabel">First Name*</label>
@@ -47,13 +46,13 @@
             <p><input name="password" class="input_bg" type="password" id="password" value=""/></p>
             
             <label for="confirm_password" class="blocklabel">Confirm Password*</label>
-            <p><input name="confirm_password" class="input_bg" type="confirm_password" id="confirm_password" value=""/></p>
+            <p><input name="confirm_password" class="input_bg" type="password" id="confirm_password" value=""/></p>
 
             <label for="phone" class="blocklabel">Phone* :</label>
             <p><input name="phone" class="input_bg" type="text" id="phone" value=""/></p>
 
             <label for="facebook" class="blocklabel">Facebook :</label>
-            <p><input name="facebook" class="input_bg" type="text" id="facebook" value=""/></p>
+            <p><input name="facebook" class="input_bg" type="text" id="facebook" value="facebook.com/"/></p>
 
             <label for="city" class="blocklabel">City / Region</label>
             <p><input name="city" class="input_bg" type="city" id="city" value=""/></p>

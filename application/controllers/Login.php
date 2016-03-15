@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 	{
 		$this->form_validation->set_rules("email","Email","trim|required|valid_email|xss_clean");
 		$this->form_validation->set_rules("password","Password","trim|required|xss_clean");
-		
+		/*
 		$captcha_answer = $this->input->post('g-recaptcha-response');
 		$response = $this->recaptcha->verifyResponse($captcha_answer);
 		if(!$response["success"])
@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 			$this->load->view("login",$data);
 		
 		}
-		elseif($this->form_validation->run() == FALSE)
+		else*/if($this->form_validation->run() == FALSE)
 		{
 			$this->load->view("login");
 		}
@@ -59,7 +59,7 @@ class Login extends CI_Controller {
 					{
 						$this->session->set_userdata("administrator",$enkrip);
 						$this->session->set_userdata("id_administrator",$u->id);
-						redirect("u");
+						redirect("administrator");
 					}
 				}
 			}

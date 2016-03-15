@@ -12,6 +12,7 @@ class Server extends CI_Controller {
 		$data["navigation"] = "server";
 		$this->db->order_by("name","ASC");
 		$data["server"] = $this->db->get_where("server")->result();
+		$this->db->order_by("port","ASC");
 		$data["port"]	= $this->db->get("configuration")->result();
 
 		$this->load->view("header",$data);

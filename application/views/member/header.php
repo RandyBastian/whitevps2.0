@@ -91,6 +91,9 @@
                 <li>
                     <a href="<?php echo site_url('member/transaction');?>"><i class="fa fa-tasks fa-fw"></i> Transaction History</a>
                 </li>
+                <li>
+                    <a href="<?php echo site_url('order');?>"><i class="fa fa-tasks fa-fw"></i> Order OpenVPN</a>
+                </li>
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

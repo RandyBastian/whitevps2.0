@@ -33,42 +33,78 @@ class Register extends CI_Controller {
 				$this->load->view("header",$data);
 				$this->load->view("register",$data);
 				$this->load->view("footer");
-				exit();
 			}
-			
-			$first_name		= $this->input->post("first_name");
-			$last_name		= $this->input->post("last_name");
-			$email 			= $this->input->post("email");
-			$phone 			= $this->input->post("phone");
-			$password 		= $this->input->post("password");
-			$current_pass 	= $this->input->post("current_password");
-			$facebook		= $this->input->post("facebook");
-			$city			= $this->input->post("city");
-			$address 		= $this->input->post("address");
-			if($password != $current_pass)
+			else
 			{
-				$pesan = "Password Does Not Match";
-				$data["title"] = "Register";
-				$data["navigation"] = "";
-				$this->load->view("header",$data);
-				$this->load->view("register",$data);
-				$this->load->view("footer");
-				exit();
-			} 
+				$first_name		= $this->input->post("first_name");
+				$last_name		= $this->input->post("last_name");
+				$email 			= $this->input->post("email");
+				$phone 			= $this->input->post("phone");
+				$password 		= $this->input->post("password");
+				$confirm_pass 	= $this->input->post("confirm_password");
+				$facebook		= $this->input->post("facebook");
+				$city			= $this->input->post("city");
+				$address 		= $this->input->post("address");
 
-			$user 	= $this->db->get_where("user",array("email" => $email))->result();
-			if(!empt($user))
-			{
-				$pesan = "Email already Exist !!.";
-				$data["title"] = "Register";
-				$data["navigation"] = "";
-				$this->load->view("header",$data);
-				$this->load->view("register",$data);
-				$this->load->view("footer");
-				exit();
+				// Ambil Data user
+				$user 	= $this->db->get_where("user",array("email" => $email))->result();
+				// Check Password dan Current Password apakah sama atau tidak
+				if($password != $confirm_pass)
+				{
+					$data["pesan"] = "<strong>Password</strong> Does Not Match !!";
+					$data["title"] = "Register";
+					$data["navigation"] = "";
+					$this->load->view("header",$data);
+					$this->load->view("register",$data);
+					$this->load->view("footer");
+				}
+				// Check Apakah User Exist
+				elseif(!empty($user))
+				{
+					$data["pesan"] = "<strong>Email</strong> already Exist !!.";
+					$data["title"] = "Register";
+					$data["navigation"] = "";
+					$this->load->view("header",$data);
+					$this->load->view("register",$data);
+					$this->load->view("footer");
+				}
+				else
+				{
+					$data 	= array(
+						"first_name" 	=> $first_name,
+						"last_name"		=> $last_name,
+						"email"			=> $email,
+						"password"		=> $password,
+						"no_hp"			=> $phone,
+						"facebook"		=> $facebook,
+						"city"			=> $city,
+						"address"		=> $address,
+						"credit_free"	=> 1,
+						"credit_premium" => 0,
+						"role"			=> "MEMBER"
+						);
+					$result = $this->db->insert("user",$data);
+					if($result)
+					{
+						$this->load->library('recaptcha');
+						$data["result"] = "Success.. Please Login to Order <a href=". site_url("order") .">Here</a>";
+						$this->load->view("login",$data);
+					}
+					else
+					{
+						$data["pesan"] = "<strong>Error !!.</strong> Try Again. !!.";
+						$data["title"] = "Register";
+						$data["navigation"] = "";
+						$this->load->view("header",$data);
+						$this->load->view("register",$data);
+						$this->load->view("footer");
+					}
+				}
 			}
-
-			
+		}
+		else
+		{
+			redirect("register");
 		}
 	}
 

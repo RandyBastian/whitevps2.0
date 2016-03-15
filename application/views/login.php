@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -26,7 +26,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -51,6 +50,10 @@
                                     <?php echo $this->recaptcha->render(); ?>
                                     <br>
                                 </center>
+                                <div style="align:right">
+                                    <a href="<?php echo site_url("forget-password");?>">Forget password ?</a>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <input type="submit" name="submit" class="btn btn-success btn-block" id="submit" value="Login">
                                 </div>
@@ -78,6 +81,18 @@
                         </center>
                     </div>
                 <?php
+                }
+                if(!empty($result))
+                {
+                    ?>
+                    <div class="alert alert-success">
+                        <center>
+                            <?php
+                            echo $result;
+                            ?>
+                        </center>
+                    </div>
+                    <?php
                 }
                 ?>
             </div>

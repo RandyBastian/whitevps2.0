@@ -59,7 +59,7 @@ class Administrator extends CI_Controller {
 		}
 		
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-		$this->form_validation->set_rules("name","Name","trim|required|alpha_numeric|xss_clean");
+		$this->form_validation->set_rules("name","Name","trim|required|xss_clean");
 		$this->form_validation->set_rules("host","Host","trim|required|xss_clean");
 		$this->form_validation->set_rules("user_login","User Login","trim|required|xss_clean");
 		$this->form_validation->set_rules("password_login","Password Login","trim|required|xss_clean");
@@ -137,7 +137,7 @@ class Administrator extends CI_Controller {
 			redirect("administrator/server");
 		}
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }
-		$this->form_validation->set_rules("name","Server Name","required|alpha_numeric|xss_clean");
+		$this->form_validation->set_rules("name","Server Name","required|xss_clean");
 		$this->form_validation->set_rules("host","Host","required|xss_clean");
 		$this->form_validation->set_rules("user_login","User Login","required|xss_clean");
 		$this->form_validation->set_rules("password_login","Password Login","required|xss_clean");
@@ -404,11 +404,68 @@ class Administrator extends CI_Controller {
 	public function transaction()
 	{
 		$data["title"] = "Transaction List";
-		$this->db->order_by("transaction_date","DSC");
+		$this->db->order_by("transaction_date","DESC");
 		$data["transaction"] = $this->db->get_where("transaction",array("flag" => "1"))->result();
 		$this->load->view("administrator/header",$data);
 		$this->load->view("administrator/transaction",$data);
 		$this->load->view("administrator/footer");
+	}
+
+	public function transaction_edit($id = null)
+	{
+		if(!$id)
+		{
+			redirect("administrator/transaction");
+		}
+
+		$transaksi = $this->db->get_where("transaction",array("id" => $id))->result();
+		if(empty($transaksi))
+		{
+			//redirect("administrator/transaction");
+			echo "Transaksi Tidak ditemukan";
+			exit();
+		}
+		
+		foreach($transaksi as $t)
+		{
+			$name 		= $t->name;
+			$id_user 	= $t->id_user;
+			if($t->status == "PAID")
+			{
+				echo "Transaksi sudah dibayar";
+				exit();
+			} 
+		}
+
+		$product = $this->db->get_where("product",array("name" => $name))->result();
+		if(empty($product))
+		{
+			//redirect("administrator/transaction");
+			echo "Produk Tidak ditemukan";
+			exit();
+		}
+		foreach($product as $p)
+		{
+			$value = $p->value;
+		}
+
+		$user = $this->db->get_where("user",array("id" => $id_user))->result();
+		if(empty($user))
+		{
+			//redirect("administrator/transaction");
+			echo "User Tidak ditemukan";
+			exit();
+		}
+		foreach($user as $u)
+		{
+			$credit_premium = $u->credit_premium + $value;
+		}
+		$this->db->where("id",$id_user);
+		$this->db->update("user",array("credit_premium" => $credit_premium));
+
+		$this->db->where("id",$id);
+		$this->db->update("transaction",array("status" => "PAID","payment_date" => date("Y-m-d H:i:s")));
+		redirect("administrator/transaction");
 	}
 	
 	// ------------------------- Produk ---------------------------//

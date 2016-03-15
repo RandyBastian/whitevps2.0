@@ -16,19 +16,19 @@
 			<div class="form-group">
 				<label for="user_login" class="col-lg-2 control-label">User Login :</label>
 				<div class="col-lg-6">
-					<input type="text" id="user_login" name="user_login" class="form-control" value="root">
+					<input type="text" id="user_login" name="user_login" class="form-control" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="password_login" class="col-lg-2 control-label">Password Login :</label>
 				<div class="col-lg-6">
-					<input type="text" id="password_login" name="password_login" class="form-control" value="Randy27Bast!">
+					<input type="text" id="password_login" name="password_login" class="form-control" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="port" class="col-lg-2 control-label">Port Login :</label>
 				<div class="col-lg-6">
-					<input type="text" id="port" name="port" class="form-control" value="2020">
+					<input type="text" id="port" name="port" class="form-control" value="">
 				</div>
 			</div>
 			<div class="form-group">

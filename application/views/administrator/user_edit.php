@@ -40,7 +40,7 @@
 			<div class="form-group">
 				<label for="telp" class="col-lg-2 control-label">No. Telepon :</label>
 				<div class="col-lg-6">
-					<input type="text" id="telp" name="telp" class="form-control" value="<?php echo $facebook; ?>">
+					<input type="text" id="telp" name="telp" class="form-control" value="<?php echo $no_hp; ?>">
 				</div>
 			</div>
 			<div class="col-lg-offset-3" id="loading" style="display:none;">
