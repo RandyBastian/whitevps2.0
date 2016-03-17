@@ -78,7 +78,6 @@ class Order extends CI_Controller {
 			"name"				=> 	$product_name,
 			"price"				=> 	$price_idr,
 			"transaction_date"	=> 	$this_time,
-			"payment_date"		=>  "",
 			"status"			=>  "PENDING",
 			"invoice"			=>  $invoice,
 			"id_user"			=>  $id_user,
