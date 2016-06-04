@@ -5,32 +5,36 @@ class Verify extends CI_Controller {
 
     public function index()
 	{
-	    // Configure email library
-		$config["protocol"]	= 'smtp';
-		$config['smtp_host']	= "ssl://smtp.emailarray.com";
-		$config["smtp_port"]	= 465;
-		$config["smtp_user"]	= "admin@white-vps.com";
-		$config["smtp_pass"]	= "Randy27Bast!";
-		
-		// Load email library and passing configured values to email library
-		$this->load->library('email', $config);
-		$this->email->set_newline("\r\n");
-		
-		// Sender email address
-		$this->email->from("admin@white-vps.com", "Admin WHITE-VPS");
-		// Receiver email address
-		$this->email->to("randy.bastbast@gmail.com");
-		// Subject of email
-		$this->email->subject("Email Verification WHITE-VPS");
-		// Message in email
-		$this->email->message("Ini email verification");
-		
-		if ($this->email->send()) {
-			$data['message_display'] = 'Email Successfully Send !';
+		echo "ehe, ngapain hayo ??? :v";	
+	}
+
+	public function activation_member($key)
+	{
+		if(empty($key))
+		{
+			redirect("not_found");
+		}
+
+		$user 		= $this->db->get_where("user",array("key_password" => $key))->result();
+		if(empty($user))
+		{
+			$data["hasil"] = "ERROR";
 		}
 		else
 		{
-		    $data['message_display'] =  '<p class="error_msg">Invalid Gmail Account or Password !</p>';
+			$update_user = array(
+				"account_status" => "ACTIVE",
+				"key_password" => ""
+				);
+			$this->db->where("key_password",$key);
+			$this->db->update("user",$update_user);
+			$data["hasil"] = "ACTIVE";
 		}
+
+		$data["title"] = "Member Activataion";
+		$data["navigation"] = "";
+		$this->load->view("header",$data);
+		$this->load->view("account_verify",$data);
+		$this->load->view("footer");
 	}
 }

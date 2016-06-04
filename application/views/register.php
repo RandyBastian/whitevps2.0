@@ -5,6 +5,12 @@
   </div>
 </div><!-- end page title --> 
 
+<div>
+<center>
+	<h2 style="color:red">Baca Artikel Ini Sebelum bergabung di White-VPS.com !!</h2>
+	<a href="https://white-vps.com/blog/openvpn-premium-dan-unlimited-abiz-baca-langsung-gratis/"><h2 style="color:red"> >>>OpenVPN Premium dan Unlimited. Abiz Baca, Langsung Gratis !!<<< </h2></a>
+</center>
+</div>
 
 <div class="container">
    <div class="one_half">
@@ -30,6 +36,7 @@
             <?php
         }
         ?>
+
         <form action="<?php echo site_url("register/process");?>" method="post">
     
             <fieldset>

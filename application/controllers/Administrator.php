@@ -17,6 +17,7 @@ class Administrator extends CI_Controller {
 		$this->load->view('administrator/index');
 		$this->load->view("administrator/footer");
 	}
+	
 	public function account()
 	{
 		$data['title'] = "Accounts";
@@ -559,6 +560,7 @@ class Administrator extends CI_Controller {
 		{
 			redirect("administrator/product");
 		}
+
 		if (!$this->input->is_ajax_request()) { exit('ILLEGAL REQUEST or Active Your Javascript !!!!.'); }	
 
 		$this->form_validation->set_rules("name","Name","trim|required|xss_clean");
@@ -704,6 +706,7 @@ class Administrator extends CI_Controller {
 			$data["address"]		= $c->address;
 			$data["no_hp"]			= $c->no_hp;
 			$data["facebook"]		= $c->facebook;
+			$data["role"]			= $c->role;
 
 			$data['title'] = "Edit $c->email";
 			$this->load->view("administrator/header",$data);
@@ -740,6 +743,7 @@ class Administrator extends CI_Controller {
 		$credit_premium = $this->input->post("credit_premium");
 		$facebook 		= $this->input->post("facebook");
 		$telp 			= $this->input->post("telp");
+		$role 			= $this->input->post("role");
 
 		$data = array(
 			"password"		=> $password,
@@ -748,7 +752,8 @@ class Administrator extends CI_Controller {
 			"credit_premium" => $credit_premium,
 			"address" 		=> $address,
 			"no_hp"			=> $telp,
-			"facebook"		=> $facebook
+			"facebook"		=> $facebook,
+			"role"			=> $role
 			);
 
 		$this->db->where("id",$id);
@@ -782,4 +787,6 @@ class Administrator extends CI_Controller {
 			break;
 		}
 	}
+
+	// 
 }

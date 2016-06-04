@@ -26,6 +26,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body>
@@ -52,6 +53,8 @@
                                 </center>
                                 <div style="align:right">
                                     <a href="<?php echo site_url("forget-password");?>">Forget password ?</a>
+                                    <br>
+                                    <a href="<?php echo site_url("register/resend-member-activation");?>">Resend Activation Key</a>
                                 </div>
                                 <br>
                                 <div class="form-group">

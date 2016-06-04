@@ -19,6 +19,10 @@ class Login extends CI_Controller {
 		{
 			redirect("administrator");
 		}
+		if(!empty($this->sesison->userdata["partner"]))
+		{
+			redirect("partner/home");
+		}
 		$this->load->view("login");
 	}
 
@@ -43,19 +47,25 @@ class Login extends CI_Controller {
 		{
 			$email 		= $this->input->post("email");
 			$password 	= $this->input->post("password");
-			$user 		= $this->db->get_where("user",array("email" => $email,"password" => $password))->result();
+			$user 		= $this->db->get_where("user",array("email" => $email,"password" => hash("md5",$password), "account_status" => "ACTIVE"))->result();
 			if($user)
 			{
 				foreach($user as $u)
 				{
-					$enkrip = hash("sha512", "$email-$u->id");
+					$enkrip = $email;
 					if($u->role == "MEMBER")
 					{
 						$this->session->set_userdata("member",$enkrip);
 						$this->session->set_userdata("id_member",$u->id);
 						redirect("member");
 					}
-					else
+					elseif($u->role == "PARTNER")
+					{
+						$this->session->set_userdata("partner",$enkrip);
+						$this->session->set_userdata("id_partner",$u->id);
+						redirect("partner/home");
+					}
+					elseif($u->role == "ADMIN")
 					{
 						$this->session->set_userdata("administrator",$enkrip);
 						$this->session->set_userdata("id_administrator",$u->id);
@@ -69,15 +79,6 @@ class Login extends CI_Controller {
 				$this->load->view("login",$data);
 			}
 		}
-	}
-
-	public function admin()
-	{
-		if(!empty($this->session->userdata["administrator"]))
-		{
-			redirect("administrator");
-		}
-		$this->load->view("login");
 	}
 
 	public function signout()

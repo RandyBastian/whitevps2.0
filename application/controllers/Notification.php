@@ -106,7 +106,7 @@ class Notification extends CI_Controller {
 				$name			= $t->name;
 				if($t->status == "PAID")
 				{
-				    exit("This transaction Has Been PAID");
+				    exit("This transaction $order_id Has Been PAID");
 				}
 			}
 			// Ambil value untuk ditambahkan ke credit
@@ -125,6 +125,7 @@ class Notification extends CI_Controller {
 			$credit_premium = $credit_premium + $value;
 			$this->db->where("id",$id_user);
 			$this->db->update("user",array("credit_premium" => $credit_premium));
+                        echo "Credit : $credit_premium";
 		}
 	}
 }

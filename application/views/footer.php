@@ -40,13 +40,7 @@
                 <h4>Payments</h4>
                 
                 <ul>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos3.png" alt="Visa Payment" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/payment-logos4.png" alt="MasterCard Payment" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/alto.png" alt="Bank Alto Payment" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/atm_bersama.jpg" alt="Atm Bersama Payment" /></li>
                     <li><img src="<?php echo base_url();?>assets/frontend/images/mandiri.png" alt="Bank Mandiri Payment" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/bca.png" alt="Bank BCA Payment" /></li>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/indomaret.png" alt="Indomaret Payment" /></li>
                 </ul>
             
             </div><!-- end payments accept -->

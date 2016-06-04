@@ -26,7 +26,22 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+        
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
+fbq('init', '613162992183045');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=613162992183045&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 <body>
@@ -72,13 +87,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users fa-fw"></i> Account Management <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> Account VPN Management <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo site_url('member/account_create');?>">Create Account</a>
+                            <a href="<?php echo site_url('member/account_create');?>">Create Account VPN</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('member/account');?>">Accounts List</a>
+                            <a href="<?php echo site_url('member/account');?>">Accounts VPN List</a>
                         </li>
                     </ul>
                 </li>

@@ -21,19 +21,20 @@
             <ul>
                 <li>
                     <div class="icon"></div>
-                    <h4>Bank Mandiri</h4>
-                    <p>1-350-009-920594 a.n Randy Bastian</p>
+                    <h4>Bank Transfer</h4>
+                    <p>1-350-009-920594 a.n Randy Bastian ( Mandiri)</p>
+                    <p>0334-1528-29 a.n Randy Bastian (BNI)</p>
                 </li>
                 <li class="last">
                     <div class="icon"></div>
-                    <h4>Bank BNI</h4>
-                    <p>0334-1528-29 a.n Randy Bastian</p>
+                    <h4>Pulsa XL</h4>
+                    <p>0877-3309-2188</p>
                 </li>
                 <li class="last">
                     <div class="icon"></div>
                     <h4>Paypal</h4>
                     <p>randy.bastbast@gmail.com</p>
-                    <p>Rate : $1 = Rp. 12.600</p>
+                    <p>Rate : $1 = Rp. 13.100</p>
                 </li>
                 <li class="last">
                     <div class="icon"></div>

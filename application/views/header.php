@@ -9,6 +9,8 @@
     <meta name="copyright" content="White-VPS">
     <meta name="rating" content="general">
     <meta name="distribution" content="global">
+    <meta name="alexaVerifyID" content="8GIwmn7DRgUeWZuINl9D3VxrECQ"/>
+    <meta property="fb:admins" content="100002680752716" />
     <meta name="keywords" content="vpn, vpn premium, what is a virtual private network, private vpn service, what is virtual private network, vpn programs, setting up a vpn, set up a vpn, free vpn services, vpn proxy service, what is a vpn connection, how to setup a vpn, vpn proxy server, how vpn works, fastest vpn, free us vpn, vpn program, free vpn servers, best vpn software, free online vpn, how to setup a vpn server, free vpn server software, types of vpn, web based vpn, free uk vpn, freevpn, how to get a vpn, free vpn connection, open source vpn, how a vpn works, what is vpn connection, top vpn services, how to create a vpn, best free vpn service, high speed vpn, what is a vpn server, fastest vpn service, how to create a vpn server, witopia vpn, vpn server software, create a vpn, best vpn router, linux vpn server, paid vpn, best vpn provider, uk vpn free, free vpn uk, what is the best vpn, setting up a vpn server, top 10 vpn, open source vpn server, how to create vpn, ipv6 vpn, best ssh client, vpn tool, vpntunnel, us vpn free, vpn for ubuntu, how to setup a vpn connection, what is vpn network, vpn strong, vpn france, best vpn client, best private vpn, openvpn service, vpn server ubuntu,free vpn,VPN US, VPN Europe, VPN Indonesia, VPN murah, VPN tidak terbatas, vpn unlimited, VPN terbaik">
     <title><?php echo $title;?> | White-VPS</title>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>assets/frontend/images/icon.jpg">
@@ -50,7 +52,20 @@
     
     <!-- testimonials -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/js/testimonials/fadeeffect.css" type="text/css" media="all">
-    
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '613162992183045');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=613162992183045&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 <body>
@@ -116,7 +131,7 @@
                     <li><a href="<?php echo site_url("announcement");?>" class="<?php if($navigation == 'announcement') echo 'active';?>">Announcements</a></li>
                     <li><a href="<?php echo site_url("order");?>" class="<?php if($navigation == 'order') echo 'active';?>">Plans & Pricing</a></li>
                     <li><a href="<?php echo site_url("server");?>" class="<?php if($navigation == 'server') echo 'active';?>">Server Information</a></li>
-                    <li><a href="<?php echo site_url("knowledge");?>" class="<?php if($navigation == 'knowledge') echo 'active';?>">Knowledge</a></li>
+                    <li><a href="https://white-vps.com/blog">Blog</a></li>
                     <li><a href="<?php echo site_url("payment");?>" class="<?php if($navigation == 'payment') echo 'active';?>">Payment</a></li>
                     <li><a href="<?php echo site_url("contact"); ?>" class="<?php if($navigation == 'contact') echo 'active';?>">Contact</a></li>
                 </ul>

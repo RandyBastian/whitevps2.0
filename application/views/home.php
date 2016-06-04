@@ -114,7 +114,12 @@
 <div class="clearfix"></div>
 
 <div class="clearfix mar_top4"></div>
-
+<div>
+<center>
+	<h2 style="color:red">Baca Artikel Ini Sebelum bergabung di White-VPS.com !!</h2>
+	<a href="https://white-vps.com/blog/openvpn-premium-dan-unlimited-abiz-baca-langsung-gratis/"><h2 style="color:red"> >>>OpenVPN Premium dan Unlimited. Abiz Baca, Langsung Gratis !!<<< </h2></a>
+</center>
+</div>
 <div class="features_sec04">
 <div class="container">
 
@@ -151,7 +156,6 @@
 
 </div>
 </div><!-- end features section 4 -->
-
 <div class="clearfix mar_top2"></div>
 
 <div class="hostplan_offers">

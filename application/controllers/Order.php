@@ -72,12 +72,13 @@ class Order extends CI_Controller {
 		//----------------------------------//
 		
 		$this_time		= date("Y-m-d H:i:s");
-		$invoice 		= "INVOICE-". strtoupper(hash('crc32',"$enkrip-$this_time"));
+		$invoice 		= "VPN-". strtoupper(hash('crc32',"$enkrip-$this_time"));
 		// Entry to Database Transaction
 		$data = array(
 			"name"				=> 	$product_name,
 			"price"				=> 	$price_idr,
 			"transaction_date"	=> 	$this_time,
+			
 			"status"			=>  "PENDING",
 			"invoice"			=>  $invoice,
 			"id_user"			=>  $id_user,

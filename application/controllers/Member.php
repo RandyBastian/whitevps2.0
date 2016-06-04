@@ -114,9 +114,9 @@ class Member extends CI_Controller {
 			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
 			exit();
 		}
-		$current_password 			= $this->input->post("current_password");
-		$new_password 				= $this->input->post("new_password");
-		$new_password_confirm		= $this->input->post("new_password_confirm");
+		$current_password 			= hash("md5",$this->input->post("current_password"));
+		$new_password 				= hash("md5",$this->input->post("new_password"));
+		$new_password_confirm		= hash("md5",$this->input->post("new_password_confirm"));
 
 		$id = $this->session->userdata["id_member"];
 		$user = $this->db->get_where("user",array("role" => "MEMBER","id" => $id))->result();
