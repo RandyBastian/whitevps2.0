@@ -30,7 +30,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -92,13 +91,21 @@
                             <a href="<?php echo site_url('partner/trik');?>">My Trik List</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('');?>">All Trik & Tools</a>
+                            <a href="<?php echo site_url('trik-tools');?>">All Trik & Tools</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="<?php echo site_url('order');?>"><i class="fa fa-user-md fa-fw"></i> Order</a>
-                    
+                </li>
+                <li>
+                    <a href="<?php echo site_url('partner/download');?>"><i class="fa fa-user-md fa-fw"></i> Configuration Download Area</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('partner/server');?>"><i class="fa fa-book fa-fw"></i> Server Information</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('partner/transaction');?>"><i class="fa fa-dollar fa-fw"></i> My Transaction</a>
                 </li>
             </ul>
         </div>

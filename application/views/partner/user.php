@@ -28,7 +28,7 @@
                         		<td style="text-align:center"><?php echo $data_user->email;?></td>
                         		<td style="text-align:center"><?php echo $data_user->credit_premium;?></td>
                         		<td style="text-align:center">
-                                    <a href='<?php echo site_url("partner/user-edit/$data_user->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"> Edit</i></button></a>
+                                    <a href='<?php echo site_url("partner/user/user-edit/$data_user->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"> Tambah Credit</i></button></a>
                         		</td>
                         	</tr>
                         <?php } ?>

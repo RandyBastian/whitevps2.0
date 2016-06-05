@@ -12,7 +12,7 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="<?php echo base_url();?>/assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-     <script src="<?php echo base_url();?>/assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>/assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>/assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->

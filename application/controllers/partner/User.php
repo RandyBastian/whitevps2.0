@@ -18,7 +18,7 @@ class User extends CI_Controller {
 		$data['title'] = "Users";
 		
 		$data["user"] = $this->db->get_where("user",array("role"=>"MEMBER"))->result();
-		
+
 		$this->load->view("partner/header",$data);
 		$this->load->view('partner/user',$data);
 		$this->load->view("partner/footer");
@@ -29,21 +29,16 @@ class User extends CI_Controller {
 	{
 		if(!$id)
 			redirect("partner/user");
-		$user = $this->db->get_where("user",array("id"=>$id))->result();
+		$user = $this->db->get_where("user",array("id"=>$id,"role" => "MEMBER"))->result();
+		if(empty($user))
+		{
+			redirect("partner/user");
+		}
 		foreach($user as $c)
 		{
 			$data["id"] 			= $id;
-			$data["email"] 			= $c->email;
-			$data["password"]		= $c->password;
-			$data["first_name"]		= $c->first_name;
-			$data["last_name"]		= $c->last_name;
-			$data["credit_premium"] = $c->credit_premium;
-			$data["address"]		= $c->address;
-			$data["no_hp"]			= $c->no_hp;
-			$data["facebook"]		= $c->facebook;
-			$data["role"]			= $c->role;
 
-			$data['title'] = "Edit $c->email";
+			$data['title'] = "Tambah Credit $c->email";
 			$this->load->view("partner/header",$data);
 			$this->load->view("partner/user_edit",$data);
 			$this->load->view("partner/footer");
@@ -62,41 +57,65 @@ class User extends CI_Controller {
 		if(!$id)
 			exit('Invalid User !!!!...');
 
-		$this->form_validation->set_rules("password","Password","trim|required|min_length[5]|max_length[40]|xss_clean");
 		$this->form_validation->set_rules("credit_premium","Credit Premium","required|greater_than[-1]");
-		$this->form_validation->set_rules("telp","No. Telepon","max_length[20]|xss_clean");
 		if($this->form_validation->run() == FALSE)
 		{
 			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>".validation_errors()."</div>";
 			exit();
 		}
-		
-		$password 		= $this->input->post("password");
-		$first			= $this->input->post("first_name");
-		$last			= $this->input->post("last_name");
-		$address		= $this->input->post("address");
-		$credit_premium = $this->input->post("credit_premium");
-		$facebook 		= $this->input->post("facebook");
-		$telp 			= $this->input->post("telp");
-		$role 			= $this->input->post("role");
+
+		$session_partner 	= $this->db->get_where("user",array("id" => $this->session->userdata["id_partner"], "role" => "PARTNER"))->result();
+		foreach($session_partner as $s)
+		{
+			$credit_premium_partner 	= $s->credit_premium;
+		}
+
+		if($credit_premium_partner < 1)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Credit anda Habis !!</div>";
+			exit();
+		}
+
+		$credit_ditambahkan = $this->input->post("credit_premium");
+
+		if($credit_ditambahkan > $credit_premium_partner)
+		{
+			echo "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Credit anda tidak Cukup !!</div>";
+			exit();
+		}
+
+		// ---- Masukkan ke database member yang ditambakan ----- //
+		$member_data 		= $this->db->get_where("user",array("id" => $id, "role" => "MEMBER"))->result();
+		if(!empty($member_data))
+		{
+			foreach($member_data as $m)
+			{
+				$member_credit 	= $m->credit_premium;
+				$member_email	= $m->email;
+			}
+		}
 
 		$data = array(
-			"password"		=> $password,
-			"first_name"	=> $first,
-			"last_name" 	=> $last,
-			"credit_premium" => $credit_premium,
-			"address" 		=> $address,
-			"no_hp"			=> $telp,
-			"facebook"		=> $facebook,
-			"role"			=> $role
+			"credit_premium" => $member_credit + $credit_ditambahkan
 			);
 
 		$this->db->where("id",$id);
 		$this->db->update("user",$data);
+
+		//---- Update Credit Partner / Credit Partner pasti berkurang ----- //
+		$data = array(
+			"credit_premium" => $credit_premium_partner - $credit_ditambahkan
+			);
+
+		$this->db->where("id",$this->session->userdata["id_partner"]);
+		$this->db->update("user",$data);
+
+		$sisa =  $credit_premium_partner - $credit_ditambahkan;
+
 		echo "
 			<div class='alert alert-success alert-dismisabble'>
 				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-				<p>user User has been Updated....</p>
+				<p>$member_email telah ditambahkan $credit_ditambahkan Credit !!!. Sisa Credit anda : $sisa .</p>
 			</div>";
 	}
 }

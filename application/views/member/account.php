@@ -41,7 +41,7 @@
                         			}
                         		?></td>
                         		<td style="text-align:center">
-                                    <a target="_blank" href='<?php echo site_url("member/account_edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"></i> Change Password</button></a> | <a target="_blank" href='<?php echo site_url("member/top_up/$data->id");?>'><button type="button" class="btn btn-danger" onclick="return confirm('Add 1 Month Expired Account : <?php echo "$data->username";?> ?')"><i class="fa fa-plus-circle"></i> Top Up 1 Month</button></a>
+                                    <a target="_blank" href='<?php echo site_url("member/account_edit/$data->id");?>'><button type="button" class="btn btn-info"><i class="fa fa-gears"></i> Change Password</button></a> | <a href='<?php echo site_url("member/top_up/$data->id");?>'><button type="button" class="btn btn-danger" onclick="return confirm('Add 1 Month Expired Account : <?php echo "$data->username";?> ?')"><i class="fa fa-plus-circle"></i> Top Up 1 Month</button></a>
                         		</td>
                         	</tr>
                         <?php } ?>

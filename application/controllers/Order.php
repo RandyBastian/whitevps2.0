@@ -4,10 +4,7 @@ class Order extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        $params = array('server_key' => 'VT-server-fPGukD0_jr5eyrMycAleC4xS', 'production' => false);
-        //$params = array('server_key' => 'VT-server-yptg6GMi5ciOkOHrV2tFBj0j', 'production' => true);
-		$this->load->library('veritrans');
-		$this->veritrans->config($params);
+        
 	}
 	
 	public function index()
@@ -22,7 +19,15 @@ class Order extends CI_Controller {
 	
 	public function process($id = null)
 	{
-		if(empty($this->session->userdata["member"]))
+		if(!empty($this->session->userdata["member"]))
+		{
+			
+		}
+		elseif(!empty($this->session->userdata["partner"]))
+		{
+
+		}
+		else
 		{
 			redirect("login");
 		}

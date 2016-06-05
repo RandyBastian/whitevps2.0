@@ -98,7 +98,7 @@ src="https://www.facebook.com/tr?id=613162992183045&ev=PageView&noscript=1"
                     </ul>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('member/download');?>"><i class="fa fa-tasks fa-fw"></i> Download Area</a>
+                    <a href="<?php echo site_url('member/download');?>"><i class="fa fa-tasks fa-fw"></i> Configuration Download Area</a>
                 </li>
                 <li>
                     <a href="<?php echo site_url('member/server');?>"><i class="fa fa-tasks fa-fw"></i> Server Information</a>
