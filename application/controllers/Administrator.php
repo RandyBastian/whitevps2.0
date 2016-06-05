@@ -91,6 +91,19 @@ class Administrator extends CI_Controller {
 			"update_status"		=> date("Y-m-d H:i:s")
 			);
 		$this->db->insert("server",$data);
+
+		$user 	= $this->db->get("account")->result();
+		foreach($user as $u)
+		{
+			$data = array (
+				"username" 		=> $u->username,
+				"ip_address"	=> $host,
+				"status"		=> 0
+				);
+
+			$this->db->insert("session_account",$data);
+		}
+
 		echo "
 			<div class='alert alert-success alert-dismisabble'>
 				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
