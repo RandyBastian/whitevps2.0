@@ -182,8 +182,20 @@ class Administrator extends CI_Controller {
 				"certificate"		=> $certificate
 				
 				);
+
 			$this->db->where("id",$id);
 			$this->db->update("server",$data);
+
+			$server 	= $this->db->get_where("server",array("id" => $id))->result();
+			foreach($server as $s)
+			{
+				if($s->host != $host)
+				{
+					$this->db->where("ip_address",$s->host);
+					$this->db->update("session_account",array("ip_address" => $host));
+				}
+			}
+
 			echo "
 				<div class='alert alert-success alert-dismisabble'>
 					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
@@ -210,9 +222,13 @@ class Administrator extends CI_Controller {
 			foreach($server_data as $choose)
 			{
 				$name = $choose->name;
+				$host = $choose->host;
 			}
 			$result 	= $this->db->delete("server",array("id" => $server[$i]));
 			$result2 	= $this->db->delete("configuration",array("id_server" => $server[$i]));
+
+			$this->db->delete("session_account", array("ip_address" => $host));
+
 			if($result && $result2)
 				echo "<div class='alert alert-success'>Server $name has Deleted...</div>";
 			else

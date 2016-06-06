@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.14
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jun 05, 2016 at 05:04 AM
--- Server version: 10.0.20-MariaDB-cll-lve
--- PHP Version: 5.4.31
+-- Host: 127.0.0.1
+-- Generation Time: Jun 06, 2016 at 11:19 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,22 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL,
   `created_date` date DEFAULT NULL,
   `expired_date` date DEFAULT NULL,
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2048 ;
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2049 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `created_date`, `expired_date`, `id_user`) VALUES
-(3, 'randy', 'merdeka', '2016-01-31', '2016-06-06', 2),
-(4, 'bastian', 'randy', '2016-01-31', '2016-04-02', 2),
+(3, 'randy', 'merdeka', '2016-01-31', '2016-08-05', 2),
+(4, 'bastian', 'lakukan', '2016-01-31', '2016-04-02', 2),
 (5, 'melawai', '102102', '2016-02-10', '2016-06-13', 6),
 (6, 'sofie2hari', '7894qwer', '2016-02-10', '2016-02-12', 8),
 (7, 'gunerst', '12345', '2016-02-10', '2016-02-12', 7),
@@ -2087,37 +2086,8 @@ INSERT INTO `account` (`id`, `username`, `password`, `created_date`, `expired_da
 (2044, 'dayat2304', 'qaz123', '2016-06-05', '2016-06-07', 3056),
 (2045, 'anjay36', '1234567', '2016-06-05', '2016-06-07', 3057),
 (2046, 'msatriory17', 'lolipop', '2016-06-05', '2016-06-07', 3058),
-(2047, '4d3SR', 'akoj8lb4d3', '2016-06-05', '2016-07-05', 2309);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_daeomon`
---
-
-CREATE TABLE IF NOT EXISTS `account_daeomon` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_server` int(11) NOT NULL,
-  `username` text NOT NULL,
-  `password` text NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `expired_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `id_account` int(11) NOT NULL,
-  `modified` enum('NO','YES') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `account_daeomon`
---
-
-INSERT INTO `account_daeomon` (`id`, `id_server`, `username`, `password`, `created_date`, `expired_date`, `id_account`, `modified`) VALUES
-(1, 1, 'randy', 'merdeka', '2016-01-31 09:56:23', '2016-06-06 00:05:00', 3, 'YES'),
-(2, 2, 'randy', 'merdeka', '2016-01-31 09:56:23', '2016-06-06 00:05:00', 3, 'YES'),
-(3, 6, 'randy', 'merdeka', '2016-01-31 09:56:23', '2016-06-06 00:05:00', 3, 'YES'),
-(4, 1, 'bastian', 'bisabisa', '2016-01-31 09:55:50', '2016-04-02 00:05:00', 4, 'YES'),
-(5, 2, 'bastian', 'bisabisa', '2016-01-31 09:55:50', '2016-04-02 00:05:00', 4, 'YES'),
-(6, 6, 'bastian', 'bisabisa', '2016-01-31 09:55:50', '2016-04-02 00:05:00', 4, 'YES');
+(2047, '4d3SR', 'akoj8lb4d3', '2016-06-05', '2016-07-05', 2309),
+(2048, 'testing7777', 'testing', '2016-06-05', '2016-07-05', 2);
 
 -- --------------------------------------------------------
 
@@ -2126,13 +2096,12 @@ INSERT INTO `account_daeomon` (`id`, `id_server`, `username`, `password`, `creat
 --
 
 CREATE TABLE IF NOT EXISTS `announcement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `tag` text NOT NULL,
   `source` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2141,12 +2110,11 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 --
 
 CREATE TABLE IF NOT EXISTS `configuration` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `port` int(11) NOT NULL,
   `type` enum('TCP','UDP') NOT NULL,
-  `id_server` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=234 ;
+  `id_server` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `configuration`
@@ -2332,13 +2300,12 @@ INSERT INTO `configuration` (`id`, `port`, `type`, `id_server`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `date_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ip_address` text NOT NULL,
-  `user_agent` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `user_agent` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2347,14 +2314,13 @@ CREATE TABLE IF NOT EXISTS `log` (
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `description` text NOT NULL,
   `price_idr` text NOT NULL,
   `price_usd` text NOT NULL,
-  `value` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -2372,7 +2338,7 @@ INSERT INTO `product` (`id`, `name`, `description`, `price_idr`, `price_usd`, `v
 --
 
 CREATE TABLE IF NOT EXISTS `server` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `host` text NOT NULL,
   `user_login` text NOT NULL,
@@ -2381,9 +2347,8 @@ CREATE TABLE IF NOT EXISTS `server` (
   `area` enum('ASIA','EUROPE','US') NOT NULL,
   `certificate` text NOT NULL,
   `status` enum('UP','DOWN') NOT NULL,
-  `update_status` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+  `update_status` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `server`
@@ -2402,7 +2367,25 @@ INSERT INTO `server` (`id`, `name`, `host`, `user_login`, `password_login`, `por
 (18, 'Germany2.white-vps.com', '94.177.224.27', 'root', 'hayoapahayo', 3030, 'EUROPE', '-----BEGIN CERTIFICATE-----\r\nMIID0TCCAzqgAwIBAgIJAK8pE9MH4VaZMA0GCSqGSIb3DQEBBQUAMIGiMQswCQYD\r\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\r\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTERMA8GA1UEAxMI\r\nY2hhbmdlbWUxETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWls\r\nQGhvc3QuZG9tYWluMB4XDTE2MDUwMzA5NTYxOVoXDTI2MDUwMTA5NTYxOVowgaIx\r\nCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2Nv\r\nMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREwDwYD\r\nVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEW\r\nEG1haWxAaG9zdC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMTU\r\nijA/S/9E7A53NaF3u0VBVcmCia/hXHSxtgBpzL3RA2Cdl+ZzRoYiK0fxOV26ewuf\r\nhPLym799W21Ph+hbxkDVTfWNaVP6Ane5AfdfJNbLjr915e1qzLUb9WZ4Rn6aHQHn\r\ngJsUUM5uJMopZEPJtsITvHEhRc6CkzSLKf5NUvQDAgMBAAGjggELMIIBBzAdBgNV\r\nHQ4EFgQU9icDDvBzn+wsm4QrgHNRGdGH/rIwgdcGA1UdIwSBzzCBzIAU9icDDvBz\r\nn+wsm4QrgHNRGdGH/rKhgaikgaUwgaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD\r\nQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24x\r\nETAPBgNVBAsTCGNoYW5nZW1lMREwDwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMI\r\nY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQCvKRPT\r\nB+FWmTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBALW++cGsLpOmLI8J\r\nqQU8XTPYdglWDDPZKmYbNAABfL0KiylnHc6XZNwE8D7K3Y5TjVrpfySYfX1S3wZx\r\ngPEs1Ko8xzwY+ThbuFuK6j0IjhVyZ3Pgh8dZ08vS6Vm6oKSp+uNhY1AlfnJ0Zlny\r\nXtvEULGdwFmmHi7rr5Eale9xOoCU\r\n-----END CERTIFICATE-----', 'UP', '2016-05-03 10:06:50'),
 (19, 'France1.white-vps.com', '89.40.112.81', 'root', 'hayoapahayo', 9092, 'EUROPE', '-----BEGIN CERTIFICATE-----\r\nMIID0TCCAzqgAwIBAgIJAKjEBMOJv58kMA0GCSqGSIb3DQEBBQUAMIGiMQswCQYD\r\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\r\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTERMA8GA1UEAxMI\r\nY2hhbmdlbWUxETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWls\r\nQGhvc3QuZG9tYWluMB4XDTE2MDUwMzExMTIzNVoXDTI2MDUwMTExMTIzNVowgaIx\r\nCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2Nv\r\nMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREwDwYD\r\nVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEW\r\nEG1haWxAaG9zdC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFb\r\nnLP8TfJtWWSeYopoojYVr6F1diWPQ06tS0ZxykPDzeWwRS2r2galdBev1Q9A9qlZ\r\nN+H11CeOJGalUpvTNVbb7Pwzwj/VTSA2dr3NddcfTQqTYzrDExGl/OImkudcrBcJ\r\nwv0XS0k0HH53kD3EJStpkcKXDlSknSORcjkX1rL7AgMBAAGjggELMIIBBzAdBgNV\r\nHQ4EFgQU1gkRA6HhkGLdkaYkDV3PYY2sksMwgdcGA1UdIwSBzzCBzIAU1gkRA6Hh\r\nkGLdkaYkDV3PYY2sksOhgaikgaUwgaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD\r\nQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24x\r\nETAPBgNVBAsTCGNoYW5nZW1lMREwDwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMI\r\nY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQCoxATD\r\nib+fJDAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAKxvnL2iQDTM0viv\r\ni+kX+Y776gpiReSioWJGnSIAeV8Se10pez6N2PtyEt7CjJio5yCs1qWupkCgkdOG\r\nOOYW+BKplHut9VfO95dmfHXPbPfQOSHrZKzTRkXWo5uplYwB1s01Oi2kbiZ1utPS\r\nif/t3CbwxSUG5hTFCu+zAz6b6H//\r\n-----END CERTIFICATE-----', 'UP', '2016-05-03 10:27:38'),
 (20, 'Italia1.white-vps.com', '93.186.254.171', 'root', 'hehehoho', 8079, 'EUROPE', '-----BEGIN CERTIFICATE-----\r\nMIID0TCCAzqgAwIBAgIJAMqMhBy7sS93MA0GCSqGSIb3DQEBBQUAMIGiMQswCQYD\r\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\r\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTERMA8GA1UEAxMI\r\nY2hhbmdlbWUxETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWls\r\nQGhvc3QuZG9tYWluMB4XDTE2MDUwMzExNDgxMloXDTI2MDUwMTExNDgxMlowgaIx\r\nCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2Nv\r\nMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREwDwYD\r\nVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEW\r\nEG1haWxAaG9zdC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAN5v\r\nFsd4sA2vl2Zoxs+6y7bRVPpzdKIhoKY3XNiqJM2ulb2p5VCYNIpzpPZYVH/5bMU5\r\nfF/wpS1a/LuIxexC9Aa5kG1HXLu+/8gOMb+2Etwe/p6vc3tqv7kix7uCuq6jKEJL\r\nHwSFF+xojkEwJuNwM0QgwhnjuiEex4cOtVTji+kDAgMBAAGjggELMIIBBzAdBgNV\r\nHQ4EFgQUv22ZklYr7HYcUZff2FGjp8whVikwgdcGA1UdIwSBzzCBzIAUv22ZklYr\r\n7HYcUZff2FGjp8whVimhgaikgaUwgaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD\r\nQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24x\r\nETAPBgNVBAsTCGNoYW5nZW1lMREwDwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMI\r\nY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQDKjIQc\r\nu7EvdzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAID5SNqGzQSvDzXK\r\nCdSmAIx5ePIqeW7IMXUXwr9Qhy/OyhNJdVo8MjyRyvlu8ub+87ZwKiNBBzh+N97n\r\nXd2QwrAzFiCDtkAasSbXsKwbBs0kgAI3jfTIHNhU1poxFa7AKjKSuLSvVsaIffgF\r\nYbFmSYMGjnQcJ2Wjskfxe2pjiIRT\r\n-----END CERTIFICATE-----', 'UP', '2016-05-03 10:57:36'),
-(21, 'Italia2.white-vps.com', '89.46.73.118', 'root', 'hayoapahayo', 4040, 'EUROPE', '-----BEGIN CERTIFICATE-----\r\nMIID0TCCAzqgAwIBAgIJALEycyHctU7OMA0GCSqGSIb3DQEBBQUAMIGiMQswCQYD\r\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\r\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTERMA8GA1UEAxMI\r\nY2hhbmdlbWUxETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWls\r\nQGhvc3QuZG9tYWluMB4XDTE2MDUwMzEyNTAzNloXDTI2MDUwMTEyNTAzNlowgaIx\r\nCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2Nv\r\nMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREwDwYD\r\nVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEW\r\nEG1haWxAaG9zdC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLC\r\nlPmJX38tKMcnm8Jv/M/CDaxmNKZ7wvg/KWt9OSsOJE0WgWr1An5/pAW381PYx2H8\r\np0On78+EpcDP1XfD8nalTrQW5y38jii4ZNucd/4GVZs0OL+sXRYPwj1QzzxN29GW\r\nySpHzt9V7eE0KKOQXQybz6/+izop7JqvAOho8g99AgMBAAGjggELMIIBBzAdBgNV\r\nHQ4EFgQUR3EIqcIML9Qp0K3CTKqU6ZJbeIQwgdcGA1UdIwSBzzCBzIAUR3EIqcIM\r\nL9Qp0K3CTKqU6ZJbeIShgaikgaUwgaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD\r\nQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24x\r\nETAPBgNVBAsTCGNoYW5nZW1lMREwDwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMI\r\nY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQCxMnMh\r\n3LVOzjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBADIWUndUn2Fj4ION\r\nGuTGapJlHhbsRmVo2WnaVerTgUYKX7phiZDrF8ukSgSpQUpFBRvwouxf8dPiJcjY\r\nExVY5EXvtW9JuO/EnzR9c7t3ziXPplG5BwThxIgf9dJFyydyhhh9uZLxMhsRoADh\r\nIuWe1D9oqUijO2yrvHM4uyesr09F\r\n-----END CERTIFICATE-----', 'UP', '2016-05-03 12:01:49');
+(21, 'Italia2.white-vps.com', '89.46.73.118', 'root', 'hayoapahayo', 4040, 'EUROPE', '-----BEGIN CERTIFICATE-----\r\nMIID0TCCAzqgAwIBAgIJALEycyHctU7OMA0GCSqGSIb3DQEBBQUAMIGiMQswCQYD\r\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\r\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTERMA8GA1UEAxMI\r\nY2hhbmdlbWUxETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWls\r\nQGhvc3QuZG9tYWluMB4XDTE2MDUwMzEyNTAzNloXDTI2MDUwMTEyNTAzNlowgaIx\r\nCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2Nv\r\nMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREwDwYD\r\nVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEW\r\nEG1haWxAaG9zdC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLC\r\nlPmJX38tKMcnm8Jv/M/CDaxmNKZ7wvg/KWt9OSsOJE0WgWr1An5/pAW381PYx2H8\r\np0On78+EpcDP1XfD8nalTrQW5y38jii4ZNucd/4GVZs0OL+sXRYPwj1QzzxN29GW\r\nySpHzt9V7eE0KKOQXQybz6/+izop7JqvAOho8g99AgMBAAGjggELMIIBBzAdBgNV\r\nHQ4EFgQUR3EIqcIML9Qp0K3CTKqU6ZJbeIQwgdcGA1UdIwSBzzCBzIAUR3EIqcIM\r\nL9Qp0K3CTKqU6ZJbeIShgaikgaUwgaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD\r\nQTEVMBMGA1UEBxMMU2FuRnJhbmNpc2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24x\r\nETAPBgNVBAsTCGNoYW5nZW1lMREwDwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMI\r\nY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQCxMnMh\r\n3LVOzjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBADIWUndUn2Fj4ION\r\nGuTGapJlHhbsRmVo2WnaVerTgUYKX7phiZDrF8ukSgSpQUpFBRvwouxf8dPiJcjY\r\nExVY5EXvtW9JuO/EnzR9c7t3ziXPplG5BwThxIgf9dJFyydyhhh9uZLxMhsRoADh\r\nIuWe1D9oqUijO2yrvHM4uyesr09F\r\n-----END CERTIFICATE-----', 'UP', '2016-05-03 12:01:49'),
+(22, 'Singapure Digital Ocean 5', '188.166.220.94', 'q', 'q', 1, 'ASIA', '#', 'UP', '2016-06-06 13:55:51'),
+(23, 'Singapure Digital Ocean 5', '188.166.220.94', 'q', 'q', 1, 'ASIA', '2', 'UP', '2016-06-06 13:57:38'),
+(24, 'Singapure Digital Ocean 5', '188.166.220.94', 'q', 'q', 1, 'ASIA', '2', 'UP', '2016-06-06 13:57:38'),
+(25, 'Singapure Digital Ocean 54', '188.166.220.92', 'q', 'q', 1, 'ASIA', '2', 'UP', '2016-06-06 14:00:49'),
+(26, 'Singapure Digital Ocean 54', '188.166.220.92', 'q', 'q', 1, 'ASIA', '2', 'UP', '2016-06-06 14:01:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session_account`
+--
+
+CREATE TABLE IF NOT EXISTS `session_account` (
+  `id` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `ip_address` text NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2411,7 +2394,7 @@ INSERT INTO `server` (`id`, `name`, `host`, `user_login`, `password_login`, `por
 --
 
 CREATE TABLE IF NOT EXISTS `transaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `price` text NOT NULL,
   `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -2422,9 +2405,8 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `keterangan` text NOT NULL,
   `price_type` enum('IDR','USD') NOT NULL,
   `payment_method` text NOT NULL,
-  `flag` enum('0','1') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=362 ;
+  `flag` enum('0','1') NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=362 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
@@ -2796,11 +2778,32 @@ INSERT INTO `transaction` (`id`, `name`, `price`, `transaction_date`, `payment_d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `trik`
+--
+
+CREATE TABLE IF NOT EXISTS `trik` (
+  `id` int(11) NOT NULL,
+  `judul` text NOT NULL,
+  `isi` text NOT NULL,
+  `created_date` date NOT NULL,
+  `id_creator` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `trik`
+--
+
+INSERT INTO `trik` (`id`, `judul`, `isi`, `created_date`, `id_creator`) VALUES
+(2, 'Left your phone on the train? Your photos, and videos are safe. Just sign in from any device, and your files will be there waiting for you.', '<p>Left your phone on the train? Your photos, and videos are safe. Just sign in from any device, and your files will be there waiting for you.</p>', '2016-06-05', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `email` text NOT NULL,
   `password` text NOT NULL,
   `first_name` text NOT NULL,
@@ -2808,7 +2811,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `credit_premium` text NOT NULL,
   `address` text NOT NULL,
   `join_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `role` enum('MEMBER','ADMIN') NOT NULL,
+  `role` enum('MEMBER','ADMIN','PARTNER') NOT NULL,
   `credit_free` int(11) NOT NULL,
   `no_hp` text NOT NULL,
   `facebook` text NOT NULL,
@@ -2817,9 +2820,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `account_status` enum('ACTIVE','LOCK') NOT NULL,
   `key_password` text NOT NULL,
   `key_expired` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `my_credit` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3059 ;
+  `my_credit` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3059 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -2827,7 +2829,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `credit_premium`, `address`, `join_date`, `role`, `credit_free`, `no_hp`, `facebook`, `city`, `portal_code`, `account_status`, `key_password`, `key_expired`, `my_credit`) VALUES
 (1, 'admin@white-vps.com', '56d92049e885f8677c6f2a734a22d84b', 'Randy', 'Bastian', '4', 'Surabaya, Indonesia', '2016-05-03 15:17:51', 'ADMIN', 0, '0888', 'facebook.com/iant.randy', '', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
-(2, 'randy.bastbast@gmail.com', 'a0db22baddce8cfa39e5d6011a156deb', 'Randy', 'Bastian', '4', 'Edit\r\n', '2016-05-28 18:18:14', 'MEMBER', 0, '087733092188', 'facebook.com/iant.randy', '', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
+(2, 'randy.bastbast@gmail.com', 'a0db22baddce8cfa39e5d6011a156deb', 'Randy', 'Bastian', '0', 'Edit', '2016-06-05 01:08:02', 'PARTNER', 0, '087733092188', 'facebook.com/iant.randy', '', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (6, 'melawai1928@gmail.com', 'a0020fff4bc93b6822c67df4ecc9bf4d', 'Reza', 'pratama', '0', 'jl.pedati selatan no 22 jaktim cijantung', '2016-05-14 16:10:49', 'MEMBER', 0, '087883001373', 'https://www.facebook.com/sasasjnasnaoinsoia', 'jakarta timur', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (7, 'fian746@gmail.com', 'de0c1f8bb4be30b95edbc32d7361f786', 'alfian', 'rifky', '2', 'Karawaci', '2016-04-27 09:15:57', 'MEMBER', 0, '', 'facebook.com/fian.free', 'tangerang', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (8, 'ibrahimchoolid@gmail.com', '755d56c697c6114313c99e649bc670e4', 'ibrahim', 'cholid', '0', 'Dusun III A SELMABO JL. KP. MELAYU DESA AMPLAS 20229', '2016-05-12 15:06:51', 'MEMBER', 0, '0887768192487', 'facebook.com/ibrahimchoolid', 'Medan', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
@@ -4604,7 +4606,7 @@ INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `credi
 (1778, 'ryanandre@cuvox.de', 'c6b8a5bbd577db0dea1f248d8c3437bc', 'ryan', 'andre', '0', 'Jl.maskoki rt.05 rw 03', '2016-04-19 15:35:48', 'MEMBER', 0, '0897861746', 'facebook.com/', 'cawang', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (1779, 'Liont1983@teleworm.us', '25d7b789ea6e14c18076f1a6971fa6e2', 'Michael E.', 'vicissitude', '0', 'sadsadwq', '2016-04-19 15:35:55', 'MEMBER', 0, '13122183936', 'facebook.com/', 'Chicago', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (1780, 'yudiasna@cuvox.de', '0b4e7d0a8a78347ed5a3f061906f763e', 'yudi', 'asna', '0', 'Jl.mekasari', '2016-04-19 15:48:55', 'MEMBER', 0, '08976345221', 'facebook.com/', 'surabaya', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
-(1781, 'whitevpsrandy@gmail.com', '9445c7711d78d1aeb5a5adb90488d4a8', 'Randy', 'Bastian', '0', 'jl. aryojipang lr.5a / 16', '2016-05-30 00:31:08', 'MEMBER', 1, '087733092188', 'facebook.com/', 'Cepu', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
+(1781, 'whitevpsrandy@gmail.com', '9445c7711d78d1aeb5a5adb90488d4a8', 'Randy', 'Bastian', '2', 'jl. aryojipang lr.5a / 16', '2016-06-05 00:16:02', 'MEMBER', 1, '087733092188', 'facebook.com/', 'Cepu', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (1782, 'clayfriends503@gmail.com', '35a6351fd1751d3636343a57c905de1b', 'Riyan', 'Vantlast', '0', 'Jakarta', '2016-05-11 07:58:49', 'MEMBER', 0, '083814141540', 'facebook.com/', 'Jakarta', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (1783, 'telo.marxis@gmail.com', '88d6219b487f1fc9284ed6fcbc1f8aac', 'telo', 'marxis', '0', 'jl.Tj sadari No 01 Surabaya', '2016-04-19 16:36:32', 'MEMBER', 0, '082133859767', 'https://www.facebook.com/S4t4nyc', 'surabaya', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0);
 INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `credit_premium`, `address`, `join_date`, `role`, `credit_free`, `no_hp`, `facebook`, `city`, `portal_code`, `account_status`, `key_password`, `key_expired`, `my_credit`) VALUES
@@ -5889,6 +5891,124 @@ INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `credi
 (3057, 'Catill51@fleckens.hu', 'fcea920f7412b5da7be0cf42b8c93759', 'czvxcv', 'asdas', '0', 'asdasdasd', '2016-06-04 18:01:27', 'MEMBER', 0, '088809898912', 'facebook.com/', 'pekalongan ', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0),
 (3058, 'sayamuhammad_satrio@yahoo.co.id', '568fe0733df32240a4e83a1545f9e747', 'satrio ramadhana', 'yudhono', '0', 'ITS', '2016-06-04 18:06:52', 'MEMBER', 0, '62823', 'facebook.com/msatrio', 'surabaya', '', 'ACTIVE', '', '0000-00-00 00:00:00', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `configuration`
+--
+ALTER TABLE `configuration`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `server`
+--
+ALTER TABLE `server`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `session_account`
+--
+ALTER TABLE `session_account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `trik`
+--
+ALTER TABLE `trik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2049;
+--
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `configuration`
+--
+ALTER TABLE `configuration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=234;
+--
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `server`
+--
+ALTER TABLE `server`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `session_account`
+--
+ALTER TABLE `session_account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=362;
+--
+-- AUTO_INCREMENT for table `trik`
+--
+ALTER TABLE `trik`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3059;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
