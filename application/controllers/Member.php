@@ -304,6 +304,20 @@ class Member extends CI_Controller {
 			"expired_date" 	=> $expired_date,
 			);
 		$this->db->insert("account",$data);
+
+		// Add Account to Sesion _account
+		$server 	= $this->db->get("server")->result();
+		foreach($server as $s)
+		{
+			$host 	= $s->host;
+			$data 	= array(
+				"username"		=> $username,
+				"ip_address"	=> $host,
+				"status"		=> 0
+				);
+			$this->db->insert("session_account",$data);
+		}
+		
 		// Update Credit in User
 		if($type_account == 'FREE')
 		{
