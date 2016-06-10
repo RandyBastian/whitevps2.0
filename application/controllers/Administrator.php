@@ -817,35 +817,4 @@ class Administrator extends CI_Controller {
 		}
 	}
 
-	// ==== Dijalankan Sekali Saja ==== //
-	public function delete_expired_account()
-	{
-		$expired 	= date("Y-m-d",strtotime("-5 day"));
-		$account 	= $this->db->get("account")->result();
-		foreach($account as $a)
-		{
-			if($a->expired_date < $expired)
-			{
-				$this->db->delete("account",array("username" => $a->username));
-			}
-		} 
-	}
-
-	public function entry_session_account()
-	{
-		$server 		= $this->db->get("server")->result();
-		$account 		= $this->db->get("account")->result();
-
-		foreach($server as $s)
-		{
-			foreach($account as $a)
-			{
-				$data = array(
-					"username" 		=> $a->username,
-					"ip_address"	=> $s->host
-					);
-				$this->db->insert("session_account",$data);
-			}
-		}
-	}
 }

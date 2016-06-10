@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:saxon="http://saxon.sf.net/" xmlns="http://www.w3.org/TR/REC-html40">
+   <head>
+      <title>BNI Internet Banking mobile version</title><style type="text/css"> .RIGHT {text-align:right;} </style><style type="text/css"> .LEFT {text-align:left;} </style><meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no;" name="viewport"></meta>
+      <meta content="telephone=no" name="format-detection"></meta>
+      <link media="all" rel="StyleSheet" type="text/css" href="style/bh/style_tablet.css"></link>
+      <link media="all" rel="StyleSheet" type="text/css" href="style/bh/style_global.css"></link>
+      <link media="all" rel="StyleSheet" type="text/css" href="style/bh/cat_ipad_style.css"></link>
+      <link media="all" rel="StyleSheet" type="text/css" href="style/bh/style_tablet_default.css"></link><script type="text/javascript" src="web/js/mconnectJS/jQuery.js"></script><script type="text/javascript" src="web/js/mconnectJS/jquery_alerts.js"></script><script language="javascript" type="text/javascript" src="web/js/mconnectJS/jQuery_mConnect.js"></script><script language="javascript" type="text/javascript" src="web/js/mconnectJS/templateImpl.js"></script><script type="text/javascript" src="web/js/mconnectJS/detailLink.js"></script></head>
+   <body leftmargin="0" onorientationchange="updateOrientation()" topmargin="0" class="LEFT " onload=""><div id="parentDiv" class="transparent" height="100%" style="position:absolute; text-align:center;background-color:Gray;width:100%;
+      height:100%; display:none; top:0px; left:0px; z-index:5000;" >
+      </div>
+      <div id="waitIndicatorDiv" class="Indicator" style="valign:middle;display:none;" >
+      <center><img src="iui/loading.gif" /></center>
+      <br/>
+      ReScaling As Per Orientation
+      </div>
+      
+      <div id="main" name="main" selected="true">
+         <div id="jQuery" name="jQuery" style="display:none;">$(document).ready(function(){
+            
+            	 RadioAndCheckBox();
+            });
+            
+         </div><script language="Javascript">
+loadscript();
+</script><div id="orient">
+            <form id="form" method="post" name="form" action="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho" autocomplete="on"><div id="divindex1" name="divindex1">
+               <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="Combo1_table">
+                  <tr id="Combo1_tr">
+                     <td id="Combo1" class="CheaderText"><img id="logo" src="web/images/bh/logo.png" alt="BNI" class="logo"></img><img id="text" src="web/images/bh/BIB.png" alt="BNI" class="BIB"></img></td>
+                  </tr>
+               </table></div><input type="hidden" name="Num_Field_Err" id="Num_Field_Err" value="&#34;Please enter digits only!&#34;"></input><input type="hidden" name="Mand_Field_Err" id="Mand_Field_Err" value="&#34;Mandatory field is empty!&#34;"></input><table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="Combo1_table">
+                  <tr id="Combo1_tr">
+                     <td id="Combo1" class="headerBarText"><span id="Step1"></span></td>
+                  </tr>
+               </table><div class="CommonTableClass" id="linebreak_div" ><br/></div><div id="WelcomeBar" name="WelcomeBar" class="welcomeStyle">
+               <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="Header_table">
+                  <tr id="Header_tr">
+                     <td id="Header" class="clsComboTd"><span id="message" class="bodyfont">Selamat Datang</span>&#10;<span id="CurrentProfileDisp" class="ProfileLink">RANDY BASTIAN</span><input type="submit" name="LogOut" id="LogOut" value="Keluar" class="btnLogOut"></input><input type="submit" name="dashBoard" id="dashBoard" value="" class="btnDashboard"></input></td>
+                  </tr>
+               </table>
+               <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="lgntime_table">
+                  <tr id="lgntime_tr">
+                     <td id="lgntime" class="clsComboTd"><span id="message" class="bodyfont">Login Terakhir :</span>&#10;
+                     </td>
+                  </tr>
+               </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="List_table">
+               <tr id="List_tr"> 
+               	  <td id="List_td"  class="clsDisplayTd" ><span id="List" class="lgntimefont">10-Jun-2016 02:14:54 PM</span></td>  </tr> </table></div><div class="CommonTableClass" id="linebreak_div" ><br/></div><div class="CommonTableClass" id="linebreak_div" ><br/></div><div id="divindex2" name="divindex2" class="Commondiv"><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=AccountsUrlRq&mbparam=ojurDhWmjM3nwH4k69QnCuTZMREhFdB%2B%2FLKpEIOeXeQQnWQyHA%2Bz4cJ30IIKuX0%3D">
+                  <div class="clsLinkContent">REKENING<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=TransactionUrlRq&BBIDN=&mbparam=ojurDhX9jDrnwH4kzppW%2FcR2ezk3DzVRQ%2FzV3zEHAkPlyOm58ntWCi1%2FDXicsIc%3D">
+                  <div class="clsLinkContent">TRANSFER<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=VASUrlRq&BBIDN=&mbparam=ojurDhWcjM0LWIjkA1vuEU53tarpL1U45MLkb7pUF0ihVOphwEp1g2sr8j8oI4c%3D">
+                  <div class="clsLinkContent">PEMBELIAN<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=PaymentsMenuRq&BBIDN=&mbparam=ojurDhWN6c3nwH4k69cn3HKeh%2B9UERVFkybd7exf%2F7HNuSDv7htCQ7apObl7Zb8%3D">
+                  <div class="clsLinkContent">PEMBAYARAN<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=ServiceReqMenuRq&mbparam=ojurDhWVjM3nwH4k698nCuNCFY0z7e2f2jJG%2FVIlEAwxraizncFTtaLaFpwfsOk%3D">
+                  <div class="clsLinkContent">PERMOHONAN LAYANAN<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=AdministrationMenuRq&mbparam=ojurDhWXjM3CBoS8vwP2WQuHKXpzdiTmFv0z00U6uQqI91oVvtDQyENzMT3gZIY%3D">
+                  <div class="clsLinkContent">ADMINISTRASI<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table><table cellpadding="0" cellspacing="0" class="CommonTableClass" border="0" id="MBMenuList_table">
+               <tr id="MBMenuList_tr"> 
+               	  <td id="MBMenuList_td"  class="clsHyperlinkDisplayTd" ><a id="MBMenuList" class="MainMenuStyle" href="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho?page=ExchangeRateRq&mbparam=ojurDhXtjM3cwHEH%2B3kLR7rXQotuRrTqrsgRprW4nD27UBhVq6FA3zko7No%2Bv6Q%3D">
+                  <div class="clsLinkContent">NILAI TUKAR<span class="clsLinkRightArrow"></span></div></a></td>  </tr> </table>
+               <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="Combo1_table">
+                  <tr id="Combo1_tr">
+                     <td id="Combo1" class="headerBarText"><span id="Step1" class="headerText"></span></td>
+                  </tr>
+               </table></div><input type="hidden" name="mbparam" id="mbparam" value="ojvlYgS1l0fSpVA1XZly4c%2FKJjPvct0GHJPgfK4zA2ToMTsinakdIveB%2FWrVjHQ%3D"></input><div class="CommonTableClass" id="LineBreak_div" ><br/></div>
+               <center>
+                  <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="message1_table">
+                     <tr id="message1_tr">
+                        <td align="center" id="message1_td" class="clsCenterDisplayTd"><span id="message1" class="FootText">Copyright © 2013</span></td>
+                     </tr>
+                  </table>
+               </center>
+               <center>
+                  <table border="0" cellpadding="0" cellspacing="0" class="CommonTableClass" id="message1_table">
+                     <tr id="message1_tr">
+                        <td align="center" id="message1_td" class="clsCenterDisplayTd"><span id="message1" class="FootText">PT. Bank Negara Indonesia(Persero)Tbk.</span></td>
+                     </tr>
+                  </table>
+               </center><input type="hidden" name="uniqueURLStatus" id="uniqueURLStatus" value="disabled"></input><input type="hidden" name="imc_service_page" id="imc_service_page" value="LoginRs"></input><input type="hidden" name="Alignment" id="Alignment" value="LEFT"></input><input id="page" name="page" type="hidden" value="LoginRs"></input><input id="locale" name="locale" type="hidden" value="bh"></input><input id="PageName" name="PageName" type="hidden" value="SignOnRetRq"></input><input id="formAction" name="formAction" type="hidden" value="https://ibank.bni.co.id/MBAWeb/FMB;jsessionid=0000_8J2_9UahwWCaWG4X9N_7GI:1a1li5jho"></input><input id="mConnectUrl" name="mConnectUrl" type="hidden" value="FMB"></input><input id="serviceType" name="serviceType" type="hidden" value="Dynamic"></input></form>
+         </div>
+      </div>
+   </body>
+</html>
