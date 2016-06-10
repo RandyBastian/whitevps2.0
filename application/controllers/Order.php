@@ -90,7 +90,7 @@ class Order extends CI_Controller {
 			"keterangan"		=>  "",
 			"price_type"		=>  "IDR",
 			"payment_method"	=>  "",
-			"flag"				=>	"1"
+			"flag"				=>	"0"
 		);
 		$this->db->insert("transaction",$data);
 		$data["invoice"]		= $invoice;
@@ -124,63 +124,3 @@ class Order extends CI_Controller {
 		$this->load->view("footer");
 	}
 }
-
-/*
-//---------------VeriTrans --------------------- //
-		// Transaction data
-		$transaction_details = array(
-			"order_id" 			=> $invoice,
-			"gross_amount"		=> $price_idr
-			);
-		$items = [
-			array(
-				"id"		=> $product_id,
-				"price"		=> $price_idr,
-				"quantity"	=> 1,
-				"name"		=> $product_name
-			)
-		];
-		
-		$billing_address = array(
-			"first_name"	=> $first_name,
-			"last_name"		=> $last_name,
-			"address"		=> $address,
-			"city"			=> $city,
-			"portal_code"	=> $portal_code,
-			"phone"			=> $phone,
-			"county_code"	=> $country_code
-		);
-		
-		$shipping_address = $billing_address;
-		
-		$customer_details = array(
-			"first_name"		=> $first_name,
-			"last_name"			=> $last_name,
-			"email"				=> $email,
-			"phone"				=> $phone,
-			"billing_address" 	=> $billing_address,
-			"shipping_address" 	=> $shipping_address
-		);
-		
-		// Kirim data
-		$transaction_data = array(
-			"payment_type"		=> "vtweb",
-			"vtweb"				=> array(
-				"credit_card_3d_secure" => true,
-				"enabled_payments"		=> array("bank_transfer", "credit_card","cstore")
-			),
-			"transaction_details"	=> $transaction_details,
-			"item_details"			=> $items,
-			"customer_details"		=> $customer_details
-		);
-		
-		try
-		{
-			$vtweb_url = $this->veritrans->vtweb_charge($transaction_data);
-			header("Location: " . $vtweb_url);
-		}
-		catch(Exception $e)
-		{
-			echo $e->getMessage();
-		}
-*/

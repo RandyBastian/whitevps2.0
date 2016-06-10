@@ -18,7 +18,7 @@ class Transaction extends CI_Controller {
 		$data["title"] = "My Transaction";
 		$id = $this->session->userdata["id_partner"];
 		$this->db->order_by("transaction_date","DESC");
-		$data["transaction"] = $this->db->get_where("transaction",array("id_user" => $id,"flag" => "1"))->result();
+		$data["transaction"] = $this->db->get_where("transaction",array("id_user" => $id)->result();
 
 		$this->load->view("partner/header",$data);
 		$this->load->view("partner/transaction",$data);
