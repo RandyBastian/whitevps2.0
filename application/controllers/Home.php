@@ -16,25 +16,5 @@ class Home extends CI_Controller {
 		$this->load->view('home',$data);
 		$this->load->view("footer");
 	}
-
-	function Ping()
-	{
-		// 0 = Aktif / UP, 1 = Tidak AKtif / DOWN
-		$server 	= $this->db->get("server")->result();
-		foreach($server as $s)
-		{
-			exec("ping -n 3 $s->host",$output,$status);
-			if($status == "0")
-			{
-				$server_status = "UP";
-			}
-			else
-			{
-				$server_status = "DOWN";
-			}
-			$this->db->where("id",$s->id);
-			$this->db->update("server",array("status" => $server_status,"update_status" => date("Y-m-d H:i")));
-			echo "$s->name is $server_status<br>";
-		}
-	}
+	
 }

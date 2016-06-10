@@ -1,335 +1,301 @@
-<!-- Slider
-======================================= -->  
+  <!-- Intro -->
+    <!-- Fullwidth section has bunch of modifier classes to alter its appearance: ".border-top, .border-bottom, .arrow-top, .arrow-bottom, .bg-gray, .bg-default, .bg-primary, .bg-parallax". They can be used separately or alltogether. -->
+    <section class="fw-section padding-top-3x" style="background-color: #2895f1;">
+      <div class="container padding-top">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+            <h1 class="text-light">Make Users Fall in Love With Your Website</h1>
+            <h4 class="text-light text-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            <div class="padding-top">
+            <a href="#" class="btn btn-primary btn-icon-right waves-effect waves-light">
+              Register Now
+              <i class="icon-location"></i>
+            </a>
+            <a href="#" class="btn btn-ghost btn-light waves-effect">Learn More</a>
+            </div>
+          </div>
+        </div><!-- .row -->
+        <img src="img/home/seo01.jpg" class="block-center" alt="SEO Services">
+      </div><!-- .container -->
+    </section><!-- .fw-section -->
 
-<div class="container_full">
-    
-    <div class="fullwidthbanner-container">
-    
-        <div class="fullwidthbanner">
-        
-            <ul>
-                <!-- SLIDE 1 -->
-                <li data-transition="fade" data-slotamount="9" data-thumb="<?php echo base_url();?>assets/frontend/images/spacer.gif">
-                    <img src="<?php echo base_url();?>assets/frontend/images/spacer.gif" alt="White-VPS Menu" />
-                    <div class="caption lfb" data-x="280" data-y="175" data-speed="900" data-start="900" data-easing="easeOutExpo"><img src="<?php echo base_url();?>assets/frontend/images/sliders/revolution/1.png" alt="White-VPS Menu" /></div>
-                    <div class="caption lft big_white_two"  data-x="0" data-y="40" data-speed="900" data-start="1300" data-easing="easeOutExpo">OpenVPN Premium</div>
-                    
-                    <div class="caption lft big_orange_two"  data-x="4" data-y="115" data-speed="900" data-start="1700" data-easing="easeOutExpo">Get your Unlimited OpenVPN</div>
+    <!-- Features -->
+    <section class="container padding-top-3x padding-bottom-3x">
+      <div class="row">
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="img/features/07.png" alt="Feature">
+              </div>
+              <h3 class="bwi-title">Precize Hardware</h3>
+              <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-delay-1 sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="img/features/08.png" alt="Feature">
+              </div>
+              <h3 class="bwi-title">Smart Control Panel</h3>
+              <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-delay-2 sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="img/features/09.png" alt="Feature">
+              </div>
+              <h3 class="bwi-title">SSD Hard Drives</h3>
+              <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- .row -->
+    </section><!-- .container -->
 
-                    <div class="caption sfb" data-x="80" data-y="280" data-speed="900" data-start="2700" data-easing="easeOutExpo">
-                        <div class="round1 one">Free Trial 2 Days<br />Unlimited Bandwidth <br /> 1 Account for <br /><i>All Server</i></div>
-                    </div>
-                    
-                    <div class="caption sfb" data-x="950" data-y="200" data-speed="900" data-start="3000" data-easing="easeOutExpo">
-                        <div class="price">Rp.<br /><i>35.000</i><br />/month</div>
-                    </div>
-                    
-                    <div class="caption sfb" data-x="940" data-y="300" data-speed="900" data-start="3200" data-easing="easeOutExpo">
-                        <div class="text1">Get <strong>1 Credit OpenVPN</strong> <br /> System</div>
-                    </div>
-                   
-                </li>
-                
-                <!-- SLIDE 2 -->
-                <li data-transition="slideleft" data-slotamount="9" data-thumb="<?php echo base_url();?>assets/frontend/images/sliders/revolution/slider-bg2.jpg">
-                    
-                    <img src="<?php echo base_url();?>assets/frontend/images/spacer.gif" alt="White-VPS Menu" />
-                    
-                    <div class="caption lfr" data-x="670" data-y="0" data-speed="900" data-start="900" data-easing="easeOutExpo"><img src="<?php echo base_url();?>assets/frontend/images/sliders/revolution/2.png" alt="White-VPS Menu" /></div>
-                    
-                    <div class="caption lft big_white"  data-x="0" data-y="62" data-speed="900" data-start="1000" data-easing="easeOutExpo">Mega Credits</div>
-                    
-                    <div class="caption lft big_orange"  data-x="4" data-y="140" data-speed="900" data-start="1700" data-easing="easeOutExpo">Get More Credit, BUT Cheaper</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="195" data-speed="900" data-start="2100" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Unlimited Bandwidth</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="235" data-speed="900" data-start="2200" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Create More Accounts for All Servers</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="275" data-speed="900" data-start="2300" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Premium Accounts</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="315" data-speed="900" data-start="2400" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Easy to Use</div> 
-                    
-                    <div class="caption sfb" data-x="0" data-y="406" data-speed="900" data-start="3400" data-easing="easeOutExpo"><a href="<?php echo site_url("order"); ?>" class="slider_button1"><i class="fa fa-arrow-right fa-lg"></i> View Details &nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-                    
-                    <div class="caption sfb" data-x="200" data-y="406" data-speed="900" data-start="4000" data-easing="easeOutExpo"><a href="<?php base_url("register");?>" class="slider_button2"><i class="fa fa-hand-o-right fa-lg"></i> Register Now&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-                    
-                    <div class="caption sfb" data-x="450" data-y="220" data-speed="900" data-start="3800" data-easing="easeOutExpo">
-                        <div class="round1">Get<br /><i>6 Credits</i> <br>System</div>
-                    </div>
-                    
-                    <div class="caption sfb" data-x="505" data-y="285" data-speed="900" data-start="4000" data-easing="easeOutExpo">
-                        <div class="price">Rp<br /><i>200.000</i></div>
-                    </div>
-                   
-                   <div class="caption lfb" data-x="650" data-y="280" data-speed="900" data-start="4500" data-easing="easeOutExpo"><img src="<?php echo base_url();?>assets/frontend/images/sliders/revolution/arrow.png" alt="White-VPS Menu" /></div>
-                   
-                </li>
-                                
-                <!-- SLIDE 3 -->
-                <li data-transition="papercut" data-slotamount="9" data-thumb="<?php echo base_url();?>assets/frontend/images/sliders/revolution/slider-bg3.jpg">
-                    
-                    <img src="<?php echo base_url();?>assets/frontend/images/spacer.gif" alt="White-VPS Menu" />
-                    
-                    <div class="caption lfr" data-x="670" data-y="0" data-speed="900" data-start="900" data-easing="easeOutExpo"><img src="<?php echo base_url();?>assets/frontend/images/sliders/revolution/3.png" alt="White-VPS Menu" /></div>
-                    
-                    <div class="caption lft big_white"  data-x="0" data-y="62" data-speed="900" data-start="1000" data-easing="easeOutExpo">Ultimate Credits</div>
-                    
-                    <div class="caption lft big_orange"  data-x="4" data-y="140" data-speed="900" data-start="1700" data-easing="easeOutExpo">Cheapest than Others</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="195" data-speed="900" data-start="2100" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Unlimited Bandwidth</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="235" data-speed="900" data-start="2200" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Anonymous</div>
-                    
-                    <div class="caption lfb small_text"  data-x="0" data-y="275" data-speed="900" data-start="2300" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Premium Accounts</div>
-                      
-                    <div class="caption lfb small_text"  data-x="0" data-y="315" data-speed="900" data-start="2400" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Easy to Use</div>
-
-                    <div class="caption lfb small_text"  data-x="0" data-y="355" data-speed="900" data-start="2500" data-easing="easeOutExpo"><i class="fa fa-check-circle fa-lg"></i> Create Accounts Whenever You Want !</div>
-                    
-                    <div class="caption sfb" data-x="0" data-y="406" data-speed="900" data-start="3400" data-easing="easeOutExpo"><a href="<?php echo site_url("order"); ?>" class="slider_button1"><i class="fa fa-arrow-right fa-lg"></i> View details &nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-                    
-                    <div class="caption sfb" data-x="200" data-y="406" data-speed="900" data-start="4000" data-easing="easeOutExpo"><a href="<?php site_url("register");?>" class="slider_button2"><i class="fa fa-hand-o-right fa-lg"></i> Register Now&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-                    
-                    <div class="caption sfb" data-x="450" data-y="220" data-speed="900" data-start="3800" data-easing="easeOutExpo">
-                        <div class="round1">Get<br /><i>12 Credits</i> <br />System</div>
-                    </div>
-                    
-                    <div class="caption sfb" data-x="505" data-y="285" data-speed="900" data-start="4000" data-easing="easeOutExpo">
-                        <div class="price">Rp<br /><i>390.000</i></div>
-                    </div>
-                   
-                   <div class="caption lfb" data-x="650" data-y="280" data-speed="900" data-start="4500" data-easing="easeOutExpo"><img src="<?php echo base_url();?>assets/frontend/images/sliders/revolution/arrow.png" alt="slide menu" /></div>
-                   
-                </li>
-                 
+    <!-- Text + Image -->
+    <!-- Fullwidth section has bunch of modifier classes to alter its appearance: ".border-top, .border-bottom, .arrow-top, .arrow-bottom, .bg-gray, .bg-default, .bg-primary, .bg-parallax". They can be used separately or alltogether. -->
+    <section class="fw-section padding-top-2x" style="background-color: #f9f9f9;">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 scrollReveal sr-left">
+            <img src="img/home/seo02.png" class="block-center" alt="SEO">
+          </div>
+          <div class="col-sm-6 padding-top scrollReveal sr-right">
+            <div class="padding-top-2x visible-lg visible-md"></div>
+            <div class="padding-top visible-xs"></div>
+            <h4 class="mobile-center">Optimized for your business</h4>
+            <p class="text-lg text-gray mobile-center">We've created the fastest and most convenient cloud technology to help you easily and more efficiently manage your infrastructure so you can get back to coding.</p>
+            <ul class="list-featured">
+              <li>Connect with pre-qualified customers</li>
+              <li>Save time and money</li>
+              <li>Rely on an experienced and knowledgeable team</li>
             </ul>
-                        
+            <div class="mobile-center">
+              <a href="#" class="btn btn-primary btn-icon-right waves-effect waves-light">
+                See Pricing Plans
+                <i class="icon-arrow-right"></i>
+              </a>
+            </div>
+            <div class="padding-bottom-2x visible-sm"></div>
+            <div class="padding-bottom-3x visible-xs"></div>
+          </div>
+        </div><!-- .row -->
+      </div><!-- .container -->
+    </section><!-- .fw-section -->
+
+    <!-- Text + Image -->
+    <section class="fw-section padding-top-2x" style="background-color: #f5f5f5;">
+      <div class="container padding-bottom-3x">
+        <div class="row">
+          <div class="col-sm-6 col-sm-push-6 padding-top-2x scrollReveal sr-right">
+            <img src="img/home/seo03.png" class="block-center" alt="SEO">
+          </div>
+          <div class="col-sm-6 col-sm-pull-6 padding-top scrollReveal sr-left">
+            <div class="padding-top hidden-sm"></div>
+            <h4 class="mobile-center">Optimized for your business</h4>
+            <p class="text-lg text-gray mobile-center">We've created the fastest and most convenient cloud technology to help you easily and more efficiently manage your infrastructure so you can get back to coding.</p>
+            <div class="padding-top">
+              <!-- Class ".progress-animated" enables animation on scroll. When use this class make sure you set your style="width" attribute to 0% OR remove it entirely. -->
+              <div class="progress progress-animated">
+                <div class="label">
+                  <span>Uptime</span>
+                  <span class="units">98%</span>
+                </div>
+                <div class="progress-bar progress-bar-default" data-valuenow="98"></div>
+              </div>
+              <div class="progress progress-animated">
+                <div class="label">
+                  <span>Support</span>
+                  <span class="units">96%</span>
+                </div>
+                <div class="progress-bar progress-bar-primary" data-valuenow="96"></div>
+              </div>
+              <div class="progress progress-animated">
+                <div class="label">
+                  <span>Payment</span>
+                  <span class="units">97%</span>
+                </div>
+                <div class="progress-bar progress-bar-warning" data-valuenow="97"></div>
+              </div>
+              <div class="progress progress-animated">
+                <div class="label">
+                  <span>Risks</span>
+                  <span class="units">22%</span>
+                </div>
+                <div class="progress-bar progress-bar-danger" data-valuenow="22"></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- .row -->
+      </div><!-- .container -->
+    </section><!-- .fw-section -->
+
+    <!-- CTA -->
+    <!-- Fullwidth section has bunch of modifier classes to alter its appearance: ".border-top, .border-bottom, .arrow-top, .arrow-bottom, .bg-gray, .bg-default, .bg-primary, .bg-parallax". They can be used separately or alltogether. -->
+    <section class="fw-section bg-parallax padding-top-3x padding-bottom-3x" style="background-image: url(img/home/seo-cta-bg.png);" data-stellar-background-ratio="0.65">
+      <div class="container text-center padding-top-3x padding-bottom-3x">
+        <h2 class="text-light scrollReveal sr-bottom">Start SEO Today</h2>
+        <h4 class="text-light text-thin scrollReveal sr-bottom sr-delay-1">Nucleus is your best choice for your next digital service or product.</h4>
+        <a href="#" class="btn btn-primary waves-effect waves-light scrollReveal sr-bottom sr-delay-2 sr-ease-in-out-back">Buy This Theme</a>
+      </div><!-- .container -->
+    </section><!-- .fw-section.bg-parallax -->
+
+    <!-- Speakers (Team Version 1) -->
+    <section class="container padding-top-3x padding-bottom-3x">
+      <h2 class="block-title text-center">
+        Our Specialists
+        <small>Meet professionals</small>
+      </h2>
+      <div class="row padding-top">
+        <!-- Teammate -->
+        <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-ease-in-out-back">
+          <div class="teammate-2 mobile-center">
+            <div class="thumbnail">
+              <img src="img/team/04.jpg" alt="Team">
+              <div class="social-bar">
+                <a href="#" class="sb-skype" data-toggle="tooltip" title="Skype">
+                  <i class="fa fa-skype"></i>
+                </a>
+                <a href="#" class="sb-facebook" data-toggle="tooltip" title="Facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="sb-twitter" data-toggle="tooltip" title="Twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="teammate-name">Dave Gendhem</h3>
+            <span class="teammate-position">Java Developer</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et necessitatibus aperiam.</p>
+          </div>
         </div>
-        
-    </div>
-
-</div><!-- end slider -->
-
-
-<div class="clearfix"></div>
-
-<div class="clearfix mar_top4"></div>
-<div>
-<center>
-	<h2 style="color:red">Baca Artikel Ini Sebelum bergabung di White-VPS.com !!</h2>
-	<a href="https://white-vps.com/blog/openvpn-premium-dan-unlimited-abiz-baca-langsung-gratis/"><h2 style="color:red"> >>>OpenVPN Premium dan Unlimited. Abiz Baca, Langsung Gratis !!<<< </h2></a>
-</center>
-</div>
-<div class="features_sec04">
-<div class="container">
-
-    <div class="left"><img src="<?php echo base_url();?>assets/frontend/images/internet.png" alt="our service" /></div><!-- end left -->
-    
-    <div class="right">
-        
-        <h1>Our Services</h1> <h2><em>Everything Just Got Easier with White-VPS</em>        </h2>
-        <div class="clearfix"></div>
-        
-        <ul class="section">
-            <li class="left"><img src="<?php echo base_url();?>assets/frontend/images/site-img33.png" alt="connect to all" /></li>
-            <li><strong>Connect to ALL</strong> Bypass Your Firewall and Go Online</li>
-        </ul><!-- end section -->
-        
-        <ul class="section two">
-            <li class="left"><img src="<?php echo base_url();?>assets/frontend/images/site-img34.png" alt="fast" /></li>
-            <li><strong>Fast</strong> Get Whatever you want in Internet</li>
-        </ul><!-- end section -->
-        
-        <div class="clearfix"></div>
-        
-        <ul class="section three">
-            <li class="left"><img src="<?php echo base_url();?>assets/frontend/images/site-img35.png" alt="no log" /></li>
-            <li><strong>No Log</strong> There is not Log For Your Connectivity</li>
-        </ul><!-- end section -->
-        
-        <ul class="section four">
-            <li class="left"><img src="<?php echo base_url();?>assets/frontend/images/site-img36.png" alt="unlimited" /></li>
-            <li><strong>Unlimited</strong> Download, Streaming and Play Online Game</li>
-        </ul><!-- end section -->
-        
-    </div>
-
-</div>
-</div><!-- end features section 4 -->
-<div class="clearfix mar_top2"></div>
-
-<div class="hostplan_offers">
-
-    <div class="container">
-    
-        <div class="title">Special Offers!</div>
-        <div class="box"><strong>What's Hot</strong></div>
-        
-        <div class="clearfix"></div>
-        
-        <div class="one_half"> 
-        
-            <div class="left"><img src="<?php echo base_url();?>assets/frontend/images/vpn_1.png" alt="Premium Credit" /></div>
-            
-            <div class="right">
-            
-                <h2>Premium Credit</h2>
-                
-                <h6>1 Credit OpenVPN</h6>
-                
-                <ul>
-                    <li><i class="fa fa-check"></i> Cheap</li>
-                    <li><i class="fa fa-check"></i> 1 Account for All Server</li>
-                    <li><i class="fa fa-check"></i> Easy to Use</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Android</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Desktop</li>
-                </ul>
-                
-                <div class="price"><strong>Rp 35</strong><em>.000</em></div>
-                
-                <a href="<?php echo site_url("order"); ?>" class="readmore_but">Read more</a>
-                
+        <!-- Teammate -->
+        <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-1 sr-ease-in-out-back">
+          <div class="teammate-2 mobile-center">
+            <div class="thumbnail">
+              <img src="img/team/05.jpg" alt="Team">
+              <div class="social-bar">
+                <a href="#" class="sb-facebook" data-toggle="tooltip" title="Facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="sb-dribbble" data-toggle="tooltip" title="Dribbble">
+                  <i class="fa fa-dribbble"></i>
+                </a>
+                <a href="#" class="sb-behance" data-toggle="tooltip" title="Behance">
+                  <i class="fa fa-behance"></i>
+                </a>
+              </div>
             </div>
-        
-        </div><!-- end section -->
-        
-        <div class="one_half last"> 
-            <div class="left"><img src="<?php echo base_url();?>assets/frontend/images/vpn_2.png" alt="Mega Credits" /></div>
-            <div class="right">
-            
-                <h2>Mega Credits</h2>
-                
-                <h6>6 Credits OpenVPN</h6>
-                
-                <ul>
-                    <li><i class="fa fa-check"></i> Cheaper than Other</li>
-                    <li><i class="fa fa-check"></i> 1 Account for All Server</li>
-                    <li><i class="fa fa-check"></i> Easy to Use</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Android</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Desktop</li>
-                </ul>
-                
-                <div class="price"><strong>Rp 200</strong><em>.000</em></div>
-                
-                <a href="<?php echo site_url("order"); ?>" class="readmore_but">Read more</a>
-                
-            </div>
-        
-        </div><!-- end section -->
-        <div class="one_half last"> 
-            <div class="left"><img src="<?php echo base_url();?>assets/frontend/images/vpn_3.png" alt="Ulimate Credits" /></div>
-            
-            <div class="right">
-            
-                <h2>Ultimate Credits</h2>
-                
-                <h6>12 Credits OpenVPN</h6>
-                
-                <ul>
-                    <li><i class="fa fa-check"></i> Cheapest</li>
-                    <li><i class="fa fa-check"></i> 1 Account for All Server</li>
-                    <li><i class="fa fa-check"></i> Easy to Use</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Android</li>
-                    <li><i class="fa fa-check"></i> OpenVPN Desktop</li>
-                </ul>
-                
-                <div class="price"><strong>Rp 390</strong><em>.000</em></div>
-                
-                <a href="<?php echo site_url("order"); ?>" class="readmore_but">Read more</a>
-                
-            </div>
-        
-        </div><!-- end section -->
-            
-    </div>
-
-</div><!-- end hosting offers section -->
-
-<div class="clearfix mar_top4"></div>
-
-<div class="features_sec03">
-
-    <div class="container">
-        
-        <div class="center">
-        
-            <h2>How to Use? <em>3 Easy Steps</em></h2>
-        
-            <div id="tabs">
-            <ul class="tabs">  
-            
-                <li class="active"><a href="#tab1"><b>1</b>Join to Us</a></li>
-                <li class=""><a href="#tab2"><b>2</b>Buy Credit</a></li>
-                <li class="last"><a href="#tab3"><b>3</b>Enjoy Your OpenVPN</a></li>
-                
-            </ul><!-- /# end tab links -->   
- 
-        <div class="tab-container">
-            
-            <div id="tab1" class="tab-content"> 
-                <a href="<?php echo site_url("register"); ?>"><img src="<?php echo base_url();?>assets/frontend/images/register_here.png" class="image_left1" alt="Register Menu" /></a>
-                <h4>Register</h4>
-                <p style="text-align:justify">You must register using a valid email. If you are a new member, you will get a credit that can be used to create a trial account (expired account is 2 days).
-Let's join us and make your internet connection safe from hackers</p> 
-            </div><!-- end tab single section --> 
-            
-            
-            <div id="tab2" class="tab-content">
-                <a href="<?php echo site_url("order"); ?>"><img src="<?php echo base_url();?>assets/frontend/images/buy_credit.png" class="image_left1" alt="Buy Credit from Us" /></a>
-                <h4>Choose Credit Package You Want</h4>
-                <p style="text-align:justify">Choose the package that we have provided on <a href="<?php echo site_url("order"); ?>">this page</a>. We provide Premium package, Mega and Ultimate that you can enjoy as you like. Once you buy the credit, you must create an account manually on the page that we have provided in the area.<br><br></p>
-            </div><!-- end tab single section -->
-            
-            
-            <div id="tab3" class="tab-content"> 
-                <img src="<?php echo base_url();?>assets/frontend/images/site-img05.png" class="image_left1" alt="Enjoy Your OpenVPN" />
-                <h4>Make your OpenVPN Live!</h4>
-                <p>Please, Enjoy Our Service !!<br /><br /><br /><br /><br /><br /></p>    
-            </div><!-- end tab single section -->
-    
+            <h3 class="teammate-name">Amy Rollhouse</h3>
+            <span class="teammate-position">Backend Developer</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et necessitatibus aperiam.</p>
+          </div>
         </div>
-        
+        <!-- Teammate -->
+        <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-2 sr-ease-in-out-back">
+          <div class="teammate-2 mobile-center">
+            <div class="thumbnail">
+              <img src="img/team/06.jpg" alt="Team">
+              <div class="social-bar">
+                <a href="#" class="sb-stackoverflow" data-toggle="tooltip" title="Stack Overflow">
+                  <i class="fa fa-stack-overflow"></i>
+                </a>
+                <a href="#" class="sb-facebook" data-toggle="tooltip" title="Facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="sb-google-plus" data-toggle="tooltip" title="Google Plus">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="teammate-name">Jim Kirk</h3>
+            <span class="teammate-position">Backend Developer</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et necessitatibus aperiam.</p>
+          </div>
         </div>
-        
-        </div><!-- end center column -->
-        
-        <div class="right">
-        
-            <h2>Knowledge Base</h2>
-            
-            <div class="accrodation">
-            
-            <!-- section 1 -->
-            <span class="acc-trigger active"><a href="#">What is Credit System?</a></span>
-            <div class="acc-container">
-            <div class="content">
-           1 Credit system = 1 month Expired.<br>You can create an Account with expired time of 1 month or Add expired one month longer than the account that you created earlier.
+        <!-- Teammate -->
+        <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-3 sr-ease-in-out-back">
+          <div class="teammate-2 mobile-center">
+            <div class="thumbnail">
+              <img src="img/team/07.jpg" alt="Team">
+              <div class="social-bar">
+                <a href="#" class="sb-skype" data-toggle="tooltip" title="Skype">
+                  <i class="fa fa-skype"></i>
+                </a>
+                <a href="#" class="sb-facebook" data-toggle="tooltip" title="Facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="sb-twitter" data-toggle="tooltip" title="Twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </div>
             </div>
-            </div>
-            
-            <!-- section 2 -->
-            <span class="acc-trigger"><a href="#">Where is White-VPS Software?</a></span>
-            <div class="acc-container">
-            <div class="content">
-            White-VPS Software Application for Windows, Android, Mac, Linux, iOS being developed.
-            </div>
-            </div>
-            
-            </div>
-             
-        </div><!-- end right column -->
-        
-    </div>
+            <h3 class="teammate-name">Betty Ironsmith</h3>
+            <span class="teammate-position">Product Designer</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et necessitatibus aperiam.</p>
+          </div>
+        </div>
+      </div><!-- .row -->
+    </section><!-- .container -->
 
-</div><!-- end features section 3 -->
+    <!-- Testimonials -->
+    <section class="fw-section border-top padding-top-3x padding-bottom-3x">
+      <div class="container">
+        <h2 class="block-title text-center">Over 150,000 Clients Have Used Our Services<small>Read our customer success stories</small></h2>
+        <div class="row padding-top">
+          <div class="col-sm-4 scrollReveal sr-scaleDown sr-ease-in-out-back">
+            <div class="testimonial">
+              <h3 class="author-name">Adam Tomson</h3>
+              <p class="text-gray">Co-founder &amp; CEO</p>
+              <div class="text"> Molestiae, quas, magnam. Fuga dolorum praesentium temporibus.</div>
+              <a href="#" class="text-sm">Atom Software</a>
+            </div>
+          </div>
+          <div class="col-sm-4 scrollReveal sr-scaleDown sr-delay-1 sr-ease-in-out-back">
+            <div class="testimonial">
+              <h3 class="author-name">Frank Sinator</h3>
+              <p class="text-gray">Business Owner</p>
+              <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate obcaecati.</div>
+              <a href="#" class="text-sm">Freelancer</a>
+            </div>
+          </div>
+          <div class="col-sm-4 scrollReveal sr-scaleDown sr-delay-2 sr-ease-in-out-back">
+            <div class="testimonial">
+              <h3 class="author-name">Abirvalg</h3>
+              <p class="text-gray">CTO</p>
+              <div class="text">Dolorem inventore dolores, tempore fugit ullam magni. Libero sint.</div>
+              <a href="#" class="text-sm">Melkosoft</a>
+            </div>
+          </div>
+        </div><!-- .row -->
+      </div><!-- .container -->
+    </section><!-- .fw-section.border-top -->
 
-<div class="clearfix mar_top1"></div>
-
-<div class="bottom_section">
-
-    <div class="waves_graph"></div>
-    
-    <div class="clearfix mar_top3"></div>
-<div class="clearfix"></div>
-    
-</div><!-- end bottom section -->
+    <!-- Logo Carousel -->
+    <section class="fw-section border-top padding-top-3x padding-bottom">
+      <div class="container">
+        <h2 class="text-sm text-semibold text-gray text-uppercase text-center">Our Partners</h2>
+        <!-- Data API:
+          data-loop="true/false" enable/disable looping
+          data-autoplay="true/false" enable/disable carousel autoplay
+          data-interval="3000" autoplay interval timeout in miliseconds
+          Simply add necessary data attribute to the ".logo-carousel" with appropriate value to adjust carousel functionality.
+         -->
+         <div class="logo-carousel" data-loop="true" data-autoplay="true" data-interval="4000">
+           <div class="inner">
+             <a href="#"><img src="img/logos/01.jpg" alt="Logo"></a>
+             <a href="#"><img src="img/logos/02.jpg" alt="Logo"></a>
+             <a href="#"><img src="img/logos/03.jpg" alt="Logo"></a>
+             <a href="#"><img src="img/logos/04.jpg" alt="Logo"></a>
+             <a href="#"><img src="img/logos/05.jpg" alt="Logo"></a>
+             <a href="#"><img src="img/logos/06.jpg" alt="Logo"></a>
+           </div>
+         </div><!-- .logo-carousel -->
+      </div><!-- .container -->
+    </section><!-- .fw-section.border-top -->

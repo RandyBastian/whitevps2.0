@@ -60,6 +60,17 @@
                     <a href="<?php echo site_url('partner');?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> My Profile <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo site_url('partner/profile');?>">Update Profile</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('partner/profile/change-password');?>">Change Password</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#"><i class="fa fa-users fa-fw"></i> Account VPN <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
@@ -71,15 +82,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user-md fa-fw"></i> Users <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<?php echo site_url('partner/user/user_create');?>">Create New</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('partner/user');?>">Users List</a>
-                        </li>
-                    </ul>
+                    <a href="<?php echo site_url('partner/user');?>"><i class="fa fa-user-md fa-fw"></i> User List</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-user-md fa-fw"></i> Tools & Trik <span class="fa arrow"></span></a>

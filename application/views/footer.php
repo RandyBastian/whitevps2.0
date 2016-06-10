@@ -1,247 +1,125 @@
-<div class="clearfix"></div>
+<!-- Scroll To Top Button -->
+    <a href="#" class="scroll-to-top-btn">
+      <i class="icon-arrow-up"></i>
+    </a><!-- .scroll-to-top-btn -->
 
-<div class="footer">
-
-    <div class="container">
-        
-        <div class="one_fourth">
-        
-            <h3>Support/Help</h3>
-            <ul class="list">
-                <li><a href="<?php echo site_url("contact"); ?>"><i class="fa fa-angle-right"></i> Contact Us</a></li>
-                <li><a href="<?php echo site_url("knowledge");?>"><i class="fa fa-angle-right"></i> Knowledge Base</a></li>
-                <li><a href="<?php echo site_url("member/download");?>"><i class="fa fa-angle-right"></i> Downloads</a></li>
-                <li><a href="<?php echo site_url("login"); ?>"><i class="fa fa-angle-right"></i> My Account</a></li>
-                <li><a href="<?php echo site_url("register");?>"><i class="fa fa-angle-right"></i> Sign Up</a></li>
-                <li><a href="<?php echo site_url("login");?>"><i class="fa fa-angle-right"></i> Login</a></li>
-            </ul>
-        </div><!-- end section -->     
-
-        <div class="one_fourth">
-        
-            <h3>Have any Questions</h3>
-            
-            <div class="any_questions">
-                <img src="<?php echo base_url();?>assets/frontend/images/site-img06.jpg" alt="Call Us" />
-                <p>If you have any questions, feel free to contact us:</p>
-                <div class="clearfix mar_top1"></div>
-                <h3>admin@white-vps.com</h3>
-            </div>
-        </div><!-- end section -->
-          
-    </div>
-    
-    <div class="footer_sectwo">
-    
+    <!-- Footer -->
+    <footer class="footer footer-dark">
+      <div class="top-footer">
         <div class="container">
-            
-            <div class="free_scripts">
-            
-                <h4>Payments</h4>
-                
+          <div class="tools">
+            <div class="cell">
+              <i><img src="img/footer/icons/help.png" alt="Email"></i>
+              <span><a href="mailto:info@email.com">info@email.com</a></span>
+            </div>
+            <div class="cell">
+              <i><img src="img/footer/icons/phone.png" alt="Phone"></i>
+              <span><a href="#">+10 (8) 555 333</a></span>
+            </div>
+            <div class="cell">
+              <i><img src="img/footer/icons/chat.png" alt="Chat"></i>
+              <span><a href="#">Live Chat</a></span>
+            </div>
+          </div>
+          <div class="subscribe">
+            <div class="subscribe-form">
+              <i><img src="img/footer/icons/envelope.png" alt="Subscribe"></i>
+              <form action="http://8guild.us3.list-manage.com/subscribe/post?u=168a366a98d3248fbc35c0b67&amp;id=011a3332a0" method="post" target="_blank" novalidate autocomplete="off">
+                <label for="subscr_email" class="sr-only">Subscribe to latest news</label>
+                <input type="email" class="form-control" id="subscr_email" placeholder="Your Email">
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;">
+                  <input type="text" name="b_168a366a98d3248fbc35c0b67_011a3332a0" tabindex="-1" value="">
+                </div>
+                <button type="submit"><i class="icon-mail"></i></button>
+              </form>
+            </div>
+          </div>
+        </div><!-- .container -->
+      </div><!-- .top-footer -->
+
+      <div class="bottom-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <section class="widget widget_text">
+                <a href="index-2.html" class="site-logo">
+                  <img src="img/logo-light.png" alt="Nucleus">
+                </a><!-- .site-logo -->
+                <p>Left your phone on the train? Your photos, and videos are safe. Just sign in  from any device, and your files will be there waiting for you.</p>
+              </section><!-- .widget.widget_text -->
+            </div><!-- .col-md-3 -->
+            <div class="col-md-3 col-sm-6">
+              <section class="widget widget_pages">
+                <h3 class="widget-title">
+                  <i class="icon-ribbon"></i>
+                  Nucleus
+                </h3>
                 <ul>
-                    <li><img src="<?php echo base_url();?>assets/frontend/images/mandiri.png" alt="Bank Mandiri Payment" /></li>
+                  <li><a href="index-2.html">Home</a></li>
+                  <li><a href="#">Domains</a></li>
+                  <li><a href="home-hosting.html">Hosting</a></li>
                 </ul>
-            
-            </div><!-- end payments accept -->
-        
-        </div>
+              </section><!-- .widget.widget_pages -->
+            </div><!-- .col-md-3 -->
+            <div class="clearfix visible-sm"></div>
+            <div class="col-md-3 col-sm-6">
+              <section class="widget widget_pages">
+                <h3 class="widget-title">
+                  <i class="icon-cog"></i>
+                  Support
+                </h3>
+                <ul>
+                  <li><a href="help-general.html">Help Center</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+              </section><!-- .widget.widget_pages -->
+            </div><!-- .col-md-3 -->
+            <div class="col-md-3 col-sm-6">
+              <section class="widget widget_pages">
+                <h3 class="widget-title">
+                  <i class="icon-globe"></i>
+                  Community
+                </h3>
+                <ul>
+                  <li><a href="#">Developers</a></li>
+                  <li><a href="#">Referrals</a></li>
+                  <li><a href="#">Forum</a></li>
+                </ul>
+              </section><!-- .widget.widget_pages -->
+            </div><!-- .col-md-3 -->
+          </div><!-- .row -->
+          <div class="copyright">
+            <div class="column">
+              <p>&copy; Nucleus 2015. Made by <a href="http://8guild.com/" target="_blank">8Guild</a> with <i class="fa fa-heart text-danger"></i> love.</p>
+            </div><!-- .column -->
+            <div class="column">
+              <div class="cards">
+                <img src="img/cards.png" alt="Credit Cards">
+              </div>
+            </div><!-- .column -->
+          </div><!-- .copyright -->
+        </div><!-- .container -->
+      </div><!-- .bottom-footer -->
+    </footer><!-- .footer -->
 
-        <div class="free_scripts">
-            <h4>Our Server</h4>
-            
-            <ul>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/indonesia.png" alt="Indonesia OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/singapure.png" alt="Singapure OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/canada.png" alt="Canada OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/germany.png" alt="Germany OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/italia.png" alt="Italia OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/netherland.png" alt="Netherland OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/united_kingdom.png" alt="United Kingdom OpenVPN Server" /></li>
-                <li><img src="<?php echo base_url();?>assets/frontend/images/server_location/usa.png" alt="USA OpenVPN Server" /></li>
-            </ul>
-            
-        </div><!-- end free script installs -->
-    
-    </div>
+  </div><!-- .page-wrapper -->
 
-</div>
-<div class="copyright_info">
-    <div class="container"> 
-        <div class="one_half">
-            <b>Copyright © 2015-2016 white-vps.com. All rights reserved.  <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></b>
-        </div>
-    </div>
-    
-</div>
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="<?php echo site_url();?>assets/front/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/preloader.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/bootstrap.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/waves.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/placeholder.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/smoothscroll.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/waypoints.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/velocity.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/magnific-popup.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/jquery.stellar.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/owl.carousel.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/vendor/scrollreveal.min.js"></script>
+  <script src="<?php echo site_url();?>assets/front/js/scripts.js"></script>
 
-<div class="clearfix"></div>
-
-<!-- Footer
-======================================= -->
-<a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
-
-
-<!-- style switcher -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/style-switcher/styleswitcher.js"></script>
-<link rel="alternate stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/colors/blue.css" title="blue" />
-
-
-</div>
-
-    
-<!-- ######### JS FILES ######### -->
-<!-- get jQuery from the google apis -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/universal/jquery.js"></script>
-
-<!-- style switcher -->
-<script src="<?php echo base_url();?>assets/frontend/js/style-switcher/jquery-1.js"></script>
-<script src="<?php echo base_url();?>assets/frontend/js/style-switcher/styleselector.js"></script>
-
-<!-- main menu -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/ddsmoothmenu.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/selectnav.js"></script>
-
-<!-- jquery jcarousel -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/jcarousel/jquery.jcarousel.min.js"></script>
-
-<!-- REVOLUTION SLIDER -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/mainmenu/scripts.js"></script>
-
-<!-- tabs script -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/tabs/tabs.js"></script>
-
-<!-- scroll up -->
-<script type="text/javascript">
-    $(document).ready(function(){
- 
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 100) {
-                $('.scrollup').fadeIn();
-            } else {
-                $('.scrollup').fadeOut();
-            }
-        });
- 
-        $('.scrollup').click(function(){
-            $("html, body").animate({ scrollTop: 0 }, 500);
-            return false;
-        });
- 
-    });
-</script>
-
-<!-- jquery jcarousel -->
-<script type="text/javascript">
-
-    jQuery(document).ready(function() {
-            jQuery('#mycarousel').jcarousel();
-    });
-    
-    jQuery(document).ready(function() {
-            jQuery('#mycarouseltwo').jcarousel();
-    });
-    
-    jQuery(document).ready(function() {
-            jQuery('#mycarouselthree').jcarousel();
-    });
-    
-    jQuery(document).ready(function() {
-            jQuery('#mycarouselfour').jcarousel();
-    });
-    
-</script>
-
-<!-- accordion -->
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/accordion/custom.js"></script>
-
-<!-- REVOLUTION SLIDER -->
-<script type="text/javascript">
-
-    var tpj=jQuery;
-    tpj.noConflict();
-
-    tpj(document).ready(function() {
-
-    if (tpj.fn.cssOriginal!=undefined)
-        tpj.fn.css = tpj.fn.cssOriginal;
-
-        var api = tpj('.fullwidthbanner').revolution(
-            {
-                delay:9000,
-                startwidth:1170,
-                startheight:500,
-
-                onHoverStop:"on",                       // Stop Banner Timet at Hover on Slide on/off
-
-                thumbWidth:100,                         // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
-                thumbHeight:50,
-                thumbAmount:3,
-
-                hideThumbs:200,
-                navigationType:"none",              // bullet, thumb, none
-                navigationArrows:"solo",                // nexttobullets, solo (old name verticalcentered), none
-
-                navigationStyle:"round",                // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
-
-
-                navigationHAlign:"center",              // Vertical Align top,center,bottom
-                navigationVAlign:"bottom",                  // Horizontal Align left,center,right
-                navigationHOffset:30,
-                navigationVOffset:-40,
-
-                soloArrowLeftHalign:"left",
-                soloArrowLeftValign:"center",
-                soloArrowLeftHOffset:0,
-                soloArrowLeftVOffset:0,
-
-                soloArrowRightHalign:"right",
-                soloArrowRightValign:"center",
-                soloArrowRightHOffset:0,
-                soloArrowRightVOffset:0,
-
-                touchenabled:"on",                      // Enable Swipe Function : on/off
-
-
-                stopAtSlide:-1,                         // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
-                stopAfterLoops:-1,                      // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
-
-                hideCaptionAtLimit:0,                   // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
-                hideAllCaptionAtLilmit:0,               // Hide all The Captions if Width of Browser is less then this value
-                hideSliderAtLimit:0,                    // Hide the whole slider, and stop also functions if Width of Browser is less than this value
-
-
-                fullWidth:"on",
-
-                shadow:0                                //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
-
-            });
-
-});
-
-
-
-</script>
-
-<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/sticky-menu/core.js"></script>
-
-<!-- testimonials -->
-<script type="text/javascript">//<![CDATA[ 
-$(window).load(function(){
-$(".controlls li a").click(function(e) {
-    e.preventDefault();
-    var id = $(this).attr('class');
-    $('#slider div:visible').fadeOut(500, function() {
-        $('div#' + id).fadeIn();
-    })
-});
-});//]]>  
-
-</script>
-
-
-</body>
+</body><!-- <body> -->
 </html>
