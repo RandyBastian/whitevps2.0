@@ -11,7 +11,19 @@ class Trik_tools extends CI_Controller {
 	public function index()
 	{
 		$data["title"] = "Trik & Tools";
-		$data["navigation"]	= "trik-tools";
+		$data["navigation"]	= "trik";
+
+		$this->db->order_by("created_date","DESC");
+		$data["trik"]	= $this->db->get("trik")->result();
+		$data["user"]	= $this->db->get_where("user",array("role" => "PARTNER"))->result();
+
+		$data["status"] = "false";
+
+		if($this->session->userdata["partner"] || $this->session->userdata["member"] || $this->session->userdata["administrator"])
+		{
+			$data["status"] = "true";
+		}
+
 		$this->load->view("header",$data);
 		$this->load->view('trik_tools',$data);
 		$this->load->view("footer");

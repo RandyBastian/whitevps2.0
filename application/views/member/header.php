@@ -107,6 +107,9 @@ src="https://www.facebook.com/tr?id=613162992183045&ev=PageView&noscript=1"
                     <a href="<?php echo site_url('member/transaction');?>"><i class="fa fa-tasks fa-fw"></i> Transaction History</a>
                 </li>
                 <li>
+                    <a href="<?php echo site_url('trik-tools');?>"><i class="fa fa-book fa-fw"></i> Trik & Tools</a>
+                </li>
+                <li>
                     <a href="<?php echo site_url('order');?>"><i class="fa fa-tasks fa-fw"></i> Order OpenVPN</a>
                 </li>
             </ul>
