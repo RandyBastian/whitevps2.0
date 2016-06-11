@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Privacy_policy extends CI_Controller {
+class Trik_tools extends CI_Controller {
 
 	function __construct()
 	{
@@ -10,10 +10,10 @@ class Privacy_policy extends CI_Controller {
 	}
 	public function index()
 	{
-		$data["title"] = "Privacy Policy";
-		$data["navigation"]	= "privacy-policy";
+		$data["title"] = "Trik & Tools";
+		$data["navigation"]	= "trik-tools";
 		$this->load->view("header",$data);
-		$this->load->view('privacy_policy',$data);
+		$this->load->view('trik_tools',$data);
 		$this->load->view("footer");
 	}
 }
