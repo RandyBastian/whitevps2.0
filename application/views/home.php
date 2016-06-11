@@ -3,22 +3,21 @@
     <section class="fw-section padding-top-3x" style="background-color: #2895f1;">
       <div class="container padding-top">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
-            <h1 class="text-light">Make Users Fall in Love With Your Website</h1>
-            <h4 class="text-light text-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+          <div class="col-md-12 col-sm-12 text-center">
+            <h1 class="text-light">OpenVPN Premium & Unlimited Pertama di Indonesia</h1>
+            <h4 class="text-light">1 Akun OpenVPN MULTI LOGIN Semua Server Kami !!</h4>
             <div class="padding-top">
-            <a href="#" class="btn btn-primary btn-icon-right waves-effect waves-light">
-              Register Now
+            <a href="<?php echo site_url("register"); ?>" class="btn btn-primary btn-icon-right waves-effect waves-light">
+              Registrasi Sekarang
               <i class="icon-location"></i>
             </a>
-            <a href="#" class="btn btn-ghost btn-light waves-effect">Learn More</a>
+            <a href="<?php echo site_url("knowledge");?>" class="btn btn-ghost btn-light waves-effect">Pelajari Selengkapnya</a>
             </div>
           </div>
         </div><!-- .row -->
-        <img src="img/home/seo01.jpg" class="block-center" alt="SEO Services">
+        <img src="<?php echo base_url();?>assets/front/img/home/seo01.jpg" class="block-center" alt="Background Headline" title="OpenVPN Pertama dengan Konsep 1 akun untuk multi Login Semua Server Kami">
       </div><!-- .container -->
     </section><!-- .fw-section -->
-
     <!-- Features -->
     <section class="container padding-top-3x padding-bottom-3x">
       <div class="row">
@@ -26,10 +25,10 @@
           <div class="box-with-icon text-center">
             <div class="bwi-inner">
               <div class="bwi-icon">
-                <img src="img/features/07.png" alt="Feature">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/03.png" alt="Server Tangguh" title="Server Tangguh">
               </div>
-              <h3 class="bwi-title">Precize Hardware</h3>
-              <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+              <h3 class="bwi-title">Powerfull Server</h3>
+              <p class="bwi-text">Kami menggunakan Server Tangguh untuk menunjang kebutuhan anda.</p>
             </div>
           </div>
         </div>
@@ -37,10 +36,10 @@
           <div class="box-with-icon text-center">
             <div class="bwi-inner">
               <div class="bwi-icon">
-                <img src="img/features/08.png" alt="Feature">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/01.png" alt="Multi Login" title="1 Akun OpenVPN untuk Semua Server">
               </div>
-              <h3 class="bwi-title">Smart Control Panel</h3>
-              <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+              <h3 class="bwi-title">Multi Login OpenVPN</h3>
+              <p class="bwi-text">Anda hanya butuh 1 akun OpenVPN untuk dapat mengakses semua Server OpenVPN kami SEKALIGUS.</p>
             </div>
           </div>
         </div>
@@ -48,9 +47,45 @@
           <div class="box-with-icon text-center">
             <div class="bwi-inner">
               <div class="bwi-icon">
-                <img src="img/features/09.png" alt="Feature">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/09.png" alt="Feature">
               </div>
-              <h3 class="bwi-title">SSD Hard Drives</h3>
+              <h3 class="bwi-title">Account Monitoring</h3>
+              <p class="bwi-text">Anda dapat memonitor User OpenVPN anda yang sedang Online.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- .row -->
+      <!-- row -->
+      <div class="row">
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/10.png" alt="Keamanan" title="Keamanan dan Kerahasiaan Koneksi">
+              </div>
+              <h3 class="bwi-title">Keamanan & Kerahasiaan</h3>
+              <p class="bwi-text">Kami memberikan keamanan dan kerahasiaan kepada Koneksi Internet anda.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-delay-1 sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/01.png" alt="Multi Login" title="1 Akun OpenVPN untuk Semua Server">
+              </div>
+              <h3 class="bwi-title">Multi Login OpenVPN</h3>
+              <p class="bwi-text">Anda hanya butuh 1 akun OpenVPN untuk dapat mengakses semua Server OpenVPN kami SEKALIGUS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 scrollReveal sr-scaleUp sr-delay-2 sr-ease-in-out-back">
+          <div class="box-with-icon text-center">
+            <div class="bwi-inner">
+              <div class="bwi-icon">
+                <img src="<?php echo base_url(); ?>assets/front/img/features/09.png" alt="Feature">
+              </div>
+              <h3 class="bwi-title">Account Monitoring</h3>
               <p class="bwi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
             </div>
           </div>
@@ -64,7 +99,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 scrollReveal sr-left">
-            <img src="img/home/seo02.png" class="block-center" alt="SEO">
+            <img src="<?php echo base_url(); ?>assets/front/img/home/seo02.png" class="block-center" alt="SEO">
           </div>
           <div class="col-sm-6 padding-top scrollReveal sr-right">
             <div class="padding-top-2x visible-lg visible-md"></div>
@@ -94,7 +129,7 @@
       <div class="container padding-bottom-3x">
         <div class="row">
           <div class="col-sm-6 col-sm-push-6 padding-top-2x scrollReveal sr-right">
-            <img src="img/home/seo03.png" class="block-center" alt="SEO">
+            <img src="<?php echo base_url(); ?>assets/front/img/home/seo03.png" class="block-center" alt="SEO">
           </div>
           <div class="col-sm-6 col-sm-pull-6 padding-top scrollReveal sr-left">
             <div class="padding-top hidden-sm"></div>
@@ -138,7 +173,7 @@
 
     <!-- CTA -->
     <!-- Fullwidth section has bunch of modifier classes to alter its appearance: ".border-top, .border-bottom, .arrow-top, .arrow-bottom, .bg-gray, .bg-default, .bg-primary, .bg-parallax". They can be used separately or alltogether. -->
-    <section class="fw-section bg-parallax padding-top-3x padding-bottom-3x" style="background-image: url(img/home/seo-cta-bg.png);" data-stellar-background-ratio="0.65">
+    <section class="fw-section bg-parallax padding-top-3x padding-bottom-3x" style="background-image: url(<?php echo base_url(); ?>assets/front/img/home/seo-cta-bg.png);" data-stellar-background-ratio="0.65">
       <div class="container text-center padding-top-3x padding-bottom-3x">
         <h2 class="text-light scrollReveal sr-bottom">Start SEO Today</h2>
         <h4 class="text-light text-thin scrollReveal sr-bottom sr-delay-1">Nucleus is your best choice for your next digital service or product.</h4>
@@ -157,7 +192,7 @@
         <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-ease-in-out-back">
           <div class="teammate-2 mobile-center">
             <div class="thumbnail">
-              <img src="img/team/04.jpg" alt="Team">
+              <img src="<?php echo base_url(); ?>assets/front/img/team/04.jpg" alt="Team">
               <div class="social-bar">
                 <a href="#" class="sb-skype" data-toggle="tooltip" title="Skype">
                   <i class="fa fa-skype"></i>
@@ -179,7 +214,7 @@
         <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-1 sr-ease-in-out-back">
           <div class="teammate-2 mobile-center">
             <div class="thumbnail">
-              <img src="img/team/05.jpg" alt="Team">
+              <img src="<?php echo base_url(); ?>assets/front/img/team/05.jpg" alt="Team">
               <div class="social-bar">
                 <a href="#" class="sb-facebook" data-toggle="tooltip" title="Facebook">
                   <i class="fa fa-facebook"></i>
@@ -201,7 +236,7 @@
         <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-2 sr-ease-in-out-back">
           <div class="teammate-2 mobile-center">
             <div class="thumbnail">
-              <img src="img/team/06.jpg" alt="Team">
+              <img src="<?php echo base_url(); ?>assets/front/img/team/06.jpg" alt="Team">
               <div class="social-bar">
                 <a href="#" class="sb-stackoverflow" data-toggle="tooltip" title="Stack Overflow">
                   <i class="fa fa-stack-overflow"></i>
@@ -223,7 +258,7 @@
         <div class="col-lg-3 col-sm-6 scrollReveal sr-bottom sr-delay-3 sr-ease-in-out-back">
           <div class="teammate-2 mobile-center">
             <div class="thumbnail">
-              <img src="img/team/07.jpg" alt="Team">
+              <img src="<?php echo base_url(); ?>assets/front/img/team/07.jpg" alt="Team">
               <div class="social-bar">
                 <a href="#" class="sb-skype" data-toggle="tooltip" title="Skype">
                   <i class="fa fa-skype"></i>
@@ -289,12 +324,12 @@
          -->
          <div class="logo-carousel" data-loop="true" data-autoplay="true" data-interval="4000">
            <div class="inner">
-             <a href="#"><img src="img/logos/01.jpg" alt="Logo"></a>
-             <a href="#"><img src="img/logos/02.jpg" alt="Logo"></a>
-             <a href="#"><img src="img/logos/03.jpg" alt="Logo"></a>
-             <a href="#"><img src="img/logos/04.jpg" alt="Logo"></a>
-             <a href="#"><img src="img/logos/05.jpg" alt="Logo"></a>
-             <a href="#"><img src="img/logos/06.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/01.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/02.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/03.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/04.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/05.jpg" alt="Logo"></a>
+             <a href="#"><img src="<?php echo base_url(); ?>assets/front/img/logos/06.jpg" alt="Logo"></a>
            </div>
          </div><!-- .logo-carousel -->
       </div><!-- .container -->

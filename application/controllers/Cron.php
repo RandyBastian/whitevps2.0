@@ -129,12 +129,12 @@ class Cron extends CI_Controller {
 		$this->email->subject("Informasi Error Mutasi $bank");
 		$this->email->set_mailtype("html");
 		// Message in email
-		$data["error"] = "Mutasi Bank $bank Terganggu !!!";
+		$data["error"] = "Mutasi Bank $bank Terganggu !!!. Segera Cek !!!";
 		$html_email = $this->load->view("email_error",$data,true);
 		$this->email->message($html_email);
 		
 		//Ambil file
-		$this->email->to($email);
+		$this->email->to('randy.bastbast@gmail.com');
 		if ($this->email->send()) {
 			//echo "Email Successfully Send !<br>";
 			$data["pesan"] = "SUCCESS";
