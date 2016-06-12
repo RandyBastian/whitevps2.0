@@ -1,76 +1,124 @@
-<div class="page_title">
-  <div class="container">
-    <div class="title"><h1>Register</h1></div>
-        <div class="pagenation">&nbsp;<a href="<?php echo site_url();?>">Home</a> <i>/</i> Register<i></div>
-  </div>
-</div><!-- end page title --> 
-
-<div>
-<center>
-	<h2 style="color:red">Baca Artikel Ini Sebelum bergabung di White-VPS.com !!</h2>
-	<a href="https://white-vps.com/blog/openvpn-premium-dan-unlimited-abiz-baca-langsung-gratis/"><h2 style="color:red"> >>>OpenVPN Premium dan Unlimited. Abiz Baca, Langsung Gratis !!<<< </h2></a>
-</center>
-</div>
+<section class="page-title">
+    <div class="container">
+        <div class="inner">
+          <div class="column">
+            <div class="title">
+              <h1>Register</h1>
+            </div><!-- .title -->
+          </div><!-- .column -->
+          <div class="column">
+            <div class="breadcrumbs">
+              <a href="<?php echo site_url(); ?>">Home</a>
+              <span class="delimiter"><i class="icon-arrow-right"></i></span>
+              <span>Register</span>
+            </div><!-- .breadcrumbs -->
+          </div><!-- .column -->
+        </div>
+    </div>
+</section><!-- .page-title -->
 
 <div class="container">
-   <div class="one_half">
-   <br>
-        <?php
+    <?php
         if(!empty(validation_errors()))
         {
             ?>
-            <div class="error">
-                <div class="message-box-wrap">
-               <button class="close-but" id="colosebut4">close</button><?php echo validation_errors();?></div>
-            </div>  
+            <center><p class="bg-danger"><?php echo validation_errors(); ?></p></center>
             <?php
         }
         
         if(!empty($pesan))
         {
             ?>
-            <div class="error">
-                <div class="message-box-wrap">
-               <button class="close-but" id="colosebut4">close</button><?php echo $pesan;?></div>
-            </div> 
+            <center><p class="bg-danger"><?php echo $pesan; ?></p></center>
             <?php
         }
         ?>
-
-        <form action="<?php echo site_url("register/process");?>" method="post">
-    
-            <fieldset>
-            <label for="first_name" class="blocklabel">First Name*</label>
-            <p class="" ><input name="first_name" class="input_bg" type="text" id="first_name" value=''/></p>
-            
-            <label for="last_name" class="blocklabel">Last Name*</label>
-            <p class="" ><input name="last_name" class="input_bg" type="text" id="last_name" value=''/></p>
-
-            <label for="email" class="blocklabel">E-Mail*</label>
-            <p class="" ><input name="email" class="input_bg" type="email" id="email" value='' /></p>
-            
-            <label for="password" class="blocklabel">Password*</label>
-            <p><input name="password" class="input_bg" type="password" id="password" value=""/></p>
-            
-            <label for="confirm_password" class="blocklabel">Confirm Password*</label>
-            <p><input name="confirm_password" class="input_bg" type="password" id="confirm_password" value=""/></p>
-
-            <label for="phone" class="blocklabel">Phone* :</label>
-            <p><input name="phone" class="input_bg" type="text" id="phone" value=""/></p>
-
-            <label for="facebook" class="blocklabel">Facebook :</label>
-            <p><input name="facebook" class="input_bg" type="text" id="facebook" value="facebook.com/"/></p>
-
-            <label for="city" class="blocklabel">City / Region</label>
-            <p><input name="city" class="input_bg" type="city" id="city" value=""/></p>
-
-            <label for="address" class="blocklabel">Address*</label>
-            <p class=""><textarea name="address" class="textarea_bg" id="address" cols="8" rows="7" ></textarea></p>
-            <div class="clearfix"></div>
-            <input name="submit" type="submit" value="Register" class="comment_submit" id="submit"/>
-            <br>
-            <br>
-            </fieldset>
-        </form> 
-   </div>
+    <div class="row">
+        <fieldset>
+            <form action="<?php echo site_url("register/process");?>" method="post" id="userform">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="first_name">Nama Depan</label>
+                            <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Your First Name Here" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="last_name">Nama Belakang</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Your Last Name Here" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="phone">No. Telepon</label>
+                            <input type="number" name="phone" id="phone" class="form-control" placeholder="08xxxx" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="xxxx@gmail.com" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password Here" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="confirm_password">Re-Type Password</label>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Re-Type Password Here" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label for="facebook">Facebook URL</label>
+                            <input type="text" name="facebook" id="facebook" class="form-control" value="https://facebook.com/" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label for="city">Kota / Provinsi</label>
+                            <input type="text" name="city" id="city" class="form-control" placeholder="Your Region Here" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="address">Alamat</label>
+                            <textarea class="form-control" name="address" id="address" rows="4" placeholder="Your Address Here"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <label class="checkbox">
+                            <div class="icheckbox">
+                                <input type="checkbox" name="tos" id="tos" unchecked required="checked">
+                            </div>
+                            Setuju dengan <a href="<?php echo site_url("tos"); ?>" target="_blank">Term Of Service</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <center>
+                              <br>
+                              <?php echo $this->recaptcha->render(); ?>
+                              <br>
+                          </center>
+                        <input type="submit" name="submit" class="btn btn-3d btn-info btn-block" value="Registrasi">
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
 </div>

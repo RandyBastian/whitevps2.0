@@ -23,26 +23,44 @@
     if(!empty($trik))
     {
       $no = 1;
+      echo "<div class='panel-group' id='accordion'>";
       foreach($trik as $t)
       {
+        foreach($user as $u)
+        {
+          if($u->id == $t->id_creator)
+          {
+            $facebook = $u->facebook;
+            $name     = $u->first_name;
+          }
+        }
         ?>
-           <div class="panel-group" id="accordion">
               <div class="panel">
                 <div class="panel-heading">
-                  <a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    Collapsible Group Item #1
+                  <a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#no<?php echo $no; ?>">
+                    <?php echo $t->judul;?>
                   </a>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="no<?php echo $no;?>" class="panel-collapse collapse <?php if($no == 1) echo 'in'; ?>">
                   <div class="panel-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                    <?php
+                    if($status == "false")
+                    {
+                      echo "<p style='color:red'>Anda tidak memiliki akses !. Harap melakukan login dan anda memiliki akun OpenVPN premium dengan masa aktif lebih dari 3 hari.<p>";
+                    }
+                    else
+                    {
+                      echo $t->isi;
+                      echo "<br><br>Creator : <a href='$facebook' target='_blank'>$name</a>";
+                    }
+                    ?>
                   </div>
                 </div>
               </div><!-- .panel -->
-            </div><!-- .panel-group -->
         <?php
         $no++;
       }
+      echo "</div><!-- .panel-group -->";
     }
     else
     {

@@ -1,38 +1,41 @@
-<div class="page_title">
-  <div class="container">
-    <div class="title"><h1>Forget Password ?</h1></div>
-        <div class="pagenation">&nbsp;<a href="<?php echo site_url();?>">Home</a> <i>/</i> Forget Password</div>
-  </div>
-</div><!-- end page title --> 
+<section class="page-title">
+    <div class="container">
+        <div class="inner">
+          <div class="column">
+            <div class="title">
+              <h1>Re-send New Password</h1>
+            </div><!-- .title -->
+          </div><!-- .column -->
+          <div class="column">
+            <div class="breadcrumbs">
+              <a href="<?php echo site_url(); ?>">Home</a>
+              <span class="delimiter"><i class="icon-arrow-right"></i></span>
+              <span>Re-send New Password</span>
+            </div><!-- .breadcrumbs -->
+          </div><!-- .column -->
+        </div>
+    </div>
+</section><!-- .page-title -->
 <div class="container">
        <center>
             <?php
             if(!empty(validation_errors()))
             {
                   ?>
-                  <div class="error">
-                      <div class="message-box-wrap">
-                     <button class="close-but" id="colosebut4">close</button><?php echo validation_errors();?></div>
-                  </div>  
+                  <center><p class="bg-danger"><?php echo validation_errors(); ?></p></center>
                   <?php
             }
             if(!empty($pesan))
             {
                   if($pesan == "ERROR")
                   { ?>
-                        <div class="error">
-                            <div class="message-box-wrap">
-                           <button class="close-but" id="colosebut4">close</button>Error !!. Try Again Later !!</div>
-                        </div> 
+                        <center><p class="bg-danger"><strong>Error</strong> !!. Try Again Later !!</p></center>
                    <?php
                   }
                   else
                   {
                         ?>
-                        <div class="success">
-                        <div class="message-box-wrap">
-                              <strong>Success !!</strong> Check Your Email.</div>
-                        </div>
+                        <center><p class="bg-success">Sukses !. Password terbaru telah kami kirim ke Email Anda !.</p></center>
                         <?php
                   }
             }
@@ -40,11 +43,20 @@
        </center>
        <form action="<?php echo site_url("forget_password/send");?>" method="POST">
             <fieldset>
-             <label for="email" class="blocklabel">E-Mail</label>
-             <input name="email" class="input_bg" type="email" id="email" required>
-             <input name="submit" type="submit" value="Send New Password" class="comment_submit" id="submit"/>
-             <br>
-             <br>
+            <div class="row">
+              <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+                <div class="form-group">
+                <label for="email">Email</label>
+                  <input type="email" name="email" id="email" placeholder="My Email Here" required>
+                  <center>
+                      <br>
+                      <?php echo $this->recaptcha->render(); ?>
+                      <br>
+                  </center>
+                  <input name="submit" type="submit" value="Send New Password" class="btn btn-block btn-3d btn-primary" id="submit"/>
+                </div>
+              </div>
+            </div>
             </fieldset>
        </form>
 </div>

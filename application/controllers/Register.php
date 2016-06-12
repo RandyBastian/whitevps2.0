@@ -4,12 +4,13 @@ class Register extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library('recaptcha');
 	}
 
 	public function index()
 	{
 		$data["title"] = "Register";
-		$data["navigation"] = "";
+		$data["navigation"] = "register";
 		$this->load->view("header",$data);
 		$this->load->view("register",$data);
 		$this->load->view("footer");
@@ -26,7 +27,21 @@ class Register extends CI_Controller {
 			$this->form_validation->set_rules("confirm_password","Confirm Password","trim|required|xss_clean");
 			$this->form_validation->set_rules("phone","Phone","trim|integer|required|xss_clean");
 			$this->form_validation->set_rules("address","Address","trim|required|xss_clean");
-			if($this->form_validation->run() == FALSE)
+
+			$captcha_answer = $this->input->post('g-recaptcha-response');
+			$response = $this->recaptcha->verifyResponse($captcha_answer);
+			if(!$response["success"])
+			{
+				$data["title"] = "Registrer";
+				$data["pesan"] = "ERROR Re-captcha !!. Silahkan Coba lagi !!.";
+				$data["navigation"] = "";
+				$this->load->view("header",$data);
+				$this->load->view("register",$data);
+				$this->load->view("footer");
+				//exit();
+			
+			}
+			elseif($this->form_validation->run() == FALSE)
 			{
 				$data["title"] = "Register";
 				$data["navigation"] = "";
@@ -51,7 +66,7 @@ class Register extends CI_Controller {
 				// Check Password dan Current Password apakah sama atau tidak
 				if($password != $confirm_pass)
 				{
-					$data["pesan"] = "<strong>Password</strong> Does Not Match !!";
+					$data["pesan"] = "<strong>Password</strong> Tidak Cocok !!";
 					$data["title"] = "Register";
 					$data["navigation"] = "";
 					$this->load->view("header",$data);
@@ -61,7 +76,7 @@ class Register extends CI_Controller {
 				// Check Apakah User Exist
 				elseif(!empty($user))
 				{
-					$data["pesan"] = "<strong>Email</strong> already Exist !!.";
+					$data["pesan"] = "<strong>Email</strong> sudah terdaftar !!.";
 					$data["title"] = "Register";
 					$data["navigation"] = "";
 					$this->load->view("header",$data);
@@ -93,14 +108,14 @@ class Register extends CI_Controller {
 					if($result)
 					{
 						$this->load->library('recaptcha');
-						$data["result"] = "Registration Success !!. Check Your Email to Activate this Account.";
+						$data["result"] = "Registrasi Sukses !!. Cek Email anda untuk mengaktivasi akun.";
 						$this->kirim_email_key($key_password, $email);
 
 						$this->load->view("login",$data);
 					}
 					else
 					{
-						$data["pesan"] = "<strong>Error !!.</strong> Try Again. !!.";
+						$data["pesan"] = "<strong>Error Server !!.</strong> Try Again. !!.";
 						$data["title"] = "Register";
 						$data["navigation"] = "";
 						$this->load->view("header",$data);
@@ -125,7 +140,6 @@ class Register extends CI_Controller {
 			redirect("not_found");
 		}
 
-		
 		$user = $this->db->get_where("user",array("key_password" => $key, "email" => $email))->result();
 		if(empty($user))
 		{
@@ -179,7 +193,19 @@ class Register extends CI_Controller {
 		// Form Validation
 
 		$this->form_validation->set_rules("email","Email","trim|required|valid_email|xss_clean");
-		if($this->form_validation->run() == FALSE)
+		$captcha_answer = $this->input->post('g-recaptcha-response');
+		$response = $this->recaptcha->verifyResponse($captcha_answer);
+		if(!$response["success"])
+		{
+			$data["title"] = "Resend Activation Key";
+			$data["navigation"] = "";
+			$data["pesan"] = "ERROR Re-captcha !!. Silahkan Coba lagi !!.";
+			$this->load->view("header",$data);
+			$this->load->view("resend_member_activation",$data);
+			$this->load->view("footer");
+			exit();
+		}
+		elseif($this->form_validation->run() == FALSE)
 		{
 			$data["title"] = "Resend Activation Key";
 			$data["navigation"] = "";

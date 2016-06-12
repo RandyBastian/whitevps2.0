@@ -19,9 +19,37 @@ class Trik_tools extends CI_Controller {
 
 		$data["status"] = "false";
 
-		if($this->session->userdata["partner"] || $this->session->userdata["member"] || $this->session->userdata["administrator"])
+		if(!empty($this->session->userdata["partner"]) || !empty($this->session->userdata["member"]) || !empty($this->session->userdata["administrator"]))
 		{
-			$data["status"] = "true";
+			$id = "";
+			if(!empty($this->session->userdata["id_member"]))
+			{
+				$id = $this->session->userdata["id_member"];
+			}
+			elseif(!empty($this->session->userdata["id_partner"]))
+			{
+				$id = $this->session->userdata["id_partner"];
+			}
+			elseif(!empty($this->session->userdata["id_administrator"]))
+			{
+				$id = $this->session->userdata["id_administrator"];
+				$data["status"] = "true";
+			}
+
+			$date = date("Y-m-d",strtotime("+3 day"));
+			$account = $this->db->get_where("account",array("id_user" => $id))->result();
+			//echo $date;
+			if(!empty($account))
+			{
+				foreach($account as $a)
+				{
+					if($a->expired_date > $date)
+					{
+						$data["status"] = "true";
+						break;
+					}
+				}
+			}
 		}
 
 		$this->load->view("header",$data);

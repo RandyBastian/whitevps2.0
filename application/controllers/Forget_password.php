@@ -4,11 +4,12 @@ class Forget_password extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library('recaptcha');
 	}
 	
 	public function index()
 	{
-		$data["title"] = "Forget Password";
+		$data["title"] = "Forget My Password";
 		$data["navigation"] = "";
 		$this->load->view("header",$data);
 		$this->load->view("forget_password",$data);
@@ -19,7 +20,21 @@ class Forget_password extends CI_Controller {
 	{
 		// Form Validation
 		$this->form_validation->set_rules("email","Email","trim|required|valid_email|xss_clean");
-		if($this->form_validation->run() == FALSE)
+		
+		$captcha_answer = $this->input->post('g-recaptcha-response');
+		$response = $this->recaptcha->verifyResponse($captcha_answer);
+		if(!$response["success"])
+		{
+			$data["title"] = "Forget Password";
+			$data["pesan"] = "ERROR";
+			$data["navigation"] = "";
+			$this->load->view("header",$data);
+			$this->load->view("forget_password",$data);
+			$this->load->view("footer");
+			exit();
+		
+		}
+		elseif($this->form_validation->run() == FALSE)
 		{
 			$data["title"] = "Forget Password";
 			$data["navigation"] = "";
