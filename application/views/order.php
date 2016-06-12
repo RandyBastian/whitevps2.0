@@ -1,9 +1,94 @@
-<div class="page_title">
-  <div class="container">
-    <div class="title"><h1>OpenVPN </h1></div>
-        <div class="pagenation">&nbsp;<a href="<?php echo site_url();?>">Home</a> <i>/</i> <a href="<?php echo site_url("order"); ?>">Plans & Pricing</a></div>
-  </div>
-</div><!-- end page title --> 
+<section class="page-title">
+    <div class="container">
+        <div class="inner">
+          <div class="column">
+            <div class="title">
+              <h1>Daftar Harga</h1>
+            </div><!-- .title -->
+          </div><!-- .column -->
+          <div class="column">
+            <div class="breadcrumbs">
+              <a href="<?php echo site_url(); ?>">Home</a>
+              <span class="delimiter"><i class="icon-arrow-right"></i></span>
+              <span>Daftar Harga</span>
+            </div><!-- .breadcrumbs -->
+          </div><!-- .column -->
+        </div>
+    </div>
+</section><!-- .page-title -->
+
+<div class="container">
+    <div class="pricing-table space-top">
+          <table>
+            <colgroup>
+              <col>
+              <col>
+              <col class="featured">
+            </colgroup>
+            <tbody><tr>
+              <td>&nbsp;</td>
+              <td>
+                <span class="text-bold">Premium Credits</span>
+                <span class="text-gray space-top">For the home page, Internet Identity.</span>
+                <a href="#" class="text-sm space-top">Buy now</a>
+              </td>
+              <td>
+                <span class="img-icon"><img src="<?php echo site_url();?>assets/front/img/pricing/icon.png" alt="Featured Plan"></span>
+                <span class="text-bold">Mega Credits</span>
+                <span class="text-gray space-top">Allows you to place a standard site.</span>
+                <a href="#" class="text-sm space-top">Buy now</a>
+              </td>
+              <td>
+                <span class="text-bold">Ultimate Credits</span>
+                <span class="text-gray space-top">Optimal solution for a news portal, shop.</span>
+                <a href="#" class="text-sm space-top">Buy now</a>
+              </td>
+              
+            </tr>
+            <tr>
+              <td class="text-gray text-right">Credits (<a target="_blank" style="color:red" href="<?php echo site_url("knowledge"); ?>">Apa itu Credit <i class="fa fa-question fa-lg"></i></a> )</td>
+              <td class="text-bold">1 </td>
+              <td class="text-bold">6</td>
+              <td class="text-bold">12</td>
+              
+            </tr>
+            <tr>
+              <td class="text-gray text-right">Subdomains</td>
+              <td class="text-bold">2</td>
+              <td class="text-bold">5</td>
+              <td class="text-bold">30</td>
+             
+            </tr>
+            <tr>
+              <td class="text-gray text-right">Disk space</td>
+              <td class="text-bold">500 MB</td>
+              <td class="text-bold">1 GB</td>
+              <td class="text-bold">10 GB</td>
+              
+            </tr>
+            <tr>
+              <td class="text-gray text-right">Bandwidth</td>
+              <td class="text-bold"><span class="infinity"></span></td>
+              <td class="text-bold"><span class="infinity"></span></td>
+              <td class="text-bold"><span class="infinity"></span></td>
+             
+            </tr>
+            <tr>
+              <td class="text-gray text-right">PHP support</td>
+              <td class="text-bold"><span class="not-available"></span></td>
+              <td class="text-bold"><span class="available"></span></td>
+              <td class="text-bold"><span class="available"></span></td>
+              
+            </tr>
+            <tr>
+              <td class="text-gray text-right">Annual cost</td>
+              <td class="text-bold">$9.99</td>
+              <td class="text-bold">$15.99</td>
+              <td class="text-bold">$29.99</td>
+            </tr>
+          </tbody></table><!-- table -->
+        </div>
+</div>
 
 <div class="clearfix"></div>
 

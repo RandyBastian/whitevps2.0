@@ -149,14 +149,57 @@ class Cron extends CI_Controller {
 
 
 	// ==== Dijalankan Sekali Saja ==== //
+	public function delete_user()
+	{
+		$user 		= $this->db->get("user")->result();
+		$account 	= $this->db->get("account")->result();
+		$time		= date("Y-m-d",strtotime("-30 day"));
+		$no = 1;
+		foreach($user as $u)
+		{
+			if($u->credit_premium > 0)
+			{
+				$no++;
+				continue;
+			}
+			
+			if($no == 150)
+			{
+				echo "=================================Istirahat <br>";
+				break;
+			}
+			$flag 	= 0;
+			foreach($account as $a)
+			{
+				if($a->id_user == $u->id)
+				{
+					if($a->expired_date > $time)
+					{
+						$flag = 1;
+						break;
+					}
+				}
+			}
+			if($flag == 0)
+			{
+				echo "delete user : $u->email<br>";
+				$this->db->delete("account",array("id_user" => $u->id));
+				$this->db->delete("user",array("id" => $u->id));
+			}
+
+			$no++;
+		}
+	}
+
 	public function delete_expired_account()
 	{
-		$expired 	= date("Y-m-d",strtotime("-5 day"));
+		$expired 	= date("Y-m-d",strtotime("-10 day"));
 		$account 	= $this->db->get("account")->result();
 		foreach($account as $a)
 		{
 			if($a->expired_date < $expired)
 			{
+				echo "delete : $a->username<br>";
 				$this->db->delete("account",array("username" => $a->username));
 			}
 		} 
@@ -164,18 +207,36 @@ class Cron extends CI_Controller {
 
 	public function entry_session_account()
 	{
-		$server 		= $this->db->get("server")->result();
-		$account 		= $this->db->get("account")->result();
+		$server 			= $this->db->get("server")->result();
+		$account 			= $this->db->get("account")->result();
 
+		$no = 1;
 		foreach($server as $s)
 		{
-			foreach($account as $a)
+			if($no == 300)
 			{
+				echo "=================Istirahat server<br>";
+				break;
+			}
+			foreach($account as $a)
+			{	
+				if($no == 300)
+				{
+					echo "=================Istirahat Acocunt<br>";
+					break;
+				}
+				$session = $this->db->get_where("session_account",array("username" => $a->username,"ip_address" => $s->host))->result();
+				if(!empty($session))
+				{
+					continue;
+				}
+				echo "entry $s->host, $a->username<br>";
 				$data = array(
 					"username" 		=> $a->username,
 					"ip_address"	=> $s->host
 					);
 				$this->db->insert("session_account",$data);
+				$no++;
 			}
 		}
 	}
@@ -185,7 +246,7 @@ class Cron extends CI_Controller {
 		$transaksi 	= $this->db->get_where("transaction",array("status" => "PENDING"))->result();
 		foreach($transaksi as $t)
 		{
-			if($t->transaction_date < date("Y-m-d",strtotime("-5 day"))
+			if($t->transaction_date < date("Y-m-d",strtotime("-5 day")))
 			{
 				$this->db->delete("transaction",array("id" => $t->id));
 			}
