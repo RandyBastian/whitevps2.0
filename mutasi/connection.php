@@ -1,8 +1,10 @@
 <?php
 
 $servername = "localhost";
-$username 	= "root";
-$password 	= "";
+//$username 	= "root";
+//$password 	= "";
+$username 	= "askarali_randy";
+$password  	= "randy27bast";
 $db 		= "askarali_whitevp1_whitevps2";
 
 // Create connection
