@@ -51,7 +51,7 @@
                     else
                     {
                       echo $t->isi;
-                       echo "<br><br>Creator : <a href='$facebook' target='_blank'>$name</a>";
+                      if(!empty($facebook)){echo "<br><br>Creator : <a href='$facebook' target='_blank'>$name</a>";}
                     }
                     ?>
                   </div>

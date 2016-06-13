@@ -7,6 +7,7 @@ class Cron extends CI_Controller {
 		parent::__construct();
         
 	}
+	//======= Cron =======//
 
 	// Cek mutasi berjalan sempurna Sejam Sekali //
 	public function cek_mutasi_jalan(){
@@ -22,7 +23,23 @@ class Cron extends CI_Controller {
 		}
 	}
 
-	// Cek Transaksi Setiap 5 menit sekali
+	// Cron setiap 1 jam Sekali//
+	public function transaksi_expired()
+	{
+		$transaksi 		= $this->db->get_where("transaction",array("status" => "PENDING"))->result();
+		foreach($transaksi as $t)
+		{
+			if(date("Y-m-d H:i:s",strtotime($t->transaction_date."+2 day")) < date("Y-m-d H:i:s"))
+			{
+				//echo $t->transaction_date."|".date("Y-m-d H:i:s",strtotime($t->transaction_date."+2 day"))."<br>";
+				$this->db->where("id",$t->id);
+				$this->db->update("transaction",array("status" => "CANCEL"));
+				echo "Invoice : $t->invoice telah di CANCEL<br>";
+			}
+		}
+	}
+
+	// Cek Transaksi Setiap 5 menit Sekali//
 	public function transaksi()
 	{
 		$transaksi 	= $this->db->get_where("transaction",array("status" => "PENDING"))->result();
@@ -58,12 +75,13 @@ class Cron extends CI_Controller {
 
 					// Update Status Transaksi
 					$this->db->where("id",$t->id);
-					$this->db->update("transaction",array("status" => "PAID"));
+					$this->db->update("transaction",array("status" => "PAID","payment_date" => date("Y-m-d H:i:s")));
 
 					// Update Status Bank
 					$this->db->where("id",$b->id);
 					$this->db->update("bank",array("status" => "1"));
-
+					//
+					echo "Transaksi $t->invoice telah dibayar<br>";
 					// Kirim Email
 					$this->_kirim_email_pembayaran($t->invoice, $email);
 
@@ -71,7 +89,7 @@ class Cron extends CI_Controller {
 			}
 		}
 	}
-
+	//======= End of Cron =======//
 
 	// Kirim EMail Pembayaran//
 	public function _kirim_email_pembayaran($invoice = null, $email = null)
@@ -152,7 +170,7 @@ class Cron extends CI_Controller {
 	public function delete_user()
 	{
 		$user 		= $this->db->get("user")->result();
-		$account 	= $this->db->get("account")->result();
+		$account 	= $this->db->get_where("account",array("role" => "MEMBER"))->result();
 		$time		= date("Y-m-d",strtotime("-30 day"));
 		$no = 1;
 		foreach($user as $u)

@@ -15,15 +15,18 @@ class Login extends CI_Controller {
 		{
 			redirect("member");
 		}
-		if(!empty($this->sesison->userdata["partner"]))
+		elseif(!empty($this->sesison->userdata["partner"]))
 		{
 			redirect("partner/home");
 		}
-		if(!empty($this->session->userdata["administrator"]))
+		elseif(!empty($this->session->userdata["administrator"]))
 		{
 			redirect("administrator");
 		}
-		$this->load->view("login");
+		else
+		{
+			$this->load->view("login");
+		}
 	}
 
 	public function signin()

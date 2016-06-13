@@ -105,7 +105,7 @@
                     <a href="<?php echo site_url('partner/download');?>"><i class="fa fa-user-md fa-fw"></i> Configuration Download Area</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('partner/server');?>"><i class="fa fa-book fa-fw"></i> Server Information</a>
+                    <a href="<?php echo site_url('server');?>"><i class="fa fa-book fa-fw"></i> Server Information</a>
                 </li>
                 <li>
                     <a href="<?php echo site_url('partner/transaction');?>"><i class="fa fa-dollar fa-fw"></i> My Transaction</a>

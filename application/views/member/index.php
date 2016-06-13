@@ -1,5 +1,20 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-4 col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Informasi</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                       <li>Bagi member yang baru registrasi, anda dapat mencoba Trial Account 2 Hari pada menu Account VPN Management > <a href="<?php echo site_url("member/profile"); ?>">Create Account</a>.</li>
+                       <li>Untuk mengecek User anda yang Online, anda dapat memilih menu <a href="<?php echo site_url("member/server"); ?>">Server Information</a>.</li>
+                       <li>Untuk mendownload file configuration, anda dapat memilih menu <a href="<?php echo site_url("member/download"); ?>">Configuration Download Area</a></li>
+                       <li>Untuk mengakses Trik & Tools, anda dapat memilih menu <a href="<?php echo site_url("trik-tools"); ?>">Trik & Tools</a> .</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="col-lg-8 col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 White-VPS Information

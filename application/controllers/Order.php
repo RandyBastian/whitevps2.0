@@ -21,15 +21,18 @@ class Order extends CI_Controller {
 	{
 		if(!empty($this->session->userdata["member"]))
 		{
-			
+			$user_id 	= $this->session->userdata["id_member"];
+			$email 		= $this->session->userdata["member"];
 		}
 		elseif(!empty($this->session->userdata["partner"]))
 		{
-
+			$user_id 	= $this->session->userdata["id_partner"];
+			$email 		= $this->session->userdata["partner"];
 		}
 		elseif(!empty($this->session->userdata["administrator"]))
 		{
-
+			$user_id 	= $this->session->userdata["id_administrator"];
+			$email 		= $this->session->userdata["administrator"];
 		}
 		else
 		{
@@ -44,53 +47,39 @@ class Order extends CI_Controller {
 		{
 			redirect("order");
 		}
+		
 		foreach($product as $p)
 		{
 			$product_id 	= $p->id;
-			$price_idr 		= $p->price_idr;
-			$price_usd 		= $p->price_usd;
+			$price 			= $p->price_idr;
 			$product_name 	= $p->name;
 		}
-		
-		// Cek Valid User
-		$user_id 	= $this->session->userdata["id_member"];
-		$user 		= $this->db->get_where("user",array("id" => $user_id))->result();
-		if(empty($user))
+		//Cek Price Random 3 Digit //
+		$uniq_number 	= rand(1,999);
+		$cek_price 		= $this->db->get_where("transaction",array("status" => "PENDING","price" => $price + $uniq_number))->result();
+		$no = 1;
+		while(!empty($cek_price))
 		{
-			redirect("logout");
-		}
-		foreach($user as $u)
-		{
-			$first_name 		= $u->first_name;
-			$last_name			= $u->last_name;
-			$email				= $u->email;
-			$address			= $u->address;
-			$city				= $u->city;
-			$portal_code 		= $u->portal_code;
-			$phone				= $u->no_hp;
-			$country_code		= "IDN";
-			$id_user			= $u->id;
-			$enkrip 			= hash("sha512", "$email-$id_user");
-			$session_member		= $this->session->userdata["member"];
-			if($enkrip != $session_member)
+			if($no == 990)
 			{
-				redirect("logout");
+				$uniq_number = rand(1000,2000);	
+				break;
 			}
+			$uniq_number 	= rand(1,999);
+			$cek_price 		= $this->db->get_where("transaction",array("status" => "PENDING","price" => $price + $uniq_number))->result();
+			$no++;
 		}
-
 		//----------------------------------//
-		
 		$this_time		= date("Y-m-d H:i:s");
-		$invoice 		= "VPN-". strtoupper(hash('crc32',"$enkrip-$this_time"));
+		$invoice 		= "VPN-". strtoupper(hash('crc32',"$email-$this_time"));
 		// Entry to Database Transaction
 		$data = array(
 			"name"				=> 	$product_name,
-			"price"				=> 	$price_idr,
+			"price"				=> 	$price + $uniq_number,
 			"transaction_date"	=> 	$this_time,
-			
 			"status"			=>  "PENDING",
 			"invoice"			=>  $invoice,
-			"id_user"			=>  $id_user,
+			"id_user"			=>  $user_id,
 			"keterangan"		=>  "",
 			"price_type"		=>  "IDR",
 			"payment_method"	=>  "",
@@ -98,12 +87,14 @@ class Order extends CI_Controller {
 		);
 		$this->db->insert("transaction",$data);
 		$data["invoice"]		= $invoice;
-		$data["price_idr"]		= $price_idr;
-		$data["title"] = "Finish Payment";
-		$data["navigation"] = "";
+		$data["price"]			= $price;
+		$data["uniq_number"]	= $uniq_number;
+		$data["price_total"]	= $price + $uniq_number;
+		$data["title"] 			= "Transaksi Berhasil";
+		$data["product"]		= $product_name;
+		$data["navigation"] 	= "";
 		$this->load->view("header",$data);
 		$this->load->view("rincian",$data);
-		$this->load->view("payment");
 		$this->load->view("footer");
 		//Veritrans Module Here//
 	}
@@ -125,6 +116,14 @@ class Order extends CI_Controller {
 		$this->load->view("header",$data);
 		$data["pesan"] = "Error. Please check your Transaction for Detail.";
 		$this->load->view("pesan",$data);
+		$this->load->view("footer");
+	}
+
+	public function testing()
+	{
+		$data["title"] = "Rincian";
+		$this->load->view("header",$data);
+		$this->load->view("rincian",$data);
 		$this->load->view("footer");
 	}
 }
