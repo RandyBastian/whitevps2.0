@@ -17,13 +17,17 @@ class Order extends CI_Controller {
 	    $this->load->view("footer");
 	}
 	
-	public function process($id = null)
+	public function process($id = null, $name = null)
 	{
 		if(!empty($this->session->userdata["member"]))
 		{
 			
 		}
 		elseif(!empty($this->session->userdata["partner"]))
+		{
+
+		}
+		elseif(!empty($this->session->userdata["administrator"]))
 		{
 
 		}
@@ -38,7 +42,7 @@ class Order extends CI_Controller {
 		$product = $this->db->get_where("product",array("id" => $id))->result();
 		if(empty($product))
 		{
-			redirect("logout");
+			redirect("order");
 		}
 		foreach($product as $p)
 		{

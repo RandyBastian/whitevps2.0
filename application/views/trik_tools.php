@@ -38,7 +38,7 @@
               <div class="panel">
                 <div class="panel-heading">
                   <a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#no<?php echo $no; ?>">
-                    <?php echo $t->judul;?>
+                    <?php echo $t->judul." ~ ".$t->created_date;?>
                   </a>
                 </div>
                 <div id="no<?php echo $no;?>" class="panel-collapse collapse <?php if($no == 1) echo 'in'; ?>">
@@ -51,7 +51,7 @@
                     else
                     {
                       echo $t->isi;
-                      echo "<br><br>Creator : <a href='$facebook' target='_blank'>$name</a>";
+                       echo "<br><br>Creator : <a href='$facebook' target='_blank'>$name</a>";
                     }
                     ?>
                   </div>
